@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your card — MOJOWAY</title>
+<meta name="description" content="One card for one person: a clear read of how you tend to show up — written for you, not a type. $3.90, delivered on the spot.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mojowaylife.com/personal.html">
+<meta property="og:title" content="Your card — MOJOWAY">
+<meta property="og:description" content="One card for one person: a clear read of how you tend to show up — written for you, not a type. $3.90, delivered on the spot.">
+<meta property="og:image" content="https://mojowaylife.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mojowaylife.com/personal.html" />
+<style>
+  :root{--ink:#1E1B18;--muted:#8A8378;--terra:#B23526;--cream:#F6F2EA;--line:#E5E1D8;--card:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16.5px;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .wrap{max-width:720px;margin:0 auto;padding:56px 24px 90px}
+  .brand{display:inline-block;margin-bottom:28px;line-height:0}
+  .brand img{height:26px;width:auto;display:block}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:34px;line-height:1.22;margin:0 0 12px;font-weight:600}
+  .lede{color:var(--muted);margin:0 0 34px;font-size:17.5px}
+  h2{font-family:Georgia,serif;font-size:20px;margin:0 0 6px}
+  label{display:block;font-size:13px;font-weight:700;letter-spacing:.03em;margin:22px 0 7px}
+  label span{font-weight:400;color:var(--muted);letter-spacing:0}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+       background:#fff;font:inherit;color:inherit}
+  textarea{min-height:120px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  button{font:inherit;cursor:pointer;border:0;border-radius:11px}
+  .primary{background:var(--terra);color:#fff;padding:15px 26px;font-weight:700;width:100%;margin-top:26px}
+  .primary:disabled{opacity:.55;cursor:default}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--ink);padding:13px 22px;font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin:26px 0}
+  .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;margin:0 0 8px}
+  .element{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+  .element .icn{font-size:30px;line-height:1}
+  .element .tag{font-family:Georgia,serif;font-size:22px;font-weight:600}
+  .one{font-size:18px;line-height:1.55;margin:0 0 14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+  .blk{background:var(--cream);border-radius:11px;padding:15px 16px}
+  .blk b{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+         color:var(--muted);margin-bottom:6px}
+  .pay{border:1px solid var(--terra);background:#fff}
+  .price{font-family:Georgia,serif;font-size:32px;font-weight:600;margin:6px 0 4px}
+  .sec{margin:0 0 18px}
+  .sec p{margin:0 0 10px}
+  .note{color:var(--muted);font-size:13.5px}
+  .err{background:#FDECEA;border:1px solid #F3C0BA;color:#8B2318;padding:13px 16px;
+       border-radius:10px;margin:18px 0;display:none}
+  .fine{color:var(--muted);font-size:13px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+  a{color:var(--terra)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/" aria-label="MOJOWAY"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" loading="eager" decoding="sync"></a>
+  <h1 id="h1">One card, about you.</h1>
+  <p class="lede" id="lede">Where your energy pattern and your body signals meet &mdash; written for one
+     person, not a type. Start with the free part; it takes a minute.</p>
+
+  <div class="err" id="err"></div>
+
+  <!-- 第一步：表单 -->
+  <form id="f">
+    <label for="dob">Your birth date</label>
+    <input id="dob" type="date" required />
+    <label for="hour">Hour of birth <span>&mdash; optional, skip if you don't know</span></label>
+    <input id="hour" type="number" min="0" max="23" placeholder="e.g. 14" />
+    <label for="note">What has your body been doing lately? <span>&mdash; your own words</span></label>
+    <textarea id="note" required placeholder="Sleep, energy through the day, where you carry tension, anything that keeps repeating."></textarea>
+    <div class="row">
+      <div><label for="weight">Weight kg <span>&mdash; optional</span></label><input id="weight" type="number" step="0.1" /></div>
+      <div><label for="height">Height cm <span>&mdash; optional</span></label><input id="height" type="number" step="1" /></div>
+    </div>
+    <button class="primary" id="go" type="submit">Show me my energy pattern &mdash; free</button>
+    <p class="note" style="margin-top:12px">No account. Nothing is shared, and the free part costs nothing.</p>
+  </form>
+
+  <!-- 第二步：免费能量层 -->
+  <div id="free" style="display:none"></div>
+
+  <!-- 第三步：付费交叉卡 -->
+  <div id="full" style="display:none"></div>
+
+  <p class="fine">Mojoway Spectrum Limited &middot; Hong Kong &middot;
+     <a href="mailto:brian@mojowaylife.com">brian@mojowaylife.com</a> &middot;
+     <a href="/refund-policy.html">7-day refund, no questions</a></p>
+</div>
+
+<script>
+(function(){
+  var ref = null, element = null;
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function fail(msg){ var e=$('err'); e.textContent=msg; e.style.display='block'; e.scrollIntoView({block:'center'}); }
+  function clearErr(){ $('err').style.display='none'; }
+
+  function renderFree(c){
+    var accent = c.accent || '#B23526';
+    var h = '<div class="card">';
+    h += '<p class="k">Your energy pattern</p>';
+    h += '<div class="element"><span class="icn">' + esc(c.icon||'') + '</span>'
+       + '<span class="tag" style="color:' + esc(accent) + '">' + esc(c.element) + ' · ' + esc(c.archetype) + '</span></div>';
+    h += '<p class="one">' + esc(c.one_line||'') + '</p>';
+    h += '<div class="grid2">';
+    h += '<div class="blk"><b>Gift</b>' + esc(c.gift||'') + '</div>';
+    h += '<div class="blk"><b>Blind spot</b>' + esc(c.blind_spot||'') + '</div>';
+    h += '</div>';
+    if (c.solar_term) h += '<p class="note" style="margin-top:14px">Born in ' + esc(c.solar_term) + '.</p>';
+    h += '</div>';
+
+    h += '<div class="card pay">';
+    h += '<p class="k">The part that needs your body</p>';
+    h += '<div class="price">$3.90</div>';
+    h += '<p class="note" style="margin:0 0 16px">once &mdash; your full card, yours to keep</p>';
+    h += '<div class="sec"><p>This is the card you cannot get from a personality test: <b>where your pattern '
+       + 'meets what your body is actually doing</b>. Four sections, written from your own words.</p></div>';
+    h += '<ul class="note" style="margin:0 0 20px;padding-left:20px">'
+       + '<li>What your body note really points at</li>'
+       + '<li>Where your energy and that signal meet &mdash; the paid insight</li>'
+       + '<li>One thing to do in the next 7 days</li>'
+       + '<li>One thing to notice about yourself this week</li></ul>';
+    h += '<button class="primary" id="pay" style="margin-top:0">Get my full card &mdash; $3.90</button>';
+    h += '<p class="note" style="margin-top:11px">Card payment, no subscription. 7-day refund if it does not fit.</p>';
+    h += '</div>';
+
+    $('free').innerHTML = h;
+    $('free').style.display = '';
+    $('f').style.display = 'none';
+    $('h1').textContent = 'You are ' + (c.element === 'Wood' ? 'a Pioneer' : c.element === 'Fire' ? 'a Connector'
+        : c.element === 'Earth' ? 'an Anchor' : c.element === 'Metal' ? 'a Refiner' : 'a Philosopher') + '.';
+    $('lede').textContent = 'That part is about the pattern. The card adds what your body has been telling you.';
+    $('pay').addEventListener('click', startPay);
+    $('free').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function renderFull(block, c){
+    var h = '<div class="card">';
+    h += '<p class="k">Your full card</p>';
+    h += '<div class="sec"><b>' + esc(block) + '</b><p>' + esc(c) + '</p></div>';
+    h += '</div>';
+    return h;
+  }
+
+  function startPay(){
+    clearErr();
+    var b = $('pay'); b.disabled = true; b.textContent = 'Opening secure checkout…';
+    fetch('/api/personal/checkout', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ref:ref})
+    }).then(function(r){ return r.json(); }).then(function(j){
+      if (j && j.ok && j.url) { window.location.href = j.url; return; }
+      b.disabled = false; b.textContent = 'Get my full card — $3.90';
+      fail((j && j.error) || 'Could not start checkout. Try again.');
+    }).catch(function(){
+      b.disabled = false; b.textContent = 'Get my full card — $3.90';
+      fail('Network problem starting checkout. Try again.');
+    });
+  }
+
+  $('f').addEventListener('submit', function(ev){
+    ev.preventDefault(); clearErr();
+    var btn = $('go'); btn.disabled = true; btn.textContent = 'Reading it…';
+    fetch('/api/personal/preview', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        dob: $('dob').value,
+        hour: $('hour').value,
+        note: $('note').value,
+        weight: $('weight').value,
+        height: $('height').value
+      })
+    }).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) {
+        btn.disabled = false; btn.textContent = 'Show me my energy pattern — free';
+        fail((j && j.error) || 'Something went wrong reading that date.');
+        return;
+      }
+      ref = j.ref; element = j.card.element;
+      renderFree(j.card);
+      // 付费回来的情况：把 ref 记下来，供出卡用
+      try { history.replaceState(null, '', '?ref=' + ref); } catch(e) {}
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Show me my energy pattern — free';
+      fail('Network problem. Try again.');
+    });
+  });
+
+  // 付款回来：?paid=1&ref=..&sid=..
+  (function(){
+    var q = new URLSearchParams(location.search);
+    if (q.get('paid') !== '1') return;
+    ref = q.get('ref'); var sid = q.get('sid');
+    if (!ref || !sid) return;
+    $('f').style.display = 'none';
+    $('h1').textContent = 'Your card is being written.';
+    $('lede').textContent = 'Payment confirmed — this takes a few seconds.';
+    var box = document.createElement('div');
+    box.className = 'card';
+    box.innerHTML = '<p class="k">Working</p><p class="note" style="margin:0">Writing the four sections from what you told me.</p>';
+    $('free').appendChild(box); $('free').style.display = '';
+    fetch('/api/personal/card?ref=' + encodeURIComponent(ref) + '&sid=' + encodeURIComponent(sid))
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if (!j || !j.ok) { fail((j && j.error) || 'Could not produce the card.'); return; }
+        $('h1').textContent = 'Your card.';
+        $('lede').textContent = 'Keep it. Read it again in a month and see what still holds.';
+        var h = '';
+        h += renderFull('What your body note points at', j.cross.body_signal);
+        h += renderFull('Where your pattern and that signal meet', j.cross.cross_insight);
+        h += renderFull('One thing to do this week', j.cross.this_week);
+        h += renderFull('One thing to notice', j.cross.watch_for);
+        h += '<p class="note" style="margin-top:20px">Ref ' + esc(ref) + ' — quote it if you ever need to write to me.</p>';
+        $('free').innerHTML = h;
+        try { history.replaceState(null, '', '/personal.html'); } catch(e) {}
+        window.scrollTo({top:0, behavior:'smooth'});
+      })
+      .catch(function(){ fail('Network problem fetching your card. Reload this page — the payment is safe.'); });
+  })();
+})();
+</script>
+</body>
+</html>

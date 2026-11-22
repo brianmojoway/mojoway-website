@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MOJOWAY Blog - Coaching Insights</title>
+    <link>https://mojowaylife.com</link>
+    <description>Practical insights on client assessment, the 5E Framework, and coaching practice growth.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Nov 2026 02:12:21 +0000</lastBuildDate>
+    <atom:link href="https://mojowaylife.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>A Coach's Ten-Minute Weekly Reflection Habit</title>
+      <link>https://mojowaylife.com/blog-coach-reflection-habit.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coach-reflection-habit.html</guid>
+      <description>A simple reflective practice for coaches: ten quiet minutes a week to read your sessions through the five elements, no diagnosis, just a sharper ear.</description>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How the Five Energies Listen: A Coach's Guide</title>
+      <link>https://mojowaylife.com/blog-listening-by-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-listening-by-element.html</guid>
+      <description>Each of the five elements listens differently. Learn concrete opening moves to meet your client's attention and build trust in the first minutes.</description>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pill Confusion Is Normal: A Simple Routine for Managing Medications</title>
+      <link>https://mojowaylife.com/blog-medication-confusion.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-medication-confusion.html</guid>
+      <description>Stop the 9pm 'did I already take that?' moment. A plain-English medication list and pill organizer routine for tracking names, timing, and what to notice.</description>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tracking Lab Results Over Time: Why Trends Matter More</title>
+      <link>https://mojowaylife.com/blog-lab-trends-over-time.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-lab-trends-over-time.html</guid>
+      <description>One reading is a snapshot; the trend is the story. Learn how to read blood test trends across visits and the small questions a trend should prompt you to ask.</description>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The drift is normal: why clients slide off goals</title>
+      <link>https://mojowaylife.com/blog-client-goals-drift.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-goals-drift.html</guid>
+      <description>Why clients quietly slide off goals after the first motivated weeks, and the one early signal each of the five energies gives before they disengage.</description>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Health numbers explained: red, yellow, green</title>
+      <link>https://mojowaylife.com/blog-red-yellow-green-health.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-red-yellow-green-health.html</guid>
+      <description>A simple red-yellow-green way to read your health numbers. What each colour means, why green is not perfect and red is not alarm. PlainCare summarises your report.</description>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Your Client's Money Story, Read Through Five Energies</title>
+      <link>https://mojowaylife.com/blog-money-story.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-money-story.html</guid>
+      <description>Use the five elements to understand your client's money mindset. A practical guide for coaches on earning, spending, and worth.</description>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>What Your Blood Test Actually Says: A Plain-English Walkthrough</title>
+      <link>https://mojowaylife.com/blog-lab-results-plain-english.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-lab-results-plain-english.html</guid>
+      <description>A plain-English walkthrough of common blood panels, what the numbers describe, and why one out-of-range result is rarely the whole story. Meet PlainCare.</description>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>3 Coaching Metrics That Predict Client Retention</title>
+      <link>https://mojowaylife.com/blog-retention-metrics.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-retention-metrics.html</guid>
+      <description>Stop chasing vanity metrics. Learn the three coaching metrics that actually predict client retention and grow your coaching business sustainably.</description>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Coaching the Quiet Client: Silence Is Not Resistance</title>
+      <link>https://mojowaylife.com/blog-quiet-clients.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-quiet-clients.html</guid>
+      <description>Quiet clients aren't resistant. Learn how to hold coaching silence and use the five elements to make space for introverted thinkers.</description>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ikigai and the Five Energies: Two Lenses on Purpose</title>
+      <link>https://mojowaylife.com/blog-purpose-lenses.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-purpose-lenses.html</guid>
+      <description>Combine ikigai and the five elements to guide clients toward meaningful work. A practical coaching conversation framework.</description>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A Five Energies Calendar for Coaches: Plan with Seasons, Not Against Them</title>
+      <link>https://mojowaylife.com/blog-seasonal-calendar.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-seasonal-calendar.html</guid>
+      <description>Use the five elements to plan coaching sessions around natural rhythms. A practical calendar for rest, reflection, and steady progress.</description>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five Elements vs Big Five: What Each Lens Can and Cannot Tell You</title>
+      <link>https://mojowaylife.com/blog-5e-vs-bigfive.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-bigfive.html</guid>
+      <description>A plain-English comparison of the Five Elements reflection framework and the Big Five psychometric test, and why they serve different purposes for coaches.</description>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Three Opening Questions for Every Element in Coaching</title>
+      <link>https://mojowaylife.com/blog-session-openers.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-session-openers.html</guid>
+      <description>Adapt three powerful opening questions to each of the five elements so the first five minutes of your coaching session do the work of twenty.</description>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Month-Three Check-In That Keeps Coaching Clients</title>
+      <link>https://mojowaylife.com/blog-month-three-checkin.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-month-three-checkin.html</guid>
+      <description>A structured five-element check-in for coaches. Turn a wobble into a renewal with a simple conversation that keeps clients past month three.</description>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Your First 90 Days: Find Your Coaching Niche with Five Energies</title>
+      <link>https://mojowaylife.com/blog-first-90-days.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-first-90-days.html</guid>
+      <description>A practical, non-clinical guide for new coaches: use the five elements to discover which clients you are actually built to serve, instead of chasing everyone.</description>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Procrastination Is Not Laziness: A Five Energies Read</title>
+      <link>https://mojowaylife.com/blog-procrastination.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-procrastination.html</guid>
+      <description>Capable clients stall for five different reasons. Learn the five energies read of procrastination and the one coaching question that unsticks each pattern.</description>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reading the Room: Five Energies in Group Coaching</title>
+      <link>https://mojowaylife.com/blog-group-coaching.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-group-coaching.html</guid>
+      <description>Use the five elements to name group dynamics in workshops without putting anyone on the spot. A practical, coach-friendly guide for facilitators.</description>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>When a Client Says 'Too Expensive': What to Ask Next</title>
+      <link>https://mojowaylife.com/blog-too-expensive.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-too-expensive.html</guid>
+      <description>A price objection often masks a trust question. Learn what to ask next and how a client's energy read reveals whether the real issue is money or belief.</description>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Coaching Referrals: Which Element Refers You and How to Ask</title>
+      <link>https://mojowaylife.com/blog-referrals.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-referrals.html</guid>
+      <description>Learn which of the five elements is most likely to refer you, which one never will, and how to ask each type for coaching referrals without it feeling like a pitch.</description>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Giving Feedback to the Five Types Without It Bouncing</title>
+      <link>https://mojowaylife.com/blog-feedback-by-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-feedback-by-element.html</guid>
+      <description>Learn how to give feedback that lands with each of the five elements, including the type most likely to hear feedback as a personal attack.</description>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Why Clients Can't Say No: Boundaries Through Five Energies</title>
+      <link>https://mojowaylife.com/blog-boundaries-by-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-boundaries-by-element.html</guid>
+      <description>Explore how the five energies explain why clients struggle with boundaries, and get one practical script per type for saying no.</description>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five Elements Team Conflict: Read the Room Fast</title>
+      <link>https://mojowaylife.com/blog-conflict-styles.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-conflict-styles.html</guid>
+      <description>Learn how the five elements show up in team conflict, where each style breaks down, and how to read the room quickly as a coach or team lead.</description>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Burnout Coaching: Which Energy Is Actually Depleted?</title>
+      <link>https://mojowaylife.com/blog-burnout-elements.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-burnout-elements.html</guid>
+      <description>A practical look at reading burnout through five energies: overuse, starvation, and the small refill that helps. For coaches and their clients.</description>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five Client Decision Styles: Why Your Process Can Paralyse Them</title>
+      <link>https://mojowaylife.com/blog-decision-making.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-decision-making.html</guid>
+      <description>Discover five client decision-making styles based on the Five Energies. Learn why your preferred process can stall clients and how to adapt your coaching.</description>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Wood Client: Coaching Ambition That Forgets to Rest</title>
+      <link>https://mojowaylife.com/blog-wood-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-wood-client.html</guid>
+      <description>Learn how to coach growth-oriented Wood element clients who push past their limits. Practical tips for five elements coaching with ambitious clients.</description>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Fire Client: Coaching High Performers Who Burn Out Quietly</title>
+      <link>https://mojowaylife.com/blog-fire-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-fire-client.html</guid>
+      <description>Learn how to coach charismatic, approval-seeking Fire element clients without feeding their exhaustion. A practical guide for coaches using the five elements.</description>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Five Energies vs MBTI — MOJOWAY</title>
+      <link>https://mojowaylife.com/blog-5e-vs-mbti.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-mbti.html</guid>
+      <description>Our MBTI comparison is no longer published. Read the plain-language guide to the Five Energies instead.</description>
+      <pubDate>Sun, 20 Sep 2026 11:21:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Coaching rates — MOJOWAY</title>
+      <link>https://mojowaylife.com/blog-coach-pricing.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coach-pricing.html</guid>
+      <description>This article is no longer published. Current rates for the Mirror are on the MOJOWAY home page.</description>
+      <pubDate>Sun, 20 Sep 2026 11:21:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Why Clients Leave in Month Two — MOJOWAY Blog</title>
+      <link>https://mojowaylife.com/blog-client-retention.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-retention.html</guid>
+      <description>I hired a trainer once. Five sessions, and nobody asked what was in my way. The signal that shows up before a client leaves.</description>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Earth Element: Why Stabilizers Are Every Coach's Secret Weapon for Retention</title>
+      <link>https://mojowaylife.com/blog-earth-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-earth-element.html</guid>
+      <description>Earth element clients are not flashy. They do not have dramatic breakthroughs. But they stay for years. Here is how to coach the stabilizers.</description>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>5 Signs Your Client Needs the 5E Framework (Not Another Personality Test)</title>
+      <link>https://mojowaylife.com/blog-5-signs.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5-signs.html</guid>
+      <description>Is your client stuck, repeating patterns, or unable to name what they feel? These 5 signs tell you the 5E Framework will help more than any other tool.</description>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>What Are the Five Energies? A Beginner's Guide — MOJOWAY</title>
+      <link>https://mojowaylife.com/blog-five-energies-guide.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-five-energies-guide.html</guid>
+      <description>The Five Energies are five behavioral archetypes — Pioneer, Connector, Anchor, Refiner, Philosopher — derived from your birth date. A beginner's guide to this Eastern framework of self-understanding.</description>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Metal Client: Why Perfectionists Are Your Most Loyal Coaching Customers</title>
+      <link>https://mojowaylife.com/blog-metal-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-metal-client.html</guid>
+      <description>Metal-type clients seem difficult but become your most loyal advocates. Here is how to coach perfectionists using the 5E Framework.</description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Beyond Individual Coaching: 5E for Team Diagnostics — MOJOWAY Blog</title>
+      <link>https://mojowaylife.com/blog-5e-for-teams.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-for-teams.html</guid>
+      <description>How organizational coaches use the 5E framework for team diagnostics, hiring alignment, and building a shared team vocabulary.</description>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How the 5E Framework Cuts Client Onboarding in Half - MOJOWAY Blog</title>
+      <link>https://mojowaylife.com/blog-5e-intake.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-intake.html</guid>
+      <description>Discover how coaches are using the 5E assessment as a pre-session intake tool to reduce onboarding from 3 sessions to 1.</description>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Wood vs Fire: How to Coach Two Opposite Energy Types | MOJOWAY Blog</title>
+      <link>https://mojowaylife.com/blog-wood-vs-fire.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-wood-vs-fire.html</guid>
+      <description>Wood and Fire energy types approach goals completely differently. Learn how to coach both without frustrating either. 5E Framework guide for coaches.</description>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Water Type Personality — MOJOWAY Blog</title>
+      <link>https://mojowaylife.com/blog-water-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-water-element.html</guid>
+      <description>A deep dive into the Water behavioral personality: depth, persistence, and hidden strength through the lens of Daoist MOJOWAY framework. Learn the gifts and challenges of Water behavioral types.</description>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The Discovery Call That Decides Everything</title>
+      <link>https://mojowaylife.com/blog-discovery-call.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-discovery-call.html</guid>
+      <description>Most coaches run discovery calls badly. Learn what to ask, what not to promise, and the one question that reveals if this will be a good engagement.</description>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Raise Coaching Rates With Existing Clients</title>
+      <link>https://mojowaylife.com/blog-raise-your-rate.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-raise-your-rate.html</guid>
+      <description>Learn when and how to raise your coaching rates with existing clients, with exact wording that keeps trust high and retention strong.</description>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When Clients Text Between Sessions: Boundaries That Read as Care</title>
+      <link>https://mojowaylife.com/blog-between-sessions.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-between-sessions.html</guid>
+      <description>How coaches can set clear, caring boundaries around between-session texts. Learn what to allow, what to charge for, and how to word your coaching agreement.</description>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Tell in One Conversation You're Not the Right Coach</title>
+      <link>https://mojowaylife.com/blog-client-fit.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-fit.html</guid>
+      <description>Learn to spot client fit in one conversation and refer with grace. A practical guide for coaches who want to say no without rejection.</description>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching Notes: What to Write, What to Ignore, and a 90-Second Review</title>
+      <link>https://mojowaylife.com/blog-session-notes.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-session-notes.html</guid>
+      <description>Learn what to record in coaching notes, what to leave out, and a 90-second pre-session review to help you coach more present and prepared.</description>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Why Coaching Homework Gets Ignored: Three Fixes</title>
+      <link>https://mojowaylife.com/blog-homework-that-works.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-homework-that-works.html</guid>
+      <description>Most between-session tasks fail for three reasons. Learn the three properties that make coaching homework stick, plus five requests that beat a worksheet.</description>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Show Coaching Progress When the Client Feels Stuck</title>
+      <link>https://mojowaylife.com/blog-showing-progress.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-showing-progress.html</guid>
+      <description>Two concrete artefacts that make change visible to clients, without argument or hype. A practice guide for coaches using MOJOWAY.</description>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The Renewal Conversation: When to Start and What to Say</title>
+      <link>https://mojowaylife.com/blog-renewal-conversation.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-renewal-conversation.html</guid>
+      <description>Learn when to start the coaching renewal conversation, what to say, and how to handle the two answers that feel like rejection but are actually information.</description>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Designing the Last Coaching Session for Closure and Referrals</title>
+      <link>https://mojowaylife.com/blog-ending-well.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-ending-well.html</guid>
+      <description>Most coaching endings are accidental. Learn how to design a final session that gives clients a tool to run without you and sparks referrals.</description>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching the High Achiever Who Feels Like a Fraud</title>
+      <link>https://mojowaylife.com/blog-imposter-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-imposter-client.html</guid>
+      <description>Why reassurance fails with high-achieving clients who doubt they deserve the role, and what actually helps in imposter syndrome coaching.</description>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Where Your First Coaching Client Really Comes From</title>
+      <link>https://mojowaylife.com/blog-first-paying-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-first-paying-client.html</guid>
+      <description>New coaches share where their first paying client came from. Ranked by how often it works, with real examples and what to do this week.</description>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Corporate Coaching: The Two Numbers That Win Proposals</title>
+      <link>https://mojowaylife.com/blog-corporate-conversation.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-corporate-conversation.html</guid>
+      <description>Learn what corporate buyers really ask, the two numbers they care about, and the mistake that kills most first proposals when moving from 1:1 to organisational work.</description>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Tell a Coaching Client Something Unwelcome</title>
+      <link>https://mojowaylife.com/blog-hard-feedback.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-hard-feedback.html</guid>
+      <description>A practical structure for honest coaching feedback, plus the four sentences that turn a difficult conversation into a shutdown.</description>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching the Perfectionist Without Joining the Perfectionism</title>
+      <link>https://mojowaylife.com/blog-perfectionist-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-perfectionist-client.html</guid>
+      <description>Your own high standards can quietly become the client's problem. How coaches notice perfectionism in the room and step out of it.</description>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The Ten-Minute Weekly Energy Audit for Coaching Clients</title>
+      <link>https://mojowaylife.com/blog-energy-audit.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-energy-audit.html</guid>
+      <description>A simple weekly energy audit you can teach in one session: what to track, what to ignore, and the pattern that shows up after three weeks of logs.</description>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching Packages vs Hourly: What Changes for Client and Coach</title>
+      <link>https://mojowaylife.com/blog-pricing-packages.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-pricing-packages.html</guid>
+      <description>Hourly pricing quietly caps how deep coaching work can go. Here is what changes for clients and coaches when you move to coaching packages.</description>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching Scope Creep: Name It Early, Keep Trust</title>
+      <link>https://mojowaylife.com/blog-scope-and-fees.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-scope-and-fees.html</guid>
+      <description>Extra calls, longer sessions, free advice in the group chat: how coaches can name scope creep early without making the relationship feel transactional.</description>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Supervision, Peer Group, or Nothing: What Solo Coaches Lose</title>
+      <link>https://mojowaylife.com/blog-supervision-or-solo.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-supervision-or-solo.html</guid>
+      <description>An honest look at coaching supervision, peer supervision, and reflective practice for solo coaches, and what gets lost when no one else sees your work.</description>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Write a Client Case Study That Keeps Confidence</title>
+      <link>https://mojowaylife.com/blog-case-studies.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-case-studies.html</guid>
+      <description>A practical guide for coaches on writing honest, specific client case studies without breaking confidence, plus what to leave out and why vague stories fail.</description>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Your Energy as a Coaching Instrument: Noticing Drain</title>
+      <link>https://mojowaylife.com/blog-coach-energy.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coach-energy.html</guid>
+      <description>Learn to notice which clients drain you, what that signal reveals about the work, and practical load limits for a sustainable coaching practice.</description>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Why Naming a Specific Client Makes Coaching Easier</title>
+      <link>https://mojowaylife.com/blog-coaching-niche.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coaching-niche.html</guid>
+      <description>How to find your coaching niche without turning away good people, and practical ways to test a coaching specialization through real conversations before you commit.</description>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>What Your Coaching Website Should Say Above the Fold</title>
+      <link>https://mojowaylife.com/blog-coaching-website.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coaching-website.html</guid>
+      <description>Write above-the-fold copy that attracts the right coaching clients and gently filters the rest. Plain language, show the work, make the next step obvious.</description>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Choose a Coach: A First-Time Buyer's Guide</title>
+      <link>https://mojowaylife.com/blog-choose-a-coach.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-choose-a-coach.html</guid>
+      <description>Hiring a coach for the first time? Learn what to look for beyond credentials, how to assess coaching fit, and the questions worth asking on a discovery call.</description>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Works Against Their Goals: Timing the Naming</title>
+      <link>https://mojowaylife.com/blog-self-sabotage-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-self-sabotage-client.html</guid>
+      <description>Self sabotage coaching: why naming client resistance early backfires, how to let the pattern surface, and the language that frees the work instead of freezing it.</description>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The First 48 Hours After a Client Says Yes</title>
+      <link>https://mojowaylife.com/blog-client-onboarding.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-onboarding.html</guid>
+      <description>A calm onboarding sequence for coaches: one welcome message, one intake question, and a clear first-session agenda that makes new clients feel chosen, not processed.</description>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Make Coaching Value Visible Before Clients Forget</title>
+      <link>https://mojowaylife.com/blog-coaching-roi.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coaching-roi.html</guid>
+      <description>Six months after coaching, clients forget what changed. Use this simple practice to surface progress while the work is happening and strengthen renewals.</description>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The Water Client: Coaching Quiet Depth, Not Drift</title>
+      <link>https://mojowaylife.com/blog-water-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-water-client.html</guid>
+      <description>Water element clients feel deeply but say little. Learn to coach quiet clients, spot drift, and turn depth into decisions without mistaking calm for fine.</description>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The Earth Client: Coaching the Caretaker Who Holds Everyone Else</title>
+      <link>https://mojowaylife.com/blog-earth-client.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-earth-client.html</guid>
+      <description>Earth element personalities give endlessly, then quietly burn out. Here's how coaches can support the caretaker client who always puts themselves last.</description>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Five Client Archetypes: A One-Page Map for New Coaches</title>
+      <link>https://mojowaylife.com/blog-client-archetypes.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-archetypes.html</guid>
+      <description>A plain-English map of the five client archetypes from the MOJOWAY Five Elements framework, so new coaches can read the room instead of guessing.</description>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching Onboarding: Make All Five Energies Feel Seen</title>
+      <link>https://mojowaylife.com/blog-onboarding-by-element.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-onboarding-by-element.html</guid>
+      <description>Use the five elements to tailor your first session. Practical ways to help each client feel seen in the first ten minutes, not the tenth session.</description>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Imposter Syndrome Has Five Masks: Name Yours</title>
+      <link>https://mojowaylife.com/blog-imposter-syndrome.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-imposter-syndrome.html</guid>
+      <description>Imposter syndrome isn't one feeling. Read how self doubt wears a different mask in each of the five elements, and how coaching can help you name it without feeding it.</description>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching Goals That Fit the Client, Not the Coach</title>
+      <link>https://mojowaylife.com/blog-client-goals.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-goals.html</guid>
+      <description>A goal that motivates you can demotivate your client. How the Five Elements define progress differently, and how to set coaching goals that fit.</description>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>What Drains Each Energy Type and the Daily Refill That Works</title>
+      <link>https://mojowaylife.com/blog-energy-drains.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-energy-drains.html</guid>
+      <description>A practical look at what drains each of the five elements and the small daily refill that actually helps, for coaches using MOJOWAY in wellbeing work.</description>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Difficult Clients: Five Friction Patterns and One De-Escalating Move</title>
+      <link>https://mojowaylife.com/blog-difficult-clients.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-difficult-clients.html</guid>
+      <description>A field guide to five common friction patterns with difficult clients, each mapped to a Five Elements energy, plus the one move that shifts each dynamic.</description>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coach Burnout: Early Signals in Your Own Practice</title>
+      <link>https://mojowaylife.com/blog-coach-burnout.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-coach-burnout.html</guid>
+      <description>Coach burnout creeps in quietly. Learn the early signals in your own practice, how the five elements frame them, and how to protect the work that matters.</description>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Values Clarification Without the Worksheet: A Five Energies Approach</title>
+      <link>https://mojowaylife.com/blog-values-clarification.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-values-clarification.html</guid>
+      <description>Use the five elements to surface what a client actually lives by in one honest coaching conversation, without worksheets or values-card sorting.</description>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Career Transitions as Energy Events: A Five Elements Lens</title>
+      <link>https://mojowaylife.com/blog-career-transition.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-career-transition.html</guid>
+      <description>Career transition coaching with the Five Elements: why each leave, fear, and new beginning carries a different energy, and how to coach the in-between.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Leadership Presence Through the Five Energies</title>
+      <link>https://mojowaylife.com/blog-leadership-coaching.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-leadership-coaching.html</guid>
+      <description>Executive presence isn't one mould. Here's how the five elements show up in leadership coaching, with a worked example for each type.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Five Elements vs Enneagram: What Each Reveals in Coaching</title>
+      <link>https://mojowaylife.com/blog-5e-vs-enneagram.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-enneagram.html</guid>
+      <description>A practical comparison of the five elements and the Enneagram for coaches: what each framework reveals, what each misses, and how to choose between them.</description>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Five Energies vs DISC: What Each One Actually Tells a Coach</title>
+      <link>https://mojowaylife.com/blog-5e-vs-disc.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-disc.html</guid>
+      <description>DISC describes how someone behaves at work. The five energies describe what drives it. Here is what each lens gives you before session one, and where each one runs out.</description>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Arrives With a Human Design Chart</title>
+      <link>https://mojowaylife.com/blog-5e-vs-human-design.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-human-design.html</guid>
+      <description>Both frameworks use the language of energy and type. A practical guide to working with a client who already has a chart, without arguing about the chart or borrowing its claims.</description>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Five Energies vs CliftonStrengths: Two Very Different Questions</title>
+      <link>https://mojowaylife.com/blog-5e-vs-strengthsfinder.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-5e-vs-strengthsfinder.html</guid>
+      <description>CliftonStrengths names what a person does well. The five energies ask what they are organising their life around. A practical comparison for choosing a first-session tool.</description>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Asks You to Fix Them</title>
+      <link>https://mojowaylife.com/blog-client-asks-you-to-fix-them.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-asks-you-to-fix-them.html</guid>
+      <description>A client who wants you to repair them is a common first-session moment. A practical way to respond that keeps the work with them, not on you.</description>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Coaching a Client Who Hates Personality Labels</title>
+      <link>https://mojowaylife.com/blog-client-hates-labels.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-hates-labels.html</guid>
+      <description>Some clients push back the moment a type is named. That reaction is useful data. Here is how to work with the objection without defending the framework.</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>Reading Client Resistance Through the Five Energies</title>
+      <link>https://mojowaylife.com/blog-client-resistance-five-energies.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-resistance-five-energies.html</guid>
+      <description>When a coaching client resists, it is rarely defiance. Use the five energies to read what is actually happening underneath the pushback and choose a better response.</description>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>How to Use a Five Energies Card in a First Coaching Session</title>
+      <link>https://mojowaylife.com/blog-first-session-with-5e-card.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-first-session-with-5e-card.html</guid>
+      <description>A card is not a verdict. Here is a concrete forty-five minute structure for reading one with a client, what to say first, and what to leave out.</description>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Cancels at the Last Minute</title>
+      <link>https://mojowaylife.com/blog-client-cancels-last-minute.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-cancels-last-minute.html</guid>
+      <description>A last-minute cancellation is a message, not a mystery. Read it through the five energies and respond with a move that keeps the coaching relationship intact.</description>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Is Stuck in Overthinking</title>
+      <link>https://mojowaylife.com/blog-client-stuck-in-overthinking.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-stuck-in-overthinking.html</guid>
+      <description>A practical coaching frame for the client who analyzes everything and moves nothing: use the five energies to name the loop and shift it inside a single session.</description>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Wants an Answer, Not Another Question</title>
+      <link>https://mojowaylife.com/blog-client-wants-an-answer.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-wants-an-answer.html</guid>
+      <description>A client asks what you would do and every question you ask in return makes it worse. How to read the request through the five energies and give an answer without taking over the session.</description>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When the Client Only Talks About Other People</title>
+      <link>https://mojowaylife.com/blog-client-talks-about-others.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-talks-about-others.html</guid>
+      <description>A client who fills every session with stories about colleagues and family is not resisting. A practical way to move from third-person narrative to first-person choice while keeping rapport.</description>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>The First-Session Contract: Setting the Frame in Five Energies</title>
+      <link>https://mojowaylife.com/blog-first-session-contract.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-first-session-contract.html</guid>
+      <description>A coaching contract is not paperwork. It is the frame that lets a client use the hour well. Learn how to set scope, privacy, and choice with each of the five energies in the first session.</description>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+      <item>
+      <title>When a Client Rejects Their Own Five Energies Report</title>
+      <link>https://mojowaylife.com/blog-client-rejects-own-report.html</link>
+      <guid isPermaLink="true">https://mojowaylife.com/blog-client-rejects-own-report.html</guid>
+      <description>A client reads their report and says, that is not me. This moment is common in coaching, not a failure. Here is how to work with the disagreement without defending the framework or forcing agreement.</description>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

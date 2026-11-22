@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Workspace — MOJOWAY</title>
+    <!-- Private coach workspace - keep out of search engines; meta aligned with the other pages -->
+    <meta name="description" content="Your MOJOWAY coach workspace — generate, download and send a client report.">
+    <link rel="canonical" href="https://mojowaylife.com/coach.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#F6F2EA">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-gray: #1a1f36;
+            --color-warm-brown: #B23526;
+            --color-cream: #ffffff;
+            --color-light-gray: #5b6478;
+            --color-white: #ffffff;
+            --color-mist: #e6e8ec;
+            --font-serif: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            /* Site-wide hairline color. index/tool call it --rule, send calls it --line; value #D8CFBF;
+               this page never defined it, so 3 uses of var(--color-line,#E5E1D8) fell back,
+               which is why its borders looked lighter than the rest of the site. */
+            --color-line: #e6e8ec;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: var(--font-serif);
+            background: var(--color-cream);
+            color: var(--color-deep-gray);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; background: var(--color-cream);
+            border-bottom: 1px solid var(--color-mist);
+        }
+        .nav-brand { font-size: 18px; font-weight: 700; letter-spacing: 3px;
+            color: var(--color-deep-gray); text-decoration: none; }
+        
+        .brand-img{height:20px;width:auto;display:block}
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            font-family: var(--font-sans); font-size: 13px; color: var(--color-light-gray);
+            text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--color-warm-brown); }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+        .eyebrow { font-family: var(--font-sans); font-size: 12px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--color-warm-brown); margin-bottom: 16px; }
+        h1 { font-size: 28px; font-weight: 400; line-height: 1.4; margin: 0 0 10px; }
+        .sub { color: var(--color-light-gray); font-size: 16px; margin: 0 0 32px; }
+        .card { background: var(--color-white); border: 1px solid var(--color-mist);
+            border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+        .card h2 { font-size: 16px; font-weight: 600; margin: 0 0 16px;
+            letter-spacing: 0.3px; }
+        label { display: block; font-family: var(--font-sans); font-size: 13px;
+            color: var(--color-light-gray); letter-spacing: 0.5px; margin: 0 0 6px; }
+        .req::after { content: " *"; color: var(--color-warm-brown); }
+        input, select, textarea {
+            width: 100%; padding: 11px 14px; font-size: 15px; font-family: inherit;
+            border: 1px solid var(--color-mist); border-radius: 10px;
+            background: var(--color-white); color: var(--color-deep-gray); outline: none;
+            margin-bottom: 16px;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--color-warm-brown); }
+        textarea { resize: vertical; min-height: 72px; }
+        .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        .opt-title { font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--color-light-gray); margin: 8px 0 4px;
+            border-top: 1px dashed var(--color-mist); padding-top: 16px; }
+        button.primary {
+            background: var(--color-warm-brown); color: #fff; border: none;
+            padding: 13px 28px; border-radius: 999px; font-size: 15px; font-weight: 600;
+            cursor: pointer; font-family: inherit; letter-spacing: 0.3px;
+        }
+        button.primary:hover { opacity: 0.92; }
+        button.primary:disabled { opacity: 0.5; cursor: default; }
+        button.ghost {
+            background: transparent; color: var(--color-light-gray); border: 1px solid var(--color-mist);
+            padding: 9px 18px; border-radius: 999px; font-size: 13px; cursor: pointer;
+            font-family: inherit; margin-left: 8px;
+        }
+        button.ghost:hover { color: var(--color-warm-brown); border-color: var(--color-warm-brown); }
+        /* unmatched classes used in markup — give them the same design language */
+        .btn, .btn-primary {
+            display: inline-block; background: var(--color-warm-brown); color: #fff;
+            padding: 13px 28px; border: 1px solid var(--color-warm-brown); border-radius: 999px;
+            font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer;
+            font-family: var(--font-sans); transition: opacity .2s;
+        }
+        .btn:hover, .btn-primary:hover { opacity: 0.92; }
+        .btn-primary:disabled, .btn:disabled { opacity: 0.5; cursor: default; }
+        .msg { font-size: 14px; min-height: 20px; margin: 4px 0 0; font-family: var(--font-sans); }
+        .msg.err { color: var(--color-warm-brown); }
+        .msg.ok { color: #3E7D3A; }
+        .signin-box { text-align: center; padding: 60px 24px; }
+        .signin-box a { color: var(--color-warm-brown); font-weight: 600; }
+        /* Landing door — sharp, proof-led (replaces the verbose 2026-10 block) */
+        .signin-box h1 { font-family: var(--font-serif); font-size: 40px; font-weight: 500;
+            line-height: 1.18; max-width: 720px; margin: 0 auto 16px; letter-spacing: -.5px; }
+        .door-lede { font-size: 17px; color: var(--color-deep-gray); max-width: 620px;
+            margin: 0 auto 26px; line-height: 1.6; }
+        .door-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+            max-width: 620px; margin: 0 auto 30px; }
+        .door-points > div { background: var(--color-cream); border: 1px solid var(--color-mist);
+            border-radius: 14px; padding: 18px 10px; }
+        .door-points b { display: block; font-family: var(--font-serif); font-size: 26px;
+            font-weight: 600; color: var(--color-warm-brown); line-height: 1.1; }
+        .door-points span { display: block; font-size: 13px; color: var(--color-light-gray); margin-top: 6px; }
+        .door-cta { margin: 0 0 14px; }
+        .door-sub { font-size: 14px; color: var(--color-light-gray); margin: 10px 0; line-height: 1.6; }
+        .door-fine { font-size: 12px; opacity: .7; margin-top: 8px; }
+        @media (max-width: 640px) { .signin-box h1 { font-size: 30px; } .door-points { grid-template-columns: 1fr; } }
+        .dpa-text { font-size: 14px; color: var(--color-light-gray); line-height: 1.7;
+            background: var(--color-cream); border-radius: 10px; padding: 16px; margin-bottom: 18px; }
+        .dpa-text strong { color: var(--color-deep-gray); }
+
+        /* Report */
+        .report-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+        .report-head .badge { font-family: var(--font-sans); font-size: 12px; letter-spacing: 1px;
+            text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
+            background: rgba(211,75,58,0.12); color: var(--color-warm-brown); font-weight: 600; }
+        .mod { background: var(--color-white); border: 1px solid var(--color-mist);
+            border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+        .mod h3 { margin: 0 0 14px; font-size: 15px; letter-spacing: 0.5px; }
+        .ecard-title { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .ecard-title .icn { font-size: 26px; }
+        .ecard-title .tag { font-family: var(--font-sans); font-size: 12px; letter-spacing: 1px;
+            text-transform: uppercase; font-weight: 700; }
+        .onesentence { font-style: italic; color: var(--color-deep-gray); margin: 0 0 16px; line-height: 1.7; }
+        /* 2026-10-19 round233 A1: 报告首屏 = 一句话 + 三个动作（验收：15 秒内能说出第一句问什么）*/
+        .hero-card { border-left: 4px solid #B23526; }
+        .hero-label { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.14em;
+            text-transform: uppercase; color: #B23526; margin: 0 0 8px; }
+        .hero-q { font-size: 21px; line-height: 1.45; margin: 0 0 18px; font-weight: 600;
+            color: var(--color-ink, #1E1B18); }
+        .acts { display: grid; gap: 10px; }
+        .act { display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: start;
+            background: var(--color-cream); border-radius: 10px; padding: 12px 14px; }
+        .act-k { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #B23526; padding-top: 2px; }
+        .act-v { font-size: 14.5px; line-height: 1.6; }
+        @media print { .act, .hero-card { break-inside: avoid; } }
+        /* round233 B1: 报告里的动作能不能打勾（记的不是天数，是报告有没有被用掉）*/
+        .act .ci { margin-top: 9px; font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase; background: transparent;
+            border: 1px solid #B23526; color: #B23526; border-radius: 999px;
+            padding: 5px 13px; cursor: pointer; }
+        .act .ci:hover { background: #B23526; color: #fff; }
+        .act .ci.done { border-color: #4A9E42; color: #4A9E42; background: transparent; cursor: default; }
+        .act .ci-out { display: block; margin-top: 8px; font-size: 12.5px; color: var(--color-deep-gray, #6B655C); }
+        @media print { .act .ci { display: none; } }
+        /* round233 B2: 客户追踪 —— 几天没更新 + 就地打卡 */
+        .client .trend { display: block; font-size: 12.5px; color: var(--color-deep-gray, #6B655C); margin-top: 4px; }
+        .client .trend .due { color: #B23526; font-weight: 700; }
+        .client .trend .ok { color: #4A9E42; font-weight: 700; }
+        .logbox { margin: 10px 0 16px; padding: 14px 16px; background: var(--color-cream, #F6F2EA);
+            border-radius: 10px; }
+        .logbox .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; }
+        .logbox label { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+            color: var(--color-deep-gray, #6B655C); margin-bottom: 4px; }
+        .logbox input { width: 100%; padding: 7px 9px; border: 1px solid #E5E1D8; border-radius: 8px; font: inherit; }
+        .logbox .acts { margin-top: 12px; display: flex; gap: 8px; align-items: center; }
+        .logbox .msg { font-size: 12.5px; color: var(--color-deep-gray, #6B655C); }
+        /* round233 B2: 趋势小图 */
+        .spark { border: 1px solid #E5E1D8; border-radius: 10px; padding: 10px 12px; margin: 0 0 10px; }
+        .sparkhead { display: flex; justify-content: space-between; align-items: baseline;
+            font-size: 12.5px; color: #6B655C; }
+        .sparkhead b { color: #1E1B18; }
+        .sparksvg { display: block; width: 100%; height: 46px; margin: 6px 0 2px; }
+        .sparkfoot { font-size: 11.5px; color: #8A8175; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .two-col .blk { background: var(--color-cream); border-radius: 10px; padding: 14px; }
+        .two-col .blk b { display: block; font-family: var(--font-sans); font-size: 12px;
+            letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-light-gray); margin-bottom: 6px; }
+        .lead-box { background: rgba(211,75,58,0.08); border-left: 4px solid var(--color-warm-brown);
+            border-radius: 10px; padding: 14px 16px; margin: 14px 0; font-size: 14px; }
+        .lead-box b { color: var(--color-warm-brown); }
+        .shadow { font-size: 14px; color: var(--color-light-gray); }
+        .coaching-list { margin: 8px 0 0; padding-left: 18px; }
+        .coaching-list li { margin-bottom: 6px; }
+        .meta-row { font-family: var(--font-sans); font-size: 12px; color: var(--color-light-gray);
+            margin-top: 8px; }
+
+        /* Client list */
+        .client { display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 0; border-bottom: 1px solid var(--color-mist); font-size: 14px; }
+        .client:last-child { border-bottom: none; }
+        .client .who b { color: var(--color-deep-gray); }
+        .client .who span { color: var(--color-light-gray); font-family: var(--font-sans); font-size: 12px; }
+        .client .del { color: var(--color-light-gray); border: none; background: none; cursor: pointer;
+            font-size: 13px; font-family: var(--font-sans); }
+        .client .del:hover { color: var(--color-warm-brown); }
+        .empty { color: var(--color-light-gray); font-size: 14px; font-family: var(--font-sans); }
+        .hidden { display: none !important; }
+        @media(max-width: 640px){
+            .grid2, .grid3, .two-col { grid-template-columns: 1fr; }
+            .nav { padding: 16px 20px; }
+            .nav-links { gap: 16px; }
+        }
+            .num { text-align: right; font-variant-numeric: tabular-nums; }
+            /* Recheck timeline: improved / worse / unchanged MUST differ in color - the previous version had
+               no such rules at all, so all three outcomes looked identical on screen. */
+            .num.good { color: #2E6B34; }
+            .num.bad { color: #B23526; }
+            .num.flat { color: #8A8175; }
+
+        /* Footer - same set as index/tool/send. This page originally shipped with no footer,
+           yet it collects client data, so compliance links and the contact email must exist. */
+        footer { padding: 42px 0 60px; display: flex; justify-content: space-between;
+                 font-size: 12.5px; color: var(--color-light-gray); flex-wrap: wrap;
+                 gap: 10px; letter-spacing: .04em; }
+        footer .brandline { font-style: italic; color: var(--color-warm-brown); }
+        footer a { display: inline-block; padding: 13px 0; }
+        .footer-logo { height: 22px; width: auto; display: inline-block;
+                       vertical-align: middle; margin-bottom: 8px; }
+    </style>
+<meta property="og:title" content="Coach Workspace — MOJOWAY">
+<meta property="og:description" content="Your MOJOWAY coach workspace — generate, download and send a client report.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mojowaylife.com/coach.html">
+<meta property="og:site_name" content="MOJOWAY">
+<meta property="og:image" content="https://mojowaylife.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coach Workspace — MOJOWAY">
+<meta name="twitter:description" content="Your MOJOWAY coach workspace — generate, download and send a client report.">
+<meta name="twitter:image" content="https://mojowaylife.com/og-image.png">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mojoway Spectrum Limited",
+    "url": "https://mojowaylife.com",
+    "logo": "https://mojowaylife.com/assets/mojoway-logo.png"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MOJOWAY",
+    "url": "https://mojowaylife.com"
+  }
+]
+</script>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-brand" aria-label="MOJOWAY"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" class="brand-img"></a>
+        <div class="nav-links">
+            <a href="/#method">Method</a>
+            <a href="/coach.html" class="active">For Coaches</a>
+            <a href="/login.html?next=workspace">Sign in</a>
+        </div>
+    </nav>
+
+    <div class="wrap">
+        <!-- Shown only when the boot request itself fails: offline, DNS, 502,
+             or a response that is not JSON. The message used to be written into
+             #dpaMsg, which sits inside the hidden #dpaGate — so the coach got a
+             header and a blank page, with no next step. -->
+        <section id="bootError" class="card hidden">
+            <div class="eyebrow">Connection</div>
+            <h2>We could not reach the server</h2>
+            <p class="sub">Nothing is lost &mdash; this page just could not load your workspace.
+                Check your connection, then try again.</p>
+            <button class="primary" id="bootRetryBtn" type="button" onclick="location.reload()">Try again</button>
+            <div class="msg" id="bootErrMsg"></div>
+        </section>
+
+        <!-- Sign-in gate -->
+        <section id="signinGate" class="signin-box hidden">
+            <div class="eyebrow">Coach Workspace</div>
+            <h1>Skip the discovery sessions. Start at session one.</h1>
+            <p class="door-lede">One 10-minute intake &rarr; a client-ready PDF with their Energy Map, three real topics in their own words, and two angles for each. You walk in already knowing the person.</p>
+            <div class="door-points">
+                <div><b>10 min</b><span>one intake</span></div>
+                <div><b>3 topics</b><span>in their words</span></div>
+                <div><b>0 guesswork</b><span>from session one</span></div>
+            </div>
+            <p class="door-cta"><a class="btn" href="/login.html?next=workspace">Start free with your first client &rarr;</a></p>
+            <p class="door-sub">First client free, no card. Then $59/mo for 15 slots &mdash; re-runs included. Your work email gets a one-click sign-in link; entries auto-delete after 90 days.</p>
+            <p class="door-sub">See the output first? <a href="/coach-sample.html" style="color:inherit;text-decoration:underline">A full report, start to finish &rarr;</a></p>
+            <p class="door-sub">Need more than one client? <a href="https://buy.stripe.com/9B6dRbgOQarxevQ6vP4Ni0l">Subscribe $59/month &rarr;</a></p>
+            <p class="door-fine">$59/mo or $590/yr. Prices are set in USD; Stripe may show the equivalent in your local currency at checkout. Not a diagnosis &mdash; a coaching framework.</p>
+        </section>
+
+        <!-- DPA gate -->
+        <section id="dpaGate" class="card hidden">
+            <div class="eyebrow">Before you begin</div>
+            <h2>Data Processing Agreement</h2>
+            <div class="dpa-text">
+                <p>You are about to enter client information. Please confirm:</p>
+                <ul>
+                    <li><strong>Not a diagnosis.</strong> MOJOWAY is a coaching framework, not a medical or psychological service. Nothing here diagnoses, treats, or assesses any condition.</li>
+                    <li><strong>Client data is pseudonymous.</strong> Use a first name, initials, or a code — never store a full client record you don't need.</li>
+                    <li><strong>Auto-deletion.</strong> Client entries and their reports are automatically removed after 90 days.</li>
+                    <li><strong>You control deletion.</strong> You can delete any client and all their reports at any time from this page.</li>
+                </ul>
+            </div>
+            <button class="primary" id="dpaAcceptBtn" onclick="acceptDpa('dpaAcceptBtn','dpaMsg')">I accept &amp; continue</button>
+            <div class="msg" id="dpaMsg"></div>
+        </section>
+
+        <!-- Self-serve consent: shown instead of the coach DPA when the visitor
+             arrived from /tool.html with their own numbers. Same endpoint, same
+             compliance record; only the wording changes. -->
+        <section id="dpaGateSelf" class="card hidden">
+            <div class="eyebrow">One thing first</div>
+            <h2>Your data, and what happens to it</h2>
+            <div class="dpa-text">
+                <ul>
+                    <li><strong>Not a diagnosis.</strong> MOJOWAY is a coaching framework, not a medical or psychological service. Nothing here diagnoses, treats, or assesses any condition.</li>
+                    <li><strong>It is coaching material.</strong> Bring it to a qualified coach before you change how you train.</li>
+                    <li><strong>Auto-deletion.</strong> Your entry and its report are automatically removed after 90 days.</li>
+                    <li><strong>You control it.</strong> You can delete your entry and its report at any time from this page.</li>
+                </ul>
+            </div>
+            <button class="primary" id="dpaSelfAcceptBtn" onclick="acceptDpa('dpaSelfAcceptBtn','dpaSelfMsg')">I understand &amp; continue</button>
+            <div class="msg" id="dpaSelfMsg"></div>
+        </section>
+
+        <!-- Intake form -->
+        <section id="intakeSection" class="hidden">
+            <div class="eyebrow">Client intake</div>
+            <h1>Build a session-ready report</h1>
+            <p class="sub">Enter the client's basics. Birth date and sex are all we need for
+                the energy read. Weight and height are optional, and if you have them the
+                report adds a body read on top.</p>
+
+            <div class="email-gate" style="background:#fbf3ef;border:1px solid #e7d3c8;border-radius:12px;padding:14px 16px;margin-bottom:18px;">
+                <label class="req" for="coachEmail">Your work email
+                    <span style="font-weight:400;color:#9a6f63;">&mdash; required to use the coach workspace free</span>
+                </label>
+                <input type="email" id="coachEmail" placeholder="you@yourpractice.com" style="margin-top:6px;">
+                <div class="msg" id="coachEmailMsg" style="margin-top:6px;"></div>
+            </div>
+
+            <div class="card">
+                <h2>Required</h2>
+                <div class="grid2">
+                    <div>
+                        <label class="req">Birth date</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div>
+                        <label class="req">Sex</label>
+                        <select id="gender" required>
+                            <option value="">Select…</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div>
+                        <label>Weight (kg) <span style="font-weight:400;color:#9a6f63;">&mdash; optional, adds the body read</span></label>
+                        <input type="number" id="weight" step="0.1" min="0" placeholder="e.g. 68">
+                    </div>
+                    <div>
+                        <label>Height (cm) <span style="font-weight:400;color:#9a6f63;">&mdash; optional, adds the body read</span></label>
+                        <input type="number" id="height" step="0.1" min="0" placeholder="e.g. 172">
+                    </div>
+                </div>
+
+                <div class="opt-title">Optional — sharpens the body-comp read</div>
+                <div>
+                    <label>Client name / code (pseudonym)</label>
+                    <input type="text" id="pseudonym" placeholder="first name, initials, or a code">
+                </div>
+                <div class="grid3">
+                    <div>
+                        <label>Skeletal muscle (kg)</label>
+                        <input type="number" id="skeletal_muscle" step="0.1" min="0">
+                    </div>
+                    <div>
+                        <label>Body fat (%)</label>
+                        <input type="number" id="body_fat" step="0.1" min="0">
+                    </div>
+                    <div>
+                        <label>Visceral fat (1–15)</label>
+                        <input type="number" id="visceral_fat" step="0.1" min="0">
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div>
+                        <label>Basal metabolic rate (kcal)</label>
+                        <input type="number" id="bmr" step="1" min="0">
+                    </div>
+                    <div></div>
+                </div>
+                <div>
+                    <label>Coach note (symptoms, goals, context)</label>
+                    <textarea id="note" placeholder="e.g. struggling with sleep; training for a marathon; feels stuck at work"></textarea>
+                </div>
+
+                <button class="primary" id="generateBtn" onclick="submitIntake()">Generate report</button>
+                <button class="ghost" onclick="resetForm()">Clear</button>
+                <div class="msg" id="intakeMsg"></div>
+            </div>
+        </section>
+
+        <!-- Report -->
+        <section id="reportSection" class="hidden">
+            <div class="report-head">
+                <span class="badge" id="reportBadge">Report</span>
+                <button class="ghost" id="dlPdfBtn" onclick="downloadClientPdf()">Download client PDF</button>
+                <button class="ghost" id="sendBtn" onclick="toggleSendBox()">Send to client</button>
+                <button class="ghost" id="histBtn" style="display:none" onclick="toggleTimeline()">History</button>
+                <button class="ghost" onclick="window.print()">Print</button>
+            </div>
+            <div id="sendBox" class="hidden" style="margin:12px 0 4px;padding:14px;border:1px solid var(--color-line,#E5E1D8);border-radius:10px;">
+                <label for="clientEmail" style="display:block;margin-bottom:6px;">Client email</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <input id="clientEmail" type="email" placeholder="client@example.com"
+                           style="flex:1 1 220px;padding:9px 11px;border:1px solid var(--color-line,#E5E1D8);border-radius:8px;font:inherit;">
+                    <button class="primary" id="sendPdfBtn" onclick="sendClientPdf()">Send PDF</button>
+                    <button class="ghost" onclick="toggleSendBox()">Cancel</button>
+                </div>
+                <div class="msg" id="sendMsg"></div>
+            </div>
+            <div id="notePanel" class="hidden" style="margin:12px 0 4px;padding:14px;border:1px solid var(--color-line,#E5E1D8);border-radius:10px;">
+                <label for="noteText" style="display:block;margin-bottom:6px;font-weight:600;">
+                    A note from you to your client
+                </label>
+                <p class="mute" style="margin:-2px 0 8px;font-size:13px;">
+                    This is the only part of the report you can write yourself &mdash;
+                    the assessment, the numbers and the layout stay as generated.
+                    It appears near the end, under your name.
+                </p>
+                <textarea id="noteText" rows="5" maxlength="1200"
+                          placeholder="Maya — six weeks in, and the change is in the ordinary days..."
+                          style="width:100%;padding:10px 12px;border:1px solid var(--color-line,#E5E1D8);border-radius:8px;font:inherit;line-height:1.5;resize:vertical;"></textarea>
+                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+                    <button class="primary" id="noteSaveBtn" onclick="saveCoachNote()">Save note</button>
+                    <button class="ghost" id="notePreviewBtn" onclick="previewCoachNote()">Preview report</button>
+                    <button class="ghost" id="noteClearBtn" onclick="clearCoachNote()">Clear note</button>
+                    <span class="mute" id="noteCount"></span>
+                    <span class="msg" id="noteMsg"></span>
+                </div>
+            </div>
+            <div id="timelinePanel" class="hidden" style="margin:12px 0 4px;padding:14px;border:1px solid var(--color-line,#E5E1D8);border-radius:10px;"></div>
+            <div id="reportBody"></div>
+        </section>
+
+        <!-- Client list -->
+        <section id="clientsSection" class="card hidden">
+            <h2>Your clients</h2>
+            <div id="clientList"></div>
+        </section>
+
+        <section id="brandSection" class="card hidden">
+            <h2>Your brand</h2>
+            <p class="mute" style="margin:-4px 0 14px;">
+                Put your own name and photo on the reports your clients receive.
+                Leave it blank and the report goes out under the MOJOWAY mark instead.
+            </p>
+
+            <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;">
+                <img id="brandAvatarPreview" alt="" width="72" height="72"
+                     style="width:72px;height:72px;border-radius:50%;object-fit:cover;
+                            border:1px solid #E2DED4;background:#F8F6F1;">
+                <div>
+                    <label for="brandAvatarFile" class="mute" style="display:block;margin-bottom:6px;">
+                        Profile photo (square works best; JPG or PNG, up to 5&nbsp;MB)
+                    </label>
+                    <input type="file" id="brandAvatarFile" accept="image/png,image/jpeg,image/webp">
+                    <div id="brandAvatarMsg" class="mute" style="margin-top:6px;"></div>
+                </div>
+            </div>
+
+            <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+                <label>Your name
+                    <input type="text" id="brandName" maxlength="80" placeholder="Janae Hunderman">
+                </label>
+                <label>Title / credentials
+                    <input type="text" id="brandRole" maxlength="80" placeholder="Certified Life Coach · ICF PCC">
+                </label>
+                <label>Contact email shown to clients
+                    <input type="email" id="brandContact" maxlength="80" placeholder="you@yourpractice.com">
+                </label>
+                <label>Brand colour
+                    <input type="text" id="brandColor" maxlength="7" placeholder="#1C6078">
+                </label>
+            </div>
+
+            <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+                <button type="button" id="brandSaveBtn" class="btn">Save brand</button>
+                <span id="brandStatus" class="mute"></span>
+            </div>
+        </section>
+
+        <section id="bridgeSection" class="card hidden">
+            <h2>Trial sessions</h2>
+            <p class="mute" style="margin:-4px 0 14px;">
+                Publish a few 30-minute slots and someone looking for a coach
+                can book one, free. You decide whether you appear in the list &mdash;
+                a paid plan does not put you there on its own, and nothing here ranks
+                coaches against each other.
+            </p>
+
+            <label style="display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;">
+                <input type="checkbox" id="bridgeListed" style="margin-top:4px;">
+                <span>Show me in the list while I have open slots.</span>
+            </label>
+
+            <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+                <label>One line about how you work
+                    <input type="text" id="bridgeHeadline" maxlength="120"
+                           placeholder="I help founders stop negotiating with themselves">
+                </label>
+                <label>Languages
+                    <input type="text" id="bridgeLanguages" maxlength="40" placeholder="en, zh">
+                </label>
+                <label>Your timezone
+                    <input type="text" id="bridgeTimezone" maxlength="64" placeholder="Asia/Shanghai">
+                </label>
+                <label>Default meeting link
+                    <input type="url" id="bridgeMeeting" maxlength="300"
+                           placeholder="https://meet.google.com/...">
+                </label>
+            </div>
+            <div style="margin-top:14px;">
+                <button type="button" class="btn-primary" id="bridgeSaveProfile">Save</button>
+                <span id="bridgeProfileMsg" class="mute" style="margin-left:10px;"></span>
+            </div>
+
+            <hr style="border:none;border-top:1px solid #E2DED4;margin:24px 0;">
+
+            <h3 style="font-size:1rem;margin:0 0 12px;">Open a slot</h3>
+            <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+                <label>Date &amp; time
+                    <input type="datetime-local" id="bridgeSlotStart">
+                </label>
+                <label>Length
+                    <select id="bridgeSlotLen">
+                        <option value="30" selected>30 minutes</option>
+                    </select>
+                </label>
+            </div>
+            <p class="mute" id="bridgeTzHint" style="margin:8px 0 0;"></p>
+            <div style="margin-top:12px;">
+                <button type="button" class="btn-primary" id="bridgeAddSlot">Publish slot</button>
+                <span id="bridgeSlotMsg" class="mute" style="margin-left:10px;"></span>
+            </div>
+            <ul id="bridgeSlotList" class="mute"
+                style="margin:16px 0 0;padding-left:18px;line-height:2;"></ul>
+
+            <hr style="border:none;border-top:1px solid #E2DED4;margin:24px 0;">
+
+            <h3 style="font-size:1rem;margin:0 0 12px;">Booked trial sessions</h3>
+            <div id="bridgeBookingList" class="mute">Nothing booked yet.</div>
+        </section>
+
+    </div>
+
+        <footer>
+            <div>
+                <img class="footer-logo" src="/assets/mojoway-logo.png" alt="MOJOWAY" loading="eager">
+                <div class="brandline">Energy, read clearly.</div>
+            </div>
+            <div>&copy; 2026 <span data-company-name>Mojoway Spectrum Limited</span> &middot;
+                <a href="/privacy-policy.html">Privacy</a> &middot;
+                <a href="/refund-policy.html">Refund</a> &middot;
+                <a href="/terms-of-service.html">Terms</a> &middot;
+                <a href="/blog.html">Insights</a> &middot;
+                <a data-support-email href="mailto:support@mojowaylife.com">support@mojowaylife.com</a></div>
+        </footer>
+
+    <script src="/js/company_info.js"></script>
+    <script>
+        // ── Safe storage (mirrors mirror.html) ──
+        function safeSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} try { sessionStorage.setItem(k, v); } catch(e) {} }
+        function safeGet(k) { try { return localStorage.getItem(k) || sessionStorage.getItem(k); } catch(e) { return null; } }
+
+        // Auth token — same key the whole site uses (set by magic-link / login).
+        let TOKEN = (function() {
+            var t = safeGet('mojoway_token') || (new URLSearchParams(location.search).get('token') || '');
+            if (t) safeSet('mojoway_token', t);
+            return t;
+        })();
+
+        // Numbers handed over by /tool.html, so the person does not type them twice.
+        var TOOL_PAYLOAD = (function() {
+            try { return JSON.parse(safeGet('mojoway_tool_payload') || 'null'); } catch (e) { return null; }
+        })();
+        var FROM_TOOL = !!(TOOL_PAYLOAD && TOOL_PAYLOAD.dob);
+
+        function fillFromTool() {
+            if (!FROM_TOOL) return false;
+            var p = TOOL_PAYLOAD;
+            var put = function(id, v) {
+                var el = document.getElementById(id);
+                if (el && v !== undefined && v !== null && v !== '') el.value = v;
+            };
+            put('dob', p.dob); put('gender', p.gender);
+            put('weight', p.weight); put('height', p.height);
+            put('skeletal_muscle', p.skeletal_muscle);
+            put('body_fat', p.body_fat);
+            put('visceral_fat', p.visceral_fat);
+            put('bmr', p.bmr);
+            put('note', p.note);
+
+            var msg = document.getElementById('intakeMsg');
+            if (msg) {
+                msg.innerHTML = 'Your numbers came across from the tool. ' +
+                    'Press <b>Generate report</b> and the eight-page PDF is one click away.';
+                msg.className = 'msg ok';
+            }
+            var h1 = document.querySelector('#intakeSection h1');
+            if (h1) h1.textContent = 'Your report is ready to build';
+            var sub = document.querySelector('#intakeSection .sub');
+            if (sub) sub.textContent = 'Everything you entered is already filled in. Check it, then generate.';
+            return true;
+        }
+
+        function esc(s) {
+            if (s === null || s === undefined) return '';
+            return String(s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function api(path, opts) {
+            opts = opts || {};
+            var headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+            if (TOKEN) headers['Authorization'] = 'Bearer ' + TOKEN;
+            return fetch('/api/coach' + path, Object.assign({ headers: headers }, opts));
+        }
+
+        function show(id, on) { document.getElementById(id).classList.toggle('hidden', !on); }
+
+        // ── Trial sessions (bridge) ─────────────────────────────────────────
+        // 后端 /api/bridge/coach/*，不是 /api/coach/*，所以不能用上面那个 api() 封装
+        // （它写死了前缀）。单独一个 brApi。
+        function brApi(path, opts) {
+            opts = opts || {};
+            var headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+            if (TOKEN) headers['Authorization'] = 'Bearer ' + TOKEN;
+            return fetch('/api/bridge/coach' + path, Object.assign({ headers: headers }, opts));
+        }
+
+        function brMsg(id, text, bad) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = text;
+            el.style.color = bad ? '#B23526' : '';
+        }
+
+        function brLocal(s) {
+            if (!s) return '';
+            var d = new Date(s.indexOf('Z') > -1 ? s : s + 'Z');
+            if (isNaN(d.getTime())) return s;
+            return d.toLocaleString();
+        }
+
+        function loadBridgeProfile() {
+            return brApi('/profile').then(function (r) { return r.json(); }).then(function (d) {
+                document.getElementById('bridgeListed').checked = !!d.is_listed;
+                document.getElementById('bridgeHeadline').value = d.headline || '';
+                document.getElementById('bridgeLanguages').value = d.languages || '';
+                document.getElementById('bridgeTimezone').value = d.timezone || '';
+                document.getElementById('bridgeMeeting').value = d.meeting_url || '';
+            }).catch(function () { brMsg('bridgeProfileMsg', 'Could not load.', true); });
+        }
+
+        function saveBridgeProfile() {
+            brMsg('bridgeProfileMsg', 'Saving…');
+            return brApi('/profile', {
+                method: 'PUT',
+                body: JSON.stringify({
+                    is_listed: document.getElementById('bridgeListed').checked,
+                    headline: document.getElementById('bridgeHeadline').value,
+                    languages: document.getElementById('bridgeLanguages').value,
+                    timezone: document.getElementById('bridgeTimezone').value,
+                    meeting_url: document.getElementById('bridgeMeeting').value
+                })
+            }).then(function (r) { return r.json(); }).then(function (d) {
+                brMsg('bridgeProfileMsg', d.ok ? 'Saved.' : (d.error || 'Failed.'), !d.ok);
+            }).catch(function () { brMsg('bridgeProfileMsg', 'Could not save.', true); });
+        }
+
+        function loadBridgeSlots() {
+            return brApi('/slots').then(function (r) { return r.json(); }).then(function (d) {
+                var ul = document.getElementById('bridgeSlotList');
+                var rows = (d.slots || []);
+                if (!rows.length) {
+                    ul.innerHTML = '<li style="list-style:none;padding:0;">No open slots.</li>';
+                    return;
+                }
+                ul.innerHTML = rows.map(function (s) {
+                    var label = brLocal(s.start_at) + ' · ' + s.status;
+                    var btn = s.status === 'open'
+                        ? ' <button type="button" data-slot="' + s.id + '" class="br-cancel-slot"'
+                          + ' style="font-size:12px;padding:2px 8px;">remove</button>'
+                        : '';
+                    return '<li>' + label + btn + '</li>';
+                }).join('');
+                Array.prototype.forEach.call(document.querySelectorAll('.br-cancel-slot'),
+                    function (b) {
+                        b.addEventListener('click', function () { removeBridgeSlot(b.dataset.slot); });
+                    });
+            }).catch(function () {});
+        }
+
+        function addBridgeSlot() {
+            var start = document.getElementById('bridgeSlotStart').value;
+            if (!start) { brMsg('bridgeSlotMsg', 'Pick a date and time.', true); return; }
+            var len = parseInt(document.getElementById('bridgeSlotLen').value, 10) || 40;
+            var d = new Date(start);              // datetime-local 按浏览器本地时区解析
+            if (isNaN(d.getTime())) { brMsg('bridgeSlotMsg', 'That date is not valid.', true); return; }
+            brMsg('bridgeSlotMsg', 'Publishing…');
+            brApi('/slots', {
+                method: 'POST',
+                body: JSON.stringify({
+                    start_at: d.toISOString(),
+                    duration_min: len,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ''
+                })
+            }).then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+              .then(function (res) {
+                  if (!res.ok) { brMsg('bridgeSlotMsg', res.body.error || 'Failed.', true); return; }
+                  brMsg('bridgeSlotMsg', 'Published.');
+                  document.getElementById('bridgeSlotStart').value = '';
+                  loadBridgeSlots();
+              }).catch(function () { brMsg('bridgeSlotMsg', 'Could not publish.', true); });
+        }
+
+        function removeBridgeSlot(id) {
+            brApi('/slots/' + encodeURIComponent(id), { method: 'DELETE' })
+                .then(function () { loadBridgeSlots(); })
+                .catch(function () {});
+        }
+
+        function loadBridgeBookings() {
+            return brApi('/bookings').then(function (r) { return r.json(); }).then(function (d) {
+                var box = document.getElementById('bridgeBookingList');
+                var rows = (d.bookings || []);
+                if (!rows.length) { box.textContent = 'Nothing booked yet.'; return; }
+                box.innerHTML = rows.map(function (b) {
+                    var who = b.client_first_name || 'Client';
+                    var mail = b.client_email ? ' · ' + b.client_email : '';
+                    var actions = '';
+                    if (b.status === 'pending') {
+                        actions = ' <button type="button" data-act="confirm" data-id="' + b.id
+                                + '" style="font-size:12px;padding:2px 8px;">confirm</button>';
+                    } else if (b.status === 'confirmed') {
+                        actions = ' <button type="button" data-act="complete" data-id="' + b.id
+                                + '" style="font-size:12px;padding:2px 8px;">happened</button>'
+                                + ' <button type="button" data-act="no-show" data-id="' + b.id
+                                + '" style="font-size:12px;padding:2px 8px;">no-show</button>';
+                    }
+                    return '<div style="padding:8px 0;border-bottom:1px solid #EFEBE3;">'
+                        + esc(who) + mail + ' · ' + esc(brLocal(b.scheduled_start_at))
+                        + ' · <strong>' + esc(b.status) + '</strong>' + actions + '</div>';
+                }).join('');
+                Array.prototype.forEach.call(box.querySelectorAll('button[data-act]'),
+                    function (btn) {
+                        btn.addEventListener('click', function () {
+                            bookingAction(btn.dataset.id, btn.dataset.act);
+                        });
+                    });
+            }).catch(function () {});
+        }
+
+        function bookingAction(id, act) {
+            brApi('/bookings/' + encodeURIComponent(id) + '/' + act, { method: 'POST' })
+                .then(function () { loadBridgeBookings(); })
+                .catch(function () {});
+        }
+
+        function loadBridge() {
+            var hint = document.getElementById('bridgeTzHint');
+            if (hint) {
+                var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'your timezone';
+                hint.textContent = 'Times are entered in ' + tz + ' and shown to clients with the timezone you set above.';
+            }
+            loadBridgeProfile();
+            loadBridgeSlots();
+            loadBridgeBookings();
+
+            var save = document.getElementById('bridgeSaveProfile');
+            if (save && !save.dataset.wired) {
+                save.dataset.wired = '1';
+                save.addEventListener('click', saveBridgeProfile);
+            }
+            var add = document.getElementById('bridgeAddSlot');
+            if (add && !add.dataset.wired) {
+                add.dataset.wired = '1';
+                add.addEventListener('click', addBridgeSlot);
+            }
+        }
+
+
+        // ── Your brand (R196) ──────────────────────────────────────────────
+        // 后端：GET/POST /api/coach/brand（JSON），POST /api/coach/brand/avatar（multipart）。
+        // 头像上传不能用 api()：那个封装写死了 Content-Type: application/json，
+        // multipart 必须让浏览器自己带 boundary。
+        function brandEl(id) { return document.getElementById(id); }
+
+        function paintBrand(d) {
+            if (!d) return;
+            var av = brandEl('brandAvatarPreview');
+            if (av) av.src = d.brand_logo_url || '/assets/mojoway-logo.png';
+            if (brandEl('brandName') && !brandEl('brandName').value) brandEl('brandName').value = d.brand_name || '';
+            if (brandEl('brandRole') && !brandEl('brandRole').value) brandEl('brandRole').value = d.brand_role || '';
+            if (brandEl('brandContact') && !brandEl('brandContact').value) brandEl('brandContact').value = d.brand_contact_email || '';
+            if (brandEl('brandColor') && !brandEl('brandColor').value) brandEl('brandColor').value = d.brand_primary_color || '';
+            var st = brandEl('brandStatus');
+            if (st) {
+                st.textContent = d.ready_for_reports
+                    ? 'Your name and photo will appear on the reports you send.'
+                    : 'Add a photo and your name to sign the reports yourself.';
+            }
+        }
+
+        async function loadBrand() {
+            try {
+                var r = await api('/brand');
+                if (r.status === 401) return;
+                paintBrand(await r.json());
+            } catch (e) { /* 品牌读取失败不该挡住工作台其它功能 */ }
+        }
+
+        async function uploadBrandAvatar(file) {
+            var msg = brandEl('brandAvatarMsg');
+            if (msg) msg.textContent = 'Uploading\u2026';
+            var fd = new FormData();
+            fd.append('avatar', file);
+            var headers = {};
+            if (TOKEN) headers['Authorization'] = 'Bearer ' + TOKEN;
+            try {
+                var r = await fetch('/api/coach/brand/avatar', { method: 'POST', headers: headers, body: fd });
+                var d = await r.json().catch(function() { return {}; });
+                if (!r.ok) {
+                    if (msg) msg.textContent = d.error || 'Upload failed.';
+                    return;
+                }
+                if (msg) msg.textContent = 'Photo updated.';
+                paintBrand(d);
+            } catch (e) {
+                if (msg) msg.textContent = 'Upload failed: ' + e.message;
+            }
+        }
+
+        async function saveBrand() {
+            var st = brandEl('brandStatus');
+            if (st) st.textContent = 'Saving\u2026';
+            var payload = {
+                brand_name: (brandEl('brandName') || {}).value || '',
+                brand_role: (brandEl('brandRole') || {}).value || '',
+                brand_contact_email: (brandEl('brandContact') || {}).value || '',
+                brand_primary_color: (brandEl('brandColor') || {}).value || ''
+            };
+            try {
+                var r = await api('/brand', { method: 'POST', body: JSON.stringify(payload) });
+                var d = await r.json().catch(function() { return {}; });
+                if (!r.ok) {
+                    if (st) st.textContent = d.error || 'Could not save.';
+                    return;
+                }
+                paintBrand(d);
+                if (st) st.textContent = 'Saved.';
+            } catch (e) {
+                if (st) st.textContent = 'Could not save: ' + e.message;
+            }
+        }
+
+        (function bindBrand() {
+            var f = brandEl('brandAvatarFile');
+            if (f) f.addEventListener('change', function() {
+                if (this.files && this.files[0]) uploadBrandAvatar(this.files[0]);
+            });
+            var b = brandEl('brandSaveBtn');
+            if (b) b.addEventListener('click', saveBrand);
+        })();
+
+        // ── Coach note (R196) ──────────────────────────────────────────────
+        // 教练唯一被允许写进报告的内容。服务端会校验（长度/链接/联系方式/违禁话术），
+        // 这里的前端校验只是为了即时反馈，真正的闸门在服务端。
+        var NOTE_SAVED = '';
+
+        function _noteEl(id) { return document.getElementById(id); }
+
+        function _noteCount() {
+            var t = _noteEl('noteText');
+            var c = _noteEl('noteCount');
+            if (t && c) c.textContent = (t.value || '').length + ' / 1200';
+        }
+
+        async function loadCoachNote() {
+            if (!CURRENT_ID) return;
+            try {
+                var r = await api('/message/' + CURRENT_ID);
+                if (!r.ok) return;
+                var d = await r.json();
+                var t = _noteEl('noteText');
+                if (t) t.value = d.message || '';
+                NOTE_SAVED = d.message || '';
+                _noteCount();
+                _noteEl('noteMsg') && (_noteEl('noteMsg').textContent = '');
+            } catch (e) { /* 读不到不该挡住出报告 */ }
+        }
+
+        async function saveCoachNote(silent) {
+            if (!CURRENT_ID) return false;
+            var t = _noteEl('noteText');
+            var msg = _noteEl('noteMsg');
+            var text = t ? t.value : '';
+            if (!silent && msg) { msg.className = 'msg'; msg.textContent = 'Saving\u2026'; }
+            try {
+                var r = await api('/message/' + CURRENT_ID, {
+                    method: 'POST', body: JSON.stringify({ message: text })
+                });
+                var d = await r.json().catch(function() { return {}; });
+                if (!r.ok) {
+                    if (msg) { msg.className = 'msg err'; msg.textContent = d.error || 'Could not save the note.'; }
+                    return false;
+                }
+                NOTE_SAVED = d.message || '';
+                if (t) t.value = NOTE_SAVED;
+                _noteCount();
+                if (msg) {
+                    msg.className = 'msg ok';
+                    msg.textContent = NOTE_SAVED ? 'Saved. It will appear in the report.' : 'Note cleared.';
+                }
+                return true;
+            } catch (e) {
+                if (msg) { msg.className = 'msg err'; msg.textContent = 'Network error.'; }
+                return false;
+            }
+        }
+
+        async function clearCoachNote() {
+            var t = _noteEl('noteText');
+            if (t) t.value = '';
+            await saveCoachNote(true);
+            _noteCount();
+        }
+
+        // 预览：先把未保存的寄语存下来，再让服务端渲染 HTML 直接返回。
+        // 不落盘、不记快照 —— 看一眼不该在时间线里留下记录。
+        async function previewCoachNote() {
+            if (!CURRENT_ID) return;
+            var ok = await saveCoachNote(true);
+            if (!ok) return;
+            window.open('/api/coach/coach-report-preview/' + CURRENT_ID + '?auth_token=' + encodeURIComponent(TOKEN), '_blank');
+        }
+
+        (function bindNote() {
+            var t = _noteEl('noteText');
+            if (t) t.addEventListener('input', _noteCount);
+        })();
+
+        // ── Boot ──
+        async function boot() {
+            if (!TOKEN) { show('signinGate', true); return; }
+            try {
+                var r = await api('/dpa/status');
+                if (r.status === 401) { show('signinGate', true); return; }
+                var d = await r.json();
+                if (d.email) { var _ce = document.getElementById('coachEmail'); if (_ce && !_ce.value) _ce.value = d.email; }
+                if (d.accepted) {
+                    show('intakeSection', true);
+                    show('clientsSection', true);
+                    show('brandSection', true);
+                    show('bridgeSection', true);
+                    loadBridge();
+                    loadBrand();
+                    loadClients();
+                    if (fillFromTool()) {
+                        var gb = document.getElementById('generateBtn');
+                        if (gb) gb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else if (FROM_TOOL) {
+                    show('dpaGateSelf', true);
+                } else {
+                    show('dpaGate', true);
+                }
+            } catch (e) {
+                var gate = document.getElementById('bootError');
+                if (gate) gate.classList.remove('hidden');
+                var be = document.getElementById('bootErrMsg');
+                if (be) { be.textContent = 'Could not reach the server. Please refresh.'; be.className = 'msg err'; }
+            }
+        }
+
+        async function acceptDpa(btnId, msgId) {
+            var btn = document.getElementById(btnId || 'dpaAcceptBtn');
+            var msg = document.getElementById(msgId || 'dpaMsg');
+            btn.disabled = true; msg.textContent = '';
+            try {
+                var r = await api('/dpa/accept', { method: 'POST' });
+                if (r.ok) {
+                    show('dpaGate', false);
+                    show('dpaGateSelf', false);
+                    show('intakeSection', true);
+                    show('clientsSection', true);
+                    loadClients();
+                    if (fillFromTool()) {
+                        var gb = document.getElementById('generateBtn');
+                        if (gb) gb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    msg.textContent = 'Could not record acceptance. Please retry.';
+                    msg.className = 'msg err';
+                }
+            } catch (e) {
+                msg.textContent = 'Network error. Please retry.';
+                msg.className = 'msg err';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        function resetForm() {
+            ['dob','weight','height','pseudonym','skeletal_muscle','body_fat','visceral_fat','bmr','note']
+                .forEach(function(id){ document.getElementById(id).value = ''; });
+            document.getElementById('gender').value = '';
+            document.getElementById('intakeMsg').textContent = '';
+        }
+
+        async function submitIntake() {
+            var btn = document.getElementById('generateBtn');
+            var msg = document.getElementById('intakeMsg');
+            msg.textContent = ''; msg.className = 'msg';
+            var dob = document.getElementById('dob').value.trim();
+            var gender = document.getElementById('gender').value;
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            // 2026-10-10 (round 79)：只强制出生日期 + 性别，与后端一致。
+            // 后端 /intake 明确写着 weight/height 是 optional（只影响 body-comp 那一层）。
+            // 而冷邮件的场景是"session one 之前十分钟" —— 会前你不会问准客户的体重，
+            // 原来"体重+身高必填"会把这类教练直接挡在表单外（无法提交）。
+            if (!dob || !gender) {
+                msg.textContent = 'Birth date and sex are required. Weight and height are optional.';
+                msg.className = 'msg err'; return;
+            }
+            var coachEmail = document.getElementById('coachEmail').value.trim();
+            var coachEmailMsg = document.getElementById('coachEmailMsg');
+            if (!coachEmail || coachEmail.indexOf('@') < 1) {
+                coachEmailMsg.textContent = 'Please enter your work email to continue (free access).';
+                coachEmailMsg.className = 'msg err';
+                btn.disabled = false; btn.textContent = 'Generate report';
+                return;
+            }
+            var payload = {
+                dob: dob, gender: gender,
+                weight: parseFloat(weight), height: parseFloat(height),
+                pseudonym: document.getElementById('pseudonym').value.trim() || null,
+                skeletal_muscle: numOrNull('skeletal_muscle'),
+                body_fat: numOrNull('body_fat'),
+                visceral_fat: numOrNull('visceral_fat'),
+                bmr: numOrNull('bmr'),
+                note: document.getElementById('note').value.trim() || null,
+                coach_email: coachEmail
+            };
+            btn.disabled = true; btn.textContent = 'Generating…';
+            try {
+                var r = await api('/intake', { method: 'POST', body: JSON.stringify(payload) });
+                var d = await r.json().catch(function(){ return {}; });
+                if (r.ok && d.success) {
+                    renderReport(d.report, d.assessment_id, d.client_id);
+                    resetForm();
+                    loadClients();
+                    msg.textContent = 'Report ready.'; msg.className = 'msg ok';
+                } else if (r.status === 403 && d.code === 'dpa_required') {
+                    show('intakeSection', false); show('dpaGate', true);
+                } else if (r.status === 400 && (d.code === 'email_required' || d.code === 'bad_email')) {
+                    var cem = document.getElementById('coachEmailMsg');
+                    cem.textContent = d.error || 'A valid work email is required.';
+                    cem.className = 'msg err';
+                    document.getElementById('coachEmail').focus();
+                } else if (r.status === 400) {
+                    msg.textContent = d.error || 'Please check the required fields.'; msg.className = 'msg err';
+                } else if (r.status === 402 && d.code === 'free_limit_reached') {
+                    // 2026-10-19 round 234：槽位用完了。后端现在带 message / paid / limit /
+                    // tier / stripe_link —— 以前这里落到最后一个 else，教练看到的是
+                    // "free_limit_reached (free_limit_reached)" 这种接口术语，既不懂也没有下一步。
+                    msg.textContent = '';
+                    msg.appendChild(document.createTextNode(
+                        d.message || 'All of your client slots are in use.'));
+                    if (d.stripe_link) {
+                        var _up = document.createElement('a');
+                        _up.href = d.stripe_link;
+                        _up.target = '_blank';
+                        _up.rel = 'noopener';
+                        _up.textContent = d.paid ? ' Add 15 more slots' : ' See the Coach plan';
+                        _up.style.cssText = 'margin-left:6px;font-weight:600;text-decoration:underline;color:inherit';
+                        msg.appendChild(_up);
+                    }
+                    msg.className = 'msg err';
+                } else {
+                    msg.textContent = (d.error || 'Something went wrong.') + (d.code ? ' (' + d.code + ')' : '');
+                    msg.className = 'msg err';
+                }
+            } catch (e) {
+                msg.textContent = 'Network error. Please retry.'; msg.className = 'msg err';
+            } finally {
+                btn.disabled = false; btn.textContent = 'Generate report';
+            }
+        }
+
+        function numOrNull(id) {
+            var v = document.getElementById(id).value;
+            if (v === '' || v === null) return null;
+            var n = parseFloat(v);
+            return isNaN(n) ? null : n;
+        }
+
+        // ── Report rendering ──
+        var CURRENT_ID = null;
+        var CURRENT_CLIENT_ID = null;
+
+        function renderReport(r, id, clientId) {
+            CURRENT_ID = id || null;
+            CURRENT_CLIENT_ID = (clientId === undefined || clientId === null) ? CURRENT_CLIENT_ID : clientId;
+            var hb = document.getElementById("histBtn");
+            if (hb) hb.style.display = CURRENT_CLIENT_ID ? "" : "none";
+            show('reportSection', true);
+            var badge = document.getElementById('reportBadge');
+            badge.textContent = r.dominant_element ? (r.dominant_element + ' · report') : 'Report';
+            var html = '';
+            var order = r.module_order || ['meeting_framework','five_e_speed_card','bodycomp','five_e_deep'];
+            order.forEach(function(m){
+                if (m === 'meeting_framework') html += renderMeeting(r.meeting_framework, r.five_e_deep);
+                else if (m === 'five_e_speed_card') html += renderSpeed(r.five_e_speed_card);
+                else if (m === 'bodycomp') html += renderBody(r.bodycomp);
+                else if (m === 'five_e_deep') html += renderDeep(r.five_e_deep);
+            });
+            document.getElementById('reportBody').innerHTML = html;
+            attachCheckin();
+            show('notePanel', true);
+            loadCoachNote();
+            document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // round233 B1：把「I used this」接到后端。一个报告只能打一次勾（后端 assmt_id 唯一索引）。
+        function attachCheckin() {
+            var btn = document.querySelector('[data-ci="1"]');
+            if (!btn || !CURRENT_ID) return;
+            var out = document.querySelector('[data-ci-out="1"]');
+            function paint(state) {
+                if (state.used) {
+                    btn.disabled = true;
+                    btn.textContent = 'Used \u2713';
+                    btn.classList.add('done');
+                }
+                if (state.counts && out) {
+                    var m = state.counts.month || 0;
+                    out.textContent = m
+                        ? ('Used in ' + m + ' session' + (m === 1 ? '' : 's') + ' this month.')
+                        : 'First one this month.';
+                }
+            }
+            api('/checkin/' + CURRENT_ID).then(function(r){ return r.json(); })
+                .then(function(j){ if (j && !j.error) paint(j); }).catch(function(){});
+            btn.addEventListener('click', function(){
+                btn.disabled = true;
+                btn.textContent = 'Saving\u2026';
+                api('/checkin', { method: 'POST', body: JSON.stringify({ assmt_id: CURRENT_ID }) })
+                    .then(function(r){ return r.json(); })
+                    .then(function(j){
+                        if (j && j.success) paint({ used: true, counts: j.counts });
+                        else { btn.disabled = false; btn.textContent = 'I used this'; }
+                    })
+                    .catch(function(){ btn.disabled = false; btn.textContent = 'I used this'; });
+            });
+        }
+
+        function renderMeeting(b, d) {
+            // 2026-10-19 round233 A1: 首屏只放一件事——一句话结论 + 三个动作。
+            // 原来的问题：session_move（L4 要求的"前十分钟做什么"）根本没渲染，界面上直接丢了；
+            // stuck_point 又埋在最后一个模块里。现在把它们提到首屏，其余字段保持原样。
+            if (!b) return '';
+            var h = '<div class="mod hero-card">';
+            h += '<p class="hero-label">Open with this</p>';
+            if (b.open_question) h += '<p class="hero-q">“' + esc(b.open_question) + '”</p>';
+
+            var acts = '';
+            if (b.session_move) acts += '<div class="act"><span class="act-k">Do</span><span class="act-v">'
+                + esc(b.session_move)
+                + '<button class="ci" data-ci="1" type="button">I used this</button>'
+                + '<span class="ci-out" data-ci-out="1"></span></span></div>';
+            var stuck = d && (d.stuck_point || d.core_pattern);
+            if (stuck) acts += '<div class="act"><span class="act-k">Watch</span><span class="act-v">' + esc(stuck) + '</span></div>';
+            if (b.surface_first) acts += '<div class="act"><span class="act-k">Why</span><span class="act-v">' + esc(b.surface_first) + '</span></div>';
+            if (acts) h += '<div class="acts">' + acts + '</div>';
+
+            // 以下保留原有内容，只是不再重复 open_question
+            if (b.bridge) h += '<p style="margin-top:16px;">' + esc(b.bridge) + '</p>';
+            if (b.caution) h += '<p class="shadow"><b>Caution:</b> ' + esc(b.caution) + '</p>';
+            h += '</div>';
+            return h;
+        }
+
+        function renderSpeed(c) {
+            if (!c) return '';
+            var accent = c.accent || '#B23526';
+            var h = '<div class="mod" style="border-left:4px solid ' + esc(accent) + '">';
+            h += '<div class="ecard-title"><span class="icn">' + esc(c.icon || '◇') + '</span>'
+               + '<span class="tag" style="color:' + esc(accent) + '">' + esc(c.element) + ' · ' + esc(c.archetype) + '</span></div>';
+            if (c.one_line) h += '<p class="onesentence">' + esc(c.one_line) + '</p>';
+            if (c.lead_element && c.lead_example) {
+                h += '<div class="lead-box">Lead the session from <b>' + esc(c.lead_element) + '</b> — '
+                   + esc(c.lead_example) + '.</div>';
+            }
+            if (c.lead_rationale) {
+                h += '<p class="shadow" style="margin-top:8px;"><b>Why this lead:</b> ' + esc(c.lead_rationale) + '</p>';
+            }
+            h += '<div class="two-col">';
+            h += '<div class="blk"><b>Gift</b>' + esc(c.gift || '') + '</div>';
+            h += '<div class="blk"><b>Blind spot</b>' + esc(c.blind_spot || '') + '</div>';
+            h += '</div>';
+            if (c.shadow_element) {
+                h += '<div class="shadow" style="margin-top:14px;">'
+                   + '<b>Shadow:</b> ' + esc(c.shadow_element) + ' (' + esc(c.shadow_archetype || '') + '). '
+                   + esc(c.shadow_gift || '');
+                if (c.shadow_why) h += ' ' + esc(c.shadow_why);
+                h += '</div>';
+            }
+            if (c.bmi !== null && c.bmi !== undefined) {
+                h += '<div class="meta-row">BMI ' + esc(c.bmi) + (c.solar_term ? ' · ' + esc(c.solar_term) : '') + '</div>';
+            } else if (c.solar_term) {
+                h += '<div class="meta-row">' + esc(c.solar_term) + '</div>';
+            }
+            h += '</div>';
+            return h;
+        }
+
+        function renderBody(b) {
+            if (!b) {
+                return '<div class="mod"><h3>Body-comp read</h3>'
+                     + '<p class="shadow">No body-comp read — add weight/height (and optional metrics) to unlock.</p></div>';
+            }
+            var h = '<div class="mod"><h3>Body-comp read</h3>';
+            if (b.bmi !== null && b.bmi !== undefined) h += '<div class="meta-row" style="margin-top:0;margin-bottom:10px;">BMI ' + esc(b.bmi) + '</div>';
+            if (b.read) h += '<p>' + esc(b.read) + '</p>';
+            if (b.coaching_talk && b.coaching_talk.length) {
+                h += '<ul class="coaching-list">';
+                b.coaching_talk.forEach(function(t){ h += '<li>' + esc(t) + '</li>'; });
+                h += '</ul>';
+            }
+            if (b.direction) h += '<p class="shadow"><b>Direction:</b> ' + esc(b.direction) + '</p>';
+            h += '</div>';
+            return h;
+        }
+
+        function renderDeep(d) {
+            if (!d) return '';
+            var h = '<div class="mod"><h3>Core energies &mdash; full read</h3>';
+            var dom = d.dominant_element || d.element;
+            if (dom) h += '<p><b>' + esc(dom) + (d.lead_element && d.lead_element !== dom ? ' &middot; lead: ' + esc(d.lead_element) : '') + '</b></p>';
+            if (d.core_pattern) h += '<p><b>Core pattern:</b> ' + esc(d.core_pattern) + '</p>';
+            if (d.stuck_point) h += '<p><b>Stuck point:</b> ' + esc(d.stuck_point) + '</p>';
+            if (d.reframe) h += '<p><b>Reframe:</b> ' + esc(d.reframe) + '</p>';
+            if (d.body_tie) h += '<p class="shadow"><b>Body link:</b> ' + esc(d.body_tie) + '</p>';
+            h += '</div>';
+            return h;
+        }
+
+        // ── Client PDF (download / email) ──
+        function toggleSendBox() {
+            var box = document.getElementById('sendBox');
+            box.classList.toggle('hidden');
+            if (!box.classList.contains('hidden')) document.getElementById('clientEmail').focus();
+        }
+
+        function _pdfFilename(r) {
+            return 'MOJOWAY_' + ((r && r.dominant_element) ? r.dominant_element : 'report') + '.pdf';
+        }
+
+        async function downloadClientPdf() {
+            if (CURRENT_ID && _noteEl('noteText') && _noteEl('noteText').value !== NOTE_SAVED) {
+                var savedDl = await saveCoachNote(true);
+                if (!savedDl) return;
+            }
+            if (!CURRENT_ID) { alert('Generate a report first.'); return; }
+            var btn = document.getElementById('dlPdfBtn');
+            var old = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Preparing PDF…';
+            try {
+                var r = await api('/client-pdf/' + CURRENT_ID);
+                if (!r.ok) {
+                    var d = await r.json().catch(function(){ return {}; });
+                    alert(d.error || ('Could not build the PDF (' + r.status + ').'));
+                    return;
+                }
+                var blob = await r.blob();
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url; a.download = _pdfFilename(null);
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+            } catch (e) {
+                alert('Network error while building the PDF. Please retry.');
+            } finally {
+                btn.disabled = false; btn.textContent = old;
+            }
+        }
+
+        async function sendClientPdf() {
+            // 发送前确保寄语已入库 —— 生成 PDF 时是从库里读寄语的，
+            // 如果这里不先存，教练刚敲的字会整段丢掉。
+            if (CURRENT_ID && _noteEl('noteText') && _noteEl('noteText').value !== NOTE_SAVED) {
+                var saved = await saveCoachNote(true);
+                if (!saved) return;
+            }
+            if (!CURRENT_ID) { alert('Generate a report first.'); return; }
+            var email = document.getElementById('clientEmail').value.trim();
+            var msg = document.getElementById('sendMsg');
+            var btn = document.getElementById('sendPdfBtn');
+            msg.textContent = ''; msg.className = 'msg';
+            if (!email || email.indexOf('@') < 1) {
+                msg.textContent = 'Enter a valid client email.'; msg.className = 'msg err'; return;
+            }
+            var old = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Sending…';
+            try {
+                var r = await api('/client-pdf/' + CURRENT_ID + '/send', {
+                    method: 'POST', body: JSON.stringify({ to_email: email })
+                });
+                var d = await r.json().catch(function(){ return {}; });
+                if (r.ok && d.success) {
+                    msg.textContent = 'Sent to ' + email + '.'; msg.className = 'msg ok';
+                    document.getElementById('clientEmail').value = '';
+                } else {
+                    msg.textContent = d.error || ('Could not send (' + r.status + ').');
+                    msg.className = 'msg err';
+                }
+            } catch (e) {
+                msg.textContent = 'Network error. Please retry.'; msg.className = 'msg err';
+            } finally {
+                btn.disabled = false; btn.textContent = old;
+            }
+        }
+
+        // ── Client list ──
+        // round233 B2：客户列表同时拉"追踪概览"，让教练一眼看到谁掉队了。
+        var TRACK = {};
+        async function loadClients() {
+            var el = document.getElementById('clientList');
+            try {
+                var r = await api('/clients');
+                if (!r.ok) return;
+                var d = await r.json();
+                var list = (d.clients || []);
+                TRACK = {};
+                try {
+                    var ro = await api('/bodytrack/overview');
+                    if (ro.ok) {
+                        var od = await ro.json();
+                        (od.clients || []).forEach(function(x){ TRACK[x.client_id] = x; });
+                    }
+                } catch (e) {}
+                if (!list.length) { el.innerHTML = '<p class="empty">No clients yet. Generate your first report above.</p>'; return; }
+                var overdue = 0;
+                list.forEach(function(c){ if (TRACK[c.id] && TRACK[c.id].overdue) overdue++; });
+                var head = '';
+                if (list.length) {
+                    head = '<p class="shadow" style="margin:0 0 12px;">'
+                         + (overdue ? ('<b style="color:#B23526">' + overdue + ' of ' + list.length
+                                       + ' client' + (list.length === 1 ? '' : 's') + ' '
+                                       + (overdue === 1 ? 'has' : 'have')
+                                       + ' not been updated in over 3 weeks.</b>')
+                                    : ('All ' + list.length + ' clients updated within 3 weeks.'))
+                         + '</p>';
+                }
+                el.innerHTML = head + list.map(function(c){
+                    var name = c.pseudonym || ('Client #' + c.id);
+                    var meta = [c.dob || '', (c.gender || ''), (c.reports ? c.reports + ' report(s)' : '0 reports')]
+                        .filter(Boolean).join(' · ');
+                    var t = TRACK[c.id];
+                    var trend = '';
+                    if (t) {
+                        var bits = [];
+                        if (t.last_weight !== null && t.last_weight !== undefined) bits.push(fmtNum(t.last_weight, 1) + ' kg');
+                        if (t.checkins) bits.push(t.checkins + ' check-in' + (t.checkins === 1 ? '' : 's'));
+                        var when = (t.days_since === null || t.days_since === undefined)
+                            ? '<span class="due">never recorded</span>'
+                            : (t.days_since === 0 ? 'today'
+                               : (t.days_since + ' day' + (t.days_since === 1 ? '' : 's') + ' ago'));
+                        if (t.overdue) when = '<span class="due">' + when + ' ⚠</span>';
+                        else when = '<span class="ok">' + when + '</span>';
+                        trend = '<span class="trend">' + esc(bits.join(' · ')) + (bits.length ? ' · ' : '') + when + '</span>';
+                    }
+                    return '<div class="client"><div class="who"><b>' + esc(name) + '</b> '
+                         + '<span>' + esc(meta) + '</span>' + trend + '</div>'
+                         + '<button class="ghost" style="margin-right:6px" onclick="toggleLog(' + c.id + ')">Log</button>'
+                         + '<button class="ghost" style="margin-right:6px" onclick="showClientTimeline(' + c.id + ')">History</button>'
+                         + '<button class="del" onclick="deleteClient(' + c.id + ')">Delete</button></div>'
+                         + '<div id="log-' + c.id + '" class="hidden"></div>'
+                         + '<div id="tl-' + c.id + '" class="hidden"></div>';
+                }).join('');
+            } catch (e) { el.innerHTML = '<p class="empty">Could not load clients.</p>'; }
+        }
+
+        // ── Log a check-in (round233 B2) ──
+        function toggleLog(clientId) {
+            var box = document.getElementById('log-' + clientId);
+            if (!box) return;
+            if (!box.classList.contains('hidden')) { box.classList.add('hidden'); box.innerHTML = ''; return; }
+            var today = new Date();
+            var iso = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0')
+                    + '-' + String(today.getDate()).padStart(2, '0');
+            function f(id, label, step) {
+                return '<div><label>' + label + '</label><input id="ci-' + id + '-' + clientId
+                     + '" type="number" step="' + step + '" /></div>';
+            }
+            box.innerHTML = '<div class="logbox">'
+                + '<div class="row">'
+                + '<div><label>Date</label><input id="ci-day-' + clientId + '" type="date" value="' + iso + '" /></div>'
+                + f('weight', 'Weight kg', '0.1')
+                + f('bodyfat', 'Body fat %', '0.1')
+                + f('visceral', 'Visceral', '1')
+                + f('muscle', 'Muscle kg', '0.1')
+                + '</div>'
+                + '<div style="margin-top:10px"><label>Note</label>'
+                + '<input id="ci-note-' + clientId + '" style="width:100%" /></div>'
+                + '<div class="acts"><button class="btn" style="padding:8px 18px" '
+                + 'onclick="saveCheckin(' + clientId + ')">Save</button>'
+                + '<span class="msg" id="ci-msg-' + clientId + '"></span></div>'
+                + '</div>';
+            box.classList.remove('hidden');
+        }
+
+        async function saveCheckin(clientId) {
+            var msg = document.getElementById('ci-msg-' + clientId);
+            function v(id) {
+                var e = document.getElementById('ci-' + id + '-' + clientId);
+                return e && e.value !== '' ? e.value : null;
+            }
+            var body = {
+                client_id: clientId,
+                measured_at: v('day'),
+                weight: v('weight'), body_fat: v('bodyfat'),
+                visceral: v('visceral'), skeletal_muscle: v('muscle'),
+                note: (document.getElementById('ci-note-' + clientId) || {}).value || ''
+            };
+            if (msg) msg.textContent = 'Saving…';
+            try {
+                var r = await api('/bodycheckin', { method: 'POST', body: JSON.stringify(body) });
+                var d = await r.json();
+                if (d && d.success) {
+                    if (msg) msg.textContent = 'Saved · ' + d.checkins + ' check-in' + (d.checkins === 1 ? '' : 's');
+                    loadClients();
+                } else if (msg) msg.textContent = (d && d.error) || 'Could not save.';
+            } catch (e) { if (msg) msg.textContent = 'Network problem.'; }
+        }
+
+// ── Client timeline (coach side: real numbers; the PDF only gets direction) ──
+        var TL_META = [
+            ['skeletal_muscle', 'Skeletal muscle', 'kg',  1],
+            ['body_fat',        'Body fat',        '%',  -1],
+            ['visceral',        'Visceral level',  '',   -1],
+            ['bmi',             'BMI',             '',   -1],
+            ['weight',          'Weight',          'kg',  0],
+            ['bmr',             'Resting burn',    'kcal', 0]
+        ];
+
+        function fmtNum(v, dp) {
+            if (v === null || v === undefined) return '—';
+            return (Math.round(v * Math.pow(10, dp)) / Math.pow(10, dp)).toString();
+        }
+
+        // round233 B2：把多次记录画成一条线。点少于 3 个就不画（2 个点连线没有"趋势"可言）。
+        function sparkline(snaps, key, label, unit, dp) {
+            var pts = snaps.filter(function(s){ return s[key] !== null && s[key] !== undefined; })
+                           .map(function(s){ return { t: String(s.created_at || '').slice(0, 10), v: s[key] }; });
+            if (pts.length < 3) return '';
+            var vals = pts.map(function(p){ return p.v; });
+            var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+            var span = (max - min) || 1;
+            var W = 100, H = 30, PAD = 3;
+            var step = W / (pts.length - 1);
+            var poly = pts.map(function(p, i) {
+                var x = i * step;
+                var y = H - PAD - ((p.v - min) / span) * (H - PAD * 2);
+                return x.toFixed(2) + ',' + y.toFixed(2);
+            }).join(' ');
+            var first = vals[0], lastV = vals[vals.length - 1];
+            var d = Math.round((lastV - first) * Math.pow(10, dp)) / Math.pow(10, dp);
+            var arrow = d > 0 ? '\u2191' : (d < 0 ? '\u2193' : '\u00b7');
+            var good, bad;
+            if (key === 'body_fat' || key === 'visceral') { good = d < 0; bad = d > 0; }
+            else if (key === 'skeletal_muscle') { good = d > 0; bad = d < 0; }
+            else { good = false; bad = false; }
+            var color = good ? '#4A9E42' : (bad ? '#B23526' : '#8A8175');
+            return '<div class="spark">'
+                 + '<div class="sparkhead"><b>' + esc(label) + '</b><span>'
+                 + fmtNum(first, dp) + ' \u2192 ' + fmtNum(lastV, dp) + (unit ? ' ' + unit : '')
+                 + ' &middot; <b style="color:' + color + '">' + arrow + ' '
+                 + (d > 0 ? '+' : '') + fmtNum(d, dp) + '</b></span></div>'
+                 + '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" class="sparksvg">'
+                 + '<polyline points="' + poly + '" fill="none" stroke="' + color
+                 + '" stroke-width="1.6" vector-effect="non-scaling-stroke" '
+                 + 'stroke-linejoin="round" stroke-linecap="round" /></svg>'
+                 + '<div class="sparkfoot">' + esc(pts[0].t) + ' \u2192 ' + esc(pts[pts.length - 1].t) + '</div>'
+                 + '</div>';
+        }
+
+        function daysBetween(a, b) {
+            var da = new Date(String(a).replace(' ', 'T'));
+            var db = new Date(String(b).replace(' ', 'T'));
+            if (isNaN(da.getTime()) || isNaN(db.getTime())) return null;
+            return Math.round((db - da) / 86400000);
+        }
+
+        function renderTimeline(d, box) {
+            var snaps = d.snapshots || [];
+            if (!snaps.length) {
+                box.innerHTML = '<p class="empty">No scans on record yet. Download or send a '
+                              + 'client PDF — that is what writes the first entry.</p>';
+                return;
+            }
+            if (snaps.length === 1) {
+                box.innerHTML = '<p class="empty">One scan on record (' + esc(snaps[0].created_at || '') + '). '
+                              + 'The comparison appears after the next one.</p>';
+                return;
+            }
+
+            var last = snaps[snaps.length - 1];
+            var prev = snaps[snaps.length - 2];
+            var dl = last.delta_from_previous || {};
+            var gap = daysBetween(prev.created_at, last.created_at);
+
+            var up = 0, down = 0, flat = 0;
+            var rows = '';
+            TL_META.forEach(function(t) {
+                var key = t[0], label = t[1], unit = t[2], dir = t[3];
+                var a = prev[key], b = last[key];
+                if (a === null || a === undefined || b === null || b === undefined) return;
+                var v = dl[key];
+                if (v === undefined) v = Math.round((b - a) * 100) / 100;
+                var cls = 'flat', arrow = '·';
+                if (dir !== 0 && Math.abs(v) > 0.05) {
+                    if ((v > 0) === (dir > 0)) { cls = 'good'; arrow = '↑'; up++; }
+                    else { cls = 'bad'; arrow = '↓'; down++; }
+                } else { flat++; }
+                rows += '<tr><td>' + esc(label) + '</td>'
+                      + '<td class="num">' + fmtNum(a, 1) + '</td>'
+                      + '<td class="num">' + fmtNum(b, 1) + '</td>'
+                      + '<td class="num ' + cls + '">' + arrow + ' '
+                      + (v > 0 ? '+' : '') + fmtNum(v, 1) + (unit ? ' ' + unit : '') + '</td></tr>';
+            });
+
+            var warn = '';
+            if (gap !== null && gap < 14) {
+                warn = '<p class="shadow" style="margin:0 0 10px;"><b>' + gap + ' days apart.</b> '
+                     + 'That is close enough that hydration alone can move these numbers. '
+                     + 'Treat it as a re-read, not a trend.</p>';
+            }
+
+            var summary = up + ' improved · ' + flat + ' held · ' + down + ' moved the other way';
+            var trend = sparkline(snaps, 'weight', 'Weight', 'kg', 1)
+                      + sparkline(snaps, 'body_fat', 'Body fat', '%', 1)
+                      + sparkline(snaps, 'skeletal_muscle', 'Skeletal muscle', 'kg', 1);
+            box.innerHTML = trend + warn
+                + '<div style="margin-bottom:8px;"><b>' + esc(String(snaps.length)) + ' scans</b> &middot; '
+                + 'latest ' + esc(String(last.created_at || '').slice(0, 10)) + ' &middot; '
+                + 'since previous: ' + esc(summary) + '</div>'
+                + '<table style="width:100%;border-collapse:collapse;font-size:14px;">'
+                + '<thead><tr style="text-align:left;color:#8A8175;font-size:12px;">'
+                + '<th>Measure</th><th class="num">Last</th><th class="num">Now</th><th class="num">Change</th>'
+                + '</tr></thead><tbody>' + rows + '</tbody></table>'
+                + '<p style="color:#8A8175;font-size:12px;margin:10px 0 0;">Only measures taken the same way '
+                + 'are worth comparing. The client PDF shows direction only — these numbers stay with you.</p>';
+        }
+
+        async function fetchTimeline(clientId, box) {
+            box.classList.remove('hidden');
+            box.innerHTML = '<p class="empty">Loading…</p>';
+            try {
+                var r = await api('/client-timeline/' + clientId);
+                if (r.status === 401) { box.innerHTML = '<p class="empty">Session expired — reload and sign in again.</p>'; return; }
+                if (!r.ok) { box.innerHTML = '<p class="empty">Could not load the timeline.</p>'; return; }
+                renderTimeline(await r.json(), box);
+            } catch (e) {
+                box.innerHTML = '<p class="empty">Network error. Please retry.</p>';
+            }
+        }
+
+        function showClientTimeline(id) {
+            var box = document.getElementById('tl-' + id);
+            if (!box) return;
+            if (!box.classList.contains('hidden')) { box.classList.add('hidden'); return; }
+            fetchTimeline(id, box);
+        }
+
+        function toggleTimeline() {
+            if (!CURRENT_CLIENT_ID) return;
+            var box = document.getElementById('timelinePanel');
+            if (!box) return;
+            if (!box.classList.contains('hidden')) { box.classList.add('hidden'); return; }
+            fetchTimeline(CURRENT_CLIENT_ID, box);
+        }
+
+        async function deleteClient(id) {
+            if (!confirm('Delete this client and all their reports? This cannot be undone.')) return;
+            try {
+                var r = await api('/client/' + id, { method: 'DELETE' });
+                if (r.ok) loadClients();
+                else alert('Could not delete. Please retry.');
+            } catch (e) { alert('Network error. Please retry.'); }
+        }
+
+        boot();
+    </script>
+<!-- Funnel instrumentation (2026-10-17, round 226) ---------------------
+     Everything the cold email points at ends here, and until now nothing on
+     this page was measured: "somebody landed" and "somebody opened the
+     workspace" were the same unanswerable question.
+     Same endpoint and same sid key as /mirror-demo.html, and the recipient
+     tag (uid) rides over from the landing page in sessionStorage, so a
+     visitor stays one person across the hop.
+     Every branch is wrapped twice: instrumentation must never break the
+     workspace. If /api/mirror/track is down, nothing here surfaces. -->
+<script>
+(function () {
+  try {
+    var Q = location.search || '';
+    function pick(k) { var m = Q.match(new RegExp('[?&]' + k + '=([A-Za-z0-9_]+)')); return m ? m[1] : ''; }
+    function uid() {
+      try {
+        var m = Q.match(/[?&]u=([A-Za-z0-9_]+)/);
+        if (m) { try { sessionStorage.setItem('mju', m[1]); } catch (e) {} ; return m[1]; }
+        try { return sessionStorage.getItem('mju') || ''; } catch (e) { return ''; }
+      } catch (e) { return ''; }
+    }
+    var U = uid();
+    var S;
+    try {
+      S = sessionStorage.getItem('mjsid');
+      if (!S) {
+        S = 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        sessionStorage.setItem('mjsid', S);
+      }
+    } catch (e) { S = 'nosid'; }
+    var ISTEST = pick('e2e') === '1';
+
+    function send(ev, extra) {
+      try {
+        var meta = { sid: S, uid: U, page: 'coach', campaign: pick('utm_campaign'),
+                     content: pick('utm_content'), vw: window.innerWidth };
+        if (ISTEST) meta.test = true;
+        if (extra) { for (var k in extra) { if (extra.hasOwnProperty(k)) meta[k] = extra[k]; } }
+        var body = JSON.stringify({ event: ev, meta: meta });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/mirror/track', new Blob([body], { type: 'application/json' }));
+        } else {
+          fetch('/api/mirror/track', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                       body: body, keepalive: true }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    window.__mojoTrack = send;
+
+    /* E1 workspace_view - arriving at all is already the answer to "how many
+       clicked Open the Coach Workspace". */
+    send('workspace_view', { ref: document.referrer || '(direct)' });
+
+    /* E2 workspace_gate - which door the anonymous visitor was shown, read off
+       the DOM (class flip on #signinGate) instead of touching the auth flow.
+       Fire once, the first time it becomes visible. */
+    try {
+      var gate = document.getElementById('signinGate');
+      if (gate) {
+        var said = false;
+        function gateNow(how) {
+          try {
+            if (said || gate.className.indexOf('hidden') >= 0) return;
+            said = true;
+            send('workspace_gate', { how: how,
+              buttons: (gate.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 120) });
+          } catch (e) {}
+        }
+        /* 未登录访客的登录墙是在 boot() 里 **同步** 翻出来的
+           （show('signinGate', true) 走的是 classList.toggle），
+           那时这段脚本还没执行 —— 只挂 MutationObserver 会永远等不到。
+           实测踩过：观察器挂上时类名已经变了，于是 workspace_gate 一次没发。
+           所以先立即查一次真实现状，再挂观察器管后续翻转。 */
+        gateNow('already');
+        new MutationObserver(function () { gateNow('mutation'); })
+          .observe(gate, { attributes: true, attributeFilter: ['class'] });
+      }
+    } catch (e) {}
+
+    /* E3 workspace_cta_click - the two exits on the gate (try the Mirror /
+       subscribe) plus the workspace's own actions. Whitelisted ids only, so
+       nav links do not drown the signal. */
+    var WANT = ['generateBtn', 'dlPdfBtn', 'sendBtn', 'sendPdfBtn', 'dpaAcceptBtn',
+                'dpaSelfAcceptBtn', 'noteSaveBtn', 'notePreviewBtn', 'bootRetryBtn'];
+    try {
+      document.addEventListener('click', function (ev) {
+        try {
+          var el = ev.target && ev.target.closest
+            ? ev.target.closest('a[href],button,[role=button]') : null;
+          if (!el) return;
+          var id = el.id || '';
+          var isLink = el.tagName.toLowerCase() === 'a';
+          if (!isLink && WANT.indexOf(id) < 0) return;
+          var g = document.getElementById('signinGate');
+          send('workspace_cta_click', {
+            eid: id, tag: el.tagName.toLowerCase(),
+            href: el.getAttribute('href') || '',
+            text: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40),
+            gate: (g && g.className.indexOf('hidden') < 0) ? 'gate' : 'inside'
+          });
+        } catch (e) {}
+      }, true);
+    } catch (e) {}
+
+    /* E4 workspace_exit - dwell only. Tells "clicked in and left in 3s" apart
+       from "actually working". Uses visibilitychange + pagehide, never unload. */
+    var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
+    var done = false;
+    function bye() {
+      try {
+        if (done) return; done = true;
+        var t = (window.performance && performance.now) ? performance.now() : Date.now();
+        send('workspace_exit', { dwell_ms: Math.round(t - t0) });
+      } catch (e) {}
+    }
+    try { document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') bye(); }); } catch (e) {}
+    try { window.addEventListener('pagehide', bye); } catch (e) {}
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

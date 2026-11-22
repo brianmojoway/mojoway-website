@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing — MOJOWAY Coach Workspace</title>
+<meta name="description" content="MOJOWAY pricing: a complete personal card for $3.90, or $9.90/month to keep tracking it. For coaches: $59/month for 15 client slots, $99/month for 30. Re-runs inside a slot are free. No seats, no custom quotes, no sales calls." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mojowaylife.com/pricing.html" />
+<meta property="og:title" content="MOJOWAY Coach Workspace — pricing" />
+<meta property="og:description" content="Personal card $3.90, or $9.90/month to track it. Coaches: $59/month for 15 client slots, $99/month for 30." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mojowaylife.com/pricing.html" />
+<meta property="og:site_name" content="MOJOWAY" />
+<meta property="og:image" content="https://mojowaylife.com/og-image.png" />
+<link rel="icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#22252c; --muted:#6b6f78; --line:#e8e2d6;
+    --bg:#faf7f2; --bg2:#f3eee5; --soft:#ffffff;
+    --gold:#b9975b; --accent:#2C5C8F;
+    --serif:"Fraunces","Georgia","Times New Roman",serif;
+    --sans:"Inter","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --radius:20px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);
+       line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  header.top{border-bottom:1px solid var(--line);background:rgba(250,247,242,.94);
+             position:sticky;top:0;z-index:5;backdrop-filter:blur(8px)}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  header.top img{height:30px;display:block}
+  header.top a.back{font-size:14px;font-weight:600;text-decoration:none;color:var(--ink)}
+  header.top a.back:hover{color:var(--accent)}
+
+  .hero{padding:58px 0 10px;text-align:center}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  h1{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;
+     font-size:clamp(30px,4.6vw,48px);line-height:1.12;margin:14px 0 14px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:680px;margin:0 auto}
+
+  .pilot{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+         border-radius:12px;padding:16px 20px;margin:26px auto 0;max-width:760px;text-align:left}
+  .pilot b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
+        gap:18px;padding:34px 0 6px}
+  .tier{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+        padding:24px 20px;display:flex;flex-direction:column}
+  .tier.hot{border-color:var(--gold);box-shadow:0 10px 30px rgba(185,151,91,.14)}
+  .tier h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:0 0 4px}
+  .seat{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .price{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1}
+  .price small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:500}
+  .yr{font-size:13px;color:var(--muted);margin-top:6px}
+  .more{font-size:14px;color:var(--muted);margin:14px 0 18px;flex:1}
+  .btn{display:block;text-align:center;background:var(--ink);color:#fff;text-decoration:none;
+       padding:13px 18px;border-radius:999px;font-weight:600;font-size:15px}
+  .btn:hover{background:var(--accent)}
+  .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);margin-top:9px}
+  .btn.alt:hover{background:var(--bg2);color:var(--ink)}
+  .badge{display:inline-block;background:var(--gold);color:#fff;font-size:11px;font-weight:700;
+         letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:10px}
+
+  .cur{background:var(--bg2);border:1px solid var(--line);border-radius:12px;
+       padding:16px 20px;margin:26px auto 0;max-width:760px;font-size:14px;text-align:left}
+  .guar{text-align:center;color:var(--muted);font-size:14px;margin-top:18px}
+
+  h3.faqh{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:600;
+          text-align:center;margin:56px 0 6px}
+  .faq{max-width:800px;margin:0 auto}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;
+               padding:16px 20px;margin:12px 0}
+  .faq summary{font-weight:600;cursor:pointer;font-size:16px}
+  .faq p{margin:10px 0 0;color:var(--muted);font-size:15px}
+  .cta{padding:52px 0 72px;text-align:center}
+  .cta a.big{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;
+             padding:16px 32px;border-radius:999px;font-weight:600;font-size:16px}
+  .cta a.big:hover{background:var(--accent)}
+  .cta .note{margin-top:14px;color:var(--muted);font-size:14px}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/"><img src="assets/mojoway-logo.png" alt="MOJOWAY" /></a>
+    <a class="back" href="/#view-coach">How it works</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker">Pricing</div>
+      <h1>Save the hours. Catch the moment.<br /><em>Keep the client.</em></h1>
+      <p class="lede">The Coach Workspace turns a ten-minute client conversation into three topics
+        and two angles for the first paid session. Pick the seat count that matches your practice.</p>
+
+      <div class="pilot">
+        <b>The Coach Workspace is free to start</b> &mdash; one client, no card, no trial clock. Personal cards are live now at $3.90. Past that first client, Coach is $59/month for 15 client slots and Scale is $99/month for 30. Prices hold for the rest of the pilot, and you will hear from us before anything changes.
+      </div>
+
+      <div class="grid">
+        <div class="tier">
+          <h2>Personal</h2>
+          <div class="seat">One person &middot; your own card</div>
+          <div class="price">$3.90</div>
+          <div class="yr">one time &middot; yours to keep</div>
+          <div class="more">Your complete card: where your energy pattern and your body signals meet.
+            Tied to you personally &mdash; it is not a client card and cannot be transferred.</div>
+          <a class="btn" href="/personal.html">Get my card &rarr;</a>
+          <a class="btn alt" href="https://buy.stripe.com/fZudRbcyAdDJ5Zk3jD4Ni0u" target="_blank" rel="noopener">Or $9.90/mo &middot; track it over time</a>
+        </div>
+
+        <div class="tier hot">
+          <span class="badge">Most coaches</span>
+          <h2>Coach</h2>
+          <div class="seat">15 client slots &middot; 1 coach</div>
+          <div class="price">$59<small> /mo</small></div>
+          <div class="yr">or $590/yr &middot; 2 months free</div>
+          <div class="more">15 client slots open at once, and you can re-run any of them as often as you
+            like &mdash; free. That works out at <b>$3.93 per client</b>, the same as one personal card.</div>
+          <a class="btn" href="https://buy.stripe.com/9B6dRbgOQarxevQ6vP4Ni0l" target="_blank" rel="noopener">Start with Coach &rarr;</a>
+          <a class="btn alt" href="https://buy.stripe.com/9B66oJ4248jp3Rc7zT4Ni0m" target="_blank" rel="noopener">Pay yearly ($590)</a>
+        </div>
+
+        <div class="tier">
+          <h2>Coach Scale</h2>
+          <div class="seat">30 client slots &middot; 1 coach</div>
+          <div class="price">$99<small> /mo</small></div>
+          <div class="yr">or $999/yr &middot; 2 months free</div>
+          <div class="more">For a full caseload. <b>$3.30 per client</b> &mdash; cheaper per client than
+            Coach, because you are carrying more of them.</div>
+          <a class="btn" href="https://buy.stripe.com/6oU3cxeGIbvB3Rc1bv4Ni0v" target="_blank" rel="noopener">Start with Scale &rarr;</a>
+          <a class="btn alt" href="https://buy.stripe.com/cNi14p2Y08jpgDYdYh4Ni0w" target="_blank" rel="noopener">Pay yearly ($999)</a>
+        </div>
+      </div>
+
+      <div class="cur">
+      <b>Prices are in US dollars (USD).</b> If you are paying from outside the US, Stripe may show the equivalent in your local currency &mdash; it is the same plan at the same USD price either way.
+    </div>
+
+      <div class="guar">All plans are billed in US dollars via Stripe &middot; cancel anytime &middot;
+        <b><a href="/refund-policy.html" style="color:inherit;text-decoration:underline">7-day money-back, no questions asked</a></b>.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3 class="faqh">Questions people actually ask</h3>
+      <div class="faq">
+        <details>
+          <summary>Do I have to pay anything today?</summary>
+          <p>Not for your first client &mdash; one client is free and needs no
+             card. Past that it is $59/month for 15 client slots ($99/month for 30). A personal card is
+             $3.90 if you want one for yourself, and that is a one-off, not a subscription.</p>
+        </details>
+        <details>
+          <summary>What currency will I be charged in?</summary>
+        <p>Prices are set in US dollars. Stripe may display the equivalent in your local currency depending on where you are paying from; it is the same plan at the same USD price either way. Discount codes and refunds follow the currency you paid in.</p>
+        </details>
+        <details>
+          <summary>Can I cancel?</summary>
+          <p>Yes, at any time, from your account. There is also a <a href="/refund-policy.html" style="color:#B23526">7-day money-back guarantee</a> with no
+             questions asked, so you can find out whether this fits how you actually work.</p>
+        </details>
+        <details>
+          <summary>What counts as a client slot?</summary>
+          <p>One slot is one client you are working with right now. Coach gives you 15 open at once,
+             Scale gives you 30 &mdash; and you can re-run any client as often as you like inside their
+             slot, at no extra cost. Slots free up when you close a client.</p>
+        </details>
+        <details>
+          <summary>Can I use the $3.90 personal card for clients?</summary>
+          <p>No. The personal card is tied to the person who bought it, for their own use. Client cards
+             come from the Coach Workspace, because clients need slots, history and unlimited re-runs &mdash;
+             none of which a single one-off card carries.</p>
+        </details>
+        <details>
+          <summary>Is there anything I can look at before deciding?</summary>
+          <p>Yes. The <a href="/mirror-demo.html">live sample</a> shows the exact report a coach gets
+             back, with no login and nothing stored. There are also
+             <a href="/watch.html">two short videos</a> on what changes in your week.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <a class="big" href="/coach.html">Open the workbench free &rarr;</a>
+      <p class="note">No card for your first client. Nothing stored until you choose to save it.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Mojoway Spectrum Limited &middot; Hong Kong</span>
+    <span><a href="/">Home</a> &middot; <a href="/coach.html">Coach workspace</a> &middot;
+      <a href="/watch.html">Videos</a> &middot; <a href="/refund-policy.html">Refund policy</a> &middot;
+      <a href="/privacy-policy.html">Privacy</a> &middot; <a href="/terms-of-service.html">Terms</a> &middot;
+      <a href="mailto:brian@mojowaylife.com">brian@mojowaylife.com</a></span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do I have to pay anything today?",
+     "acceptedAnswer":{"@type":"Answer","text":"Not for your first client: one client is free and needs no card. Past that the Coach Workspace is $59/month for 15 client slots, or $99/month for 30. A personal card is $3.90 if you want one for yourself, and that is a one-off, not a subscription."}},
+    {"@type":"Question","name":"What currency will I be charged in?",
+     "acceptedAnswer":{"@type":"Answer","text":"Prices are set in US dollars. Stripe may display the equivalent in your local currency depending on where you are paying from; it is the same plan at the same USD price either way. Discount codes and refunds follow the currency you paid in."}},
+    {"@type":"Question","name":"Can I cancel?",
+     "acceptedAnswer":{"@type":"Answer","text":"Yes, at any time, from your account. There is also a 7-day money-back guarantee with no questions asked, so you can find out whether this fits how you actually work."}},
+    {"@type":"Question","name":"What counts as a client slot?",
+     "acceptedAnswer":{"@type":"Answer","text":"One slot is one client you are working with right now. Coach gives you 15 open at once, Scale gives you 30, and you can re-run any client as often as you like inside their slot at no extra cost. Slots free up when you close a client."}},
+    {"@type":"Question","name":"Can I use the $3.90 personal card for clients?",
+     "acceptedAnswer":{"@type":"Answer","text":"No. The personal card is tied to the person who bought it, for their own use. Client cards come from the Coach Workspace, because clients need slots, history and unlimited re-runs."}},
+    {"@type":"Question","name":"Is there anything I can look at before deciding?",
+     "acceptedAnswer":{"@type":"Answer","text":"Yes. The live sample shows the exact report a coach gets back, with no login and nothing stored. There are also two short videos on what changes in your week."}}
+  ]
+}
+</script>
+
+<!-- Coach door + funnel instrumentation (round 206k). data-variant="coach":
+     this page's reader is already a coach looking at coach pricing, so the
+     default door's "Here as a coach, not as the client?" would ask a question
+     they have already answered. -->
+<script src="/assets/mojo_capture.js?v=2" data-page="pricing" data-variant="coach" defer></script>
+
+</body>
+</html>

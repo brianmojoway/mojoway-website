@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The First Session Question Library — MOJOWAY</title>
+<meta name="description" content="32 questions for the first session with a new client, grouped by what they are for — plus the five that quietly cost you the room. Free, no signup to read.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://mojowaylife.com/first-session-questions.html">
+<style>
+  :root { --ink:#2E2A25; --hair:#D8CFBF; --accent:#B23526; --bg:#FDFBF7; --muted:#6B655C; --faint:#8A8378; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.62; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
+  header { border-bottom:1px solid var(--hair); background:#fff; }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px; gap:16px; }
+  /* BRAND LOCKUP — MUST match index.html: same /assets/mojoway-logo.png, no text logo */
+  .logo-link { display:flex; align-items:center; text-decoration:none; flex:0 0 auto; }
+  .logo-img { height:22px; width:auto; display:block; }
+  header .tag { font-size:.78em; letter-spacing:.14em; color:var(--faint); text-transform:uppercase; }
+  h1 { font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:2.1em; line-height:1.2; letter-spacing:-.01em; margin-bottom:14px; }
+  h2 { font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:1.35em; margin-bottom:10px; }
+  .hero { padding:52px 0 26px; }
+  .hero .kicker { font-size:.76em; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:14px; }
+  .hero p { font-size:1.06em; color:var(--muted); max-width:600px; }
+  .toc { background:#fff; border:1px solid var(--hair); border-radius:14px; padding:18px 22px; margin:26px 0 34px; }
+  .toc p { font-size:.8em; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-bottom:8px; }
+  .toc a { display:inline-block; margin:0 14px 4px 0; color:var(--accent); font-size:.95em; }
+  section.q { padding:26px 0; border-top:1px solid var(--hair); }
+  section.q .num { font-family:Georgia,serif; font-size:.85em; color:var(--accent); font-weight:600; letter-spacing:.08em; }
+  section.q h2 { margin-top:4px; }
+  section.q .purpose { color:var(--muted); font-size:.96em; margin-bottom:16px; }
+  ol.qs { list-style:none; counter-reset:q; }
+  ol.qs li { counter-increment:q; position:relative; padding:0 0 16px 42px; }
+  ol.qs li:before { content:counter(q); position:absolute; left:0; top:0; width:26px; height:26px;
+    border-radius:50%; background:#fff; border:1px solid var(--hair); color:var(--accent);
+    font-family:Georgia,serif; font-size:.82em; font-weight:600; display:flex; align-items:center; justify-content:center; }
+  ol.qs .qtext { font-family:Georgia,"Times New Roman",serif; font-size:1.1em; line-height:1.45; }
+  ol.qs .why { display:block; color:var(--muted); font-size:.9em; margin-top:5px; }
+  .avoid li:before { color:#8A8378; border-color:#E3D9C9; }
+  .card { background:#fff; border:1px solid var(--hair); border-radius:16px; padding:26px; margin:26px 0; }
+  .card h2 { font-size:1.3em; }
+  .card p { color:var(--muted); margin-bottom:12px; }
+  label { display:block; font-size:.86em; font-weight:600; margin:14px 0 6px; }
+  input { width:100%; padding:11px 14px; border:1px solid var(--hair); border-radius:10px; font-size:1em; font-family:inherit; background:#fff; color:var(--ink); outline:none; }
+  input:focus { border-color:var(--accent); }
+  .go { display:block; width:100%; margin-top:16px; padding:14px; background:var(--accent); color:#fff; border:none; border-radius:999px; font-size:1.03em; font-weight:700; cursor:pointer; font-family:inherit; }
+  .go:disabled { opacity:.6; cursor:wait; }
+  .hint { font-size:.8em; color:var(--faint); margin-top:10px; margin-bottom:0; }
+  .msg { font-size:.92em; margin-top:12px; min-height:20px; }
+  .msg.ok { color:#2E6B3E; } .msg.bad { color:#8A8378; }
+  .out { display:none; margin-top:16px; padding-top:16px; border-top:1px dashed var(--hair); }
+  .out a { display:block; margin-bottom:8px; color:var(--accent); font-weight:600; }
+  .boxlink { background:#fff; border:1px solid var(--hair); border-left:4px solid var(--accent); border-radius:10px; padding:16px 20px; margin:20px 0; }
+  .boxlink p { margin:0; color:var(--muted); }
+  a { color:var(--accent); }
+  footer { border-top:1px solid var(--hair); background:#fff; margin-top:40px; }
+  footer .wrap { padding:18px 20px; font-size:.8em; color:var(--faint); }
+  footer a { color:var(--muted); }
+  @media print { header,footer,.card,.toc,.boxlink { display:none; } body { background:#fff; } section.q { page-break-inside:avoid; } }
+  @media (max-width:620px){ h1{font-size:1.65em} ol.qs li{padding-left:0} ol.qs li:before{position:static;display:inline-flex;margin-right:8px} }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "name": "32 first-session questions for coaches", "url": "https://mojowaylife.com/first-session-questions.html", "isPartOf": {"@type": "WebSite", "name": "MOJOWAY", "url": "https://mojowaylife.com"}, "mainEntity": [{"@type": "Question", "name": "\"What made you look for a coach now, rather than six months ago\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "You are looking for the trigger, not the topic. The trigger tells you how much urgency is in the room."}}, {"@type": "Question", "name": "\"If our work goes well, what is different in your week\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Forces a concrete answer. Vague goals produce vague sessions, and vague sessions produce a client who does not rebook."}}, {"@type": "Question", "name": "\"Have you worked with a coach before? How did that go\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Someone who was let down before will test you. Knowing that in advance changes how you read their silence."}}, {"@type": "Question", "name": "\"What should I know about you that isn't on the form\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Signals that the form was the minimum, not the point. It also gives permission to go off-script."}}, {"@type": "Question", "name": "\"How do you want to use this hour\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Hands them the steering wheel early. People who feel steered resist; people who feel consulted engage."}}, {"@type": "Question", "name": "\"What would make this hour worth your time\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "A lower bar than \"what are your goals\", so it gets a truthful answer instead of a polished one."}}, {"@type": "Question", "name": "\"Anything you are hoping I won't ask about\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Almost nobody says no. What they do instead — the pause, the laugh, the \"no, nothing\" — is the map."}}, {"@type": "Question", "name": "\"How direct do you want me to be\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Some people want to be challenged in session one; some will leave. Ask, then honour the answer."}}, {"@type": "Question", "name": "\"What have you already tried\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Saves you from proposing the thing that failed last year. Also shows respect for the effort they have made."}}, {"@type": "Question", "name": "\"If that problem vanished tomorrow, what would you notice first\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Moves the conversation from the absence of a problem to the presence of a life."}}, {"@type": "Question", "name": "\"Who else is affected by this\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Almost nothing is only about one person. This finds the real system, and the real stakes."}}, {"@type": "Question", "name": "\"What would you tell a friend in exactly this situation\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "People give better advice than they take. The gap between the two is often the whole session."}}, {"@type": "Question", "name": "\"What is the story you tell about why this keeps happening\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Names the narrative without arguing with it. You cannot change a story nobody has said out loud."}}, {"@type": "Question", "name": "\"What part of this is actually working\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Counterweight. A session that is only about deficits leaves people heavier than they arrived."}}, {"@type": "Question", "name": "\"What does staying where you are cost you\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Change is expensive. Until the cost of not changing is spoken, motivation stays theoretical."}}, {"@type": "Question", "name": "\"What are you getting out of things staying as they are\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "There is always a payoff. Finding it is the difference between a plan and a relapse."}}, {"@type": "Question", "name": "\"What would you have to give up to get what you say you want\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "The most useful question in this list. Most stuckness is an unpriced trade, not a missing skill."}}, {"@type": "Question", "name": "\"When did you last do the thing you are avoiding\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Finds a working example inside their own life, which beats any advice you could give."}}, {"@type": "Question", "name": "\"What are you afraid I will think of you\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Use once, gently, and only once you have earned it. It is the fastest route to the real material."}}, {"@type": "Question", "name": "\"How will we both know this is working\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Agree it now, while nobody is defending a position. It becomes your agenda for every review."}}, {"@type": "Question", "name": "\"What is the smallest change that would still count\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Gives you an early win to point at. Early evidence is what keeps people in the room."}}, {"@type": "Question", "name": "\"What would you want to be true in ninety days\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Long enough to be meaningful, short enough to be real. Vague horizons never get reviewed."}}, {"@type": "Question", "name": "\"What have you achieved before that you are proud of\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Reveals their own model of how they succeed, which is the model you should be borrowing."}}, {"@type": "Question", "name": "\"What is the one thing from today you want to keep\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "If they cannot name one, the hour did not land, and you would rather know now."}}, {"@type": "Question", "name": "\"What is the first small thing you will do before we speak again\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Small and specific beats big and noble. This is the only homework that gets done."}}, {"@type": "Question", "name": "\"What should we do differently next time\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Invites feedback while it is cheap. Also tells you what they were too polite to say earlier."}}, {"@type": "Question", "name": "\"Was there anything you wanted to raise that we didn't get to\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "The last door. A meaningful share of the real agenda arrives in the final two minutes."}}, {"@type": "Question", "name": "\"\"Why haven't you done that yet?\"\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Reads as an accusation. It buys compliance and costs you the truth. Use \"what has got in the way?\" instead."}}, {"@type": "Question", "name": "\"\"Have you tried…?\" before they finish the story.\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Solutions offered too early teach the client that the useful part is over. Let them finish, then wait three seconds."}}, {"@type": "Question", "name": "\"Anything with two questions in one sentence.\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "They will answer the easier one, usually the second. Split it."}}, {"@type": "Question", "name": "\"\"How does that make you feel?\"\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "Not wrong, just worn out. It invites a label instead of a description. Ask what happened next, or what they noticed in their body."}}, {"@type": "Question", "name": "\"A question you already know the answer to.\" — what is this question for?", "acceptedAnswer": {"@type": "Answer", "text": "It is a test, not a question, and clients can tell. Ask it as a statement of curiosity, or not at all."}}]}</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo-link" aria-label="MOJOWAY — home"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" class="logo-img" loading="eager" fetchpriority="high" decoding="sync"></a>
+    <div class="tag">Free &middot; no signup to read</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="kicker">For coaches</div>
+    <h1>The first session question library.</h1>
+    <p>Thirty-two questions, grouped by what they are actually for &mdash; plus the five that quietly
+       cost you the room. Take them, use them, no attribution needed.</p>
+  </section>
+
+  <div class="toc">
+    <p>Jump to</p>
+    <a href="#before">1. Before they arrive</a>
+    <a href="#open">2. Opening</a>
+    <a href="#matters">3. What actually matters</a>
+    <a href="#stuck">4. Where they are stuck</a>
+    <a href="#success">5. What success means</a>
+    <a href="#close">6. Closing</a>
+    <a href="#avoid">7. What not to ask</a>
+  </div>
+
+  <div class="boxlink">
+    <p><strong>Why a library and not a script.</strong> A script assumes you know which question the person
+      in front of you needs. You don't yet. So the useful thing is not the perfect question &mdash;
+      it's knowing what each question is <em>for</em>, so you can pick in the moment.</p>
+  </div>
+
+  <section class="q" id="before">
+    <div class="num">01</div>
+    <h2>Before they arrive</h2>
+    <p class="purpose">Send two or three of these in your confirmation message. The first session goes
+      twice as fast when they have already started thinking.</p>
+    <ol class="qs">
+      <li><span class="qtext">What made you look for a coach now, rather than six months ago?</span>
+        <span class="why">You are looking for the trigger, not the topic. The trigger tells you how much urgency is in the room.</span></li>
+      <li><span class="qtext">If our work goes well, what is different in your week?</span>
+        <span class="why">Forces a concrete answer. Vague goals produce vague sessions, and vague sessions produce a client who does not rebook.</span></li>
+      <li><span class="qtext">Have you worked with a coach before? How did that go?</span>
+        <span class="why">Someone who was let down before will test you. Knowing that in advance changes how you read their silence.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="open">
+    <div class="num">02</div>
+    <h2>Opening the session</h2>
+    <p class="purpose">The first four minutes set whether they will tell you the real thing or the tidy version.</p>
+    <ol class="qs">
+      <li><span class="qtext">What should I know about you that isn't on the form?</span>
+        <span class="why">Signals that the form was the minimum, not the point. It also gives permission to go off-script.</span></li>
+      <li><span class="qtext">How do you want to use this hour?</span>
+        <span class="why">Hands them the steering wheel early. People who feel steered resist; people who feel consulted engage.</span></li>
+      <li><span class="qtext">What would make this hour worth your time?</span>
+        <span class="why">A lower bar than "what are your goals", so it gets a truthful answer instead of a polished one.</span></li>
+      <li><span class="qtext">Anything you are hoping I <em>won't</em> ask about?</span>
+        <span class="why">Almost nobody says no. What they do instead &mdash; the pause, the laugh, the "no, nothing" &mdash; is the map.</span></li>
+      <li><span class="qtext">How direct do you want me to be?</span>
+        <span class="why">Some people want to be challenged in session one; some will leave. Ask, then honour the answer.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="matters">
+    <div class="num">03</div>
+    <h2>Finding what actually matters</h2>
+    <p class="purpose">The presenting problem is rarely the problem. These questions go one layer down without prying.</p>
+    <ol class="qs">
+      <li><span class="qtext">What have you already tried?</span>
+        <span class="why">Saves you from proposing the thing that failed last year. Also shows respect for the effort they have made.</span></li>
+      <li><span class="qtext">If that problem vanished tomorrow, what would you notice first?</span>
+        <span class="why">Moves the conversation from the absence of a problem to the presence of a life.</span></li>
+      <li><span class="qtext">Who else is affected by this?</span>
+        <span class="why">Almost nothing is only about one person. This finds the real system, and the real stakes.</span></li>
+      <li><span class="qtext">What would you tell a friend in exactly this situation?</span>
+        <span class="why">People give better advice than they take. The gap between the two is often the whole session.</span></li>
+      <li><span class="qtext">What is the story you tell about why this keeps happening?</span>
+        <span class="why">Names the narrative without arguing with it. You cannot change a story nobody has said out loud.</span></li>
+      <li><span class="qtext">What part of this is actually working?</span>
+        <span class="why">Counterweight. A session that is only about deficits leaves people heavier than they arrived.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="stuck">
+    <div class="num">04</div>
+    <h2>Where they are stuck</h2>
+    <p class="purpose">Stuck usually means a cost they have not named, not a skill they lack.</p>
+    <ol class="qs">
+      <li><span class="qtext">What does staying where you are cost you?</span>
+        <span class="why">Change is expensive. Until the cost of not changing is spoken, motivation stays theoretical.</span></li>
+      <li><span class="qtext">What are you getting out of things staying as they are?</span>
+        <span class="why">There is always a payoff. Finding it is the difference between a plan and a relapse.</span></li>
+      <li><span class="qtext">What would you have to give up to get what you say you want?</span>
+        <span class="why">The most useful question in this list. Most stuckness is an unpriced trade, not a missing skill.</span></li>
+      <li><span class="qtext">When did you last do the thing you are avoiding?</span>
+        <span class="why">Finds a working example inside their own life, which beats any advice you could give.</span></li>
+      <li><span class="qtext">What are you afraid I will think of you?</span>
+        <span class="why">Use once, gently, and only once you have earned it. It is the fastest route to the real material.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="success">
+    <div class="num">05</div>
+    <h2>What success means to them</h2>
+    <p class="purpose">You need a definition you both recognise, or you will be measuring different things for three months.</p>
+    <ol class="qs">
+      <li><span class="qtext">How will we both know this is working?</span>
+        <span class="why">Agree it now, while nobody is defending a position. It becomes your agenda for every review.</span></li>
+      <li><span class="qtext">What is the smallest change that would still count?</span>
+        <span class="why">Gives you an early win to point at. Early evidence is what keeps people in the room.</span></li>
+      <li><span class="qtext">What would you want to be true in ninety days?</span>
+        <span class="why">Long enough to be meaningful, short enough to be real. Vague horizons never get reviewed.</span></li>
+      <li><span class="qtext">What have you achieved before that you are proud of?</span>
+        <span class="why">Reveals their own model of how they succeed, which is the model you should be borrowing.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="close">
+    <div class="num">06</div>
+    <h2>Closing the session</h2>
+    <p class="purpose">The last five minutes decide whether there is a session two.</p>
+    <ol class="qs">
+      <li><span class="qtext">What is the one thing from today you want to keep?</span>
+        <span class="why">If they cannot name one, the hour did not land, and you would rather know now.</span></li>
+      <li><span class="qtext">What is the first small thing you will do before we speak again?</span>
+        <span class="why">Small and specific beats big and noble. This is the only homework that gets done.</span></li>
+      <li><span class="qtext">What should we do differently next time?</span>
+        <span class="why">Invites feedback while it is cheap. Also tells you what they were too polite to say earlier.</span></li>
+      <li><span class="qtext">Was there anything you wanted to raise that we didn't get to?</span>
+        <span class="why">The last door. A meaningful share of the real agenda arrives in the final two minutes.</span></li>
+    </ol>
+  </section>
+
+  <section class="q" id="avoid">
+    <div class="num">07</div>
+    <h2>What not to ask</h2>
+    <p class="purpose">These are not bad questions. They are questions that are wrong in minute ten.</p>
+    <ol class="qs avoid">
+      <li><span class="qtext">"Why haven't you done that yet?"</span>
+        <span class="why">Reads as an accusation. It buys compliance and costs you the truth. Use "what has got in the way?" instead.</span></li>
+      <li><span class="qtext">"Have you tried&hellip;?" before they finish the story.</span>
+        <span class="why">Solutions offered too early teach the client that the useful part is over. Let them finish, then wait three seconds.</span></li>
+      <li><span class="qtext">Anything with two questions in one sentence.</span>
+        <span class="why">They will answer the easier one, usually the second. Split it.</span></li>
+      <li><span class="qtext">"How does that make you feel?"</span>
+        <span class="why">Not wrong, just worn out. It invites a label instead of a description. Ask what happened next, or what they noticed in their body.</span></li>
+      <li><span class="qtext">A question you already know the answer to.</span>
+        <span class="why">It is a test, not a question, and clients can tell. Ask it as a statement of curiosity, or not at all.</span></li>
+    </ol>
+  </section>
+
+  <div class="card" id="get">
+    <h2>Take the client-facing version</h2>
+    <p>The library above is yours to use however you like. If it is useful, the version I actually hand
+      new clients is different: three questions, written in plain language, sent before session one &mdash;
+      the ones that make someone arrive already thinking rather than waiting to be asked.</p>
+    <p>Put in an address and both open right here: the client-facing note you can copy, and a
+      print-friendly sheet of the full library.</p>
+    <form id="qForm" novalidate>
+      <label for="qEmail">Your email</label>
+      <input type="email" id="qEmail" autocomplete="email" placeholder="you@yourpractice.com">
+      <button type="submit" class="go" id="qBtn">Send me both</button>
+      <div class="msg" id="qMsg" role="status"></div>
+      <p class="hint">Both links open on this page immediately. I also send them once by email &mdash; one
+        message, nothing after it.</p>
+    </form>
+    <div class="out" id="qOut">
+      <a href="#close">The client-facing note (scroll to &ldquo;Closing the session&rdquo;) &rarr;</a>
+      <a href="javascript:window.print()">Print the full library &rarr;</a>
+      <a href="/mirror-demo.html?utm_source=questionsheet&amp;utm_medium=page&amp;utm_campaign=questionsheet_out">See what your client fills in before session one &rarr;</a>
+    </div>
+  </div>
+
+  <div class="boxlink">
+    <p><strong>Where this list comes from.</strong> It is the list I wrote for my own first sessions, then
+      kept because clients responded differently to it. The questions here are the ones that produced an
+      answer worth writing down &mdash; not the ones that sounded good.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Mojoway Spectrum Limited &middot; Hong Kong &middot;
+    <a href="/">Home</a> &middot;
+    <a href="/partners.html">Partner program</a> &middot;
+    <a href="/coach.html">Coach workspace</a> &middot;
+    <a href="mailto:brian@mojowaylife.com">brian@mojowaylife.com</a>
+  </div>
+</footer>
+
+<!-- Coach door + funnel instrumentation: same shared source as the other pages. -->
+<script src="/assets/mojo_capture.js?v=2" data-page="questionsheet" defer></script>
+
+<script>
+/* Capture for the question library. Same endpoint and same honest pattern as
+   the coach door: the links are revealed immediately, and one email follows.
+   The promise on the page is "both links open right here" -- so the reveal
+   must not depend on the email arriving. */
+(function () {
+  'use strict';
+  try {
+    var form = document.getElementById('qForm');
+    if (!form) return;
+    var em = document.getElementById('qEmail'), btn = document.getElementById('qBtn'),
+        msg = document.getElementById('qMsg'), out = document.getElementById('qOut');
+    function pick(k) {
+      var m = (location.search || '').match(new RegExp('[?&]' + k + '=([A-Za-z0-9_-]+)'));
+      return m ? m[1] : '';
+    }
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var v = (em.value || '').trim();
+      if (v.indexOf('@') < 1 || v.indexOf('.') < 0) {
+        msg.className = 'msg bad'; msg.textContent = 'Please check that email address.'; return;
+      }
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = 'Sending\u2026';
+      msg.className = 'msg'; msg.textContent = '';
+      fetch('/api/lead-capture', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: v, source: 'questionsheet',
+                               campaign: pick('utm_campaign'), page: 'questionsheet' })
+      }).then(function (r) {
+        return r.json().then(function (d) { return { ok: r.ok, data: d || {} }; });
+      }).then(function (r) {
+        if (r.ok && r.data && r.data.ok) {
+          try { window.__mojoTrack('lead_captured_ok', { door: 'questionsheet' }); } catch (e) {}
+          if (out) out.style.display = 'block';
+          btn.textContent = 'Done';
+          msg.className = 'msg ok';
+          msg.textContent = 'Both are open below.';
+        } else {
+          btn.disabled = false; btn.textContent = label;
+          msg.className = 'msg bad';
+          msg.textContent = (r.data && r.data.msg) ? String(r.data.msg).slice(0, 100)
+                                                   : 'Could not save that. Please try again.';
+        }
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = label;
+        msg.className = 'msg bad';
+        msg.textContent = 'Something went wrong. Please try again.';
+      });
+    });
+  } catch (e) {}
+})();
+</script>
+
+</body>
+</html>

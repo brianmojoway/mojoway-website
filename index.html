@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MOJOWAY — Coaching tools &amp; self-growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood:#3FA37A; --fire:#E0613E; --earth:#E0A93E; --metal:#9AA7B2; --water:#2C5C8F;
+    --ink:#22252c; --muted:#6b6f78; --line:#e8e2d6; --bg:#faf7f2; --bg2:#f3eee5; --soft:#ffffff;
+    --gold:#b9975b; --gold-ink:#7a5a22; --gold-soft:rgba(185,151,91,.35);
+    --accent:var(--water); --radius:20px;
+    --serif:"Fraunces","Georgia","Times New Roman",serif;
+    --sans:"Inter","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  img{display:block;max-width:100%}
+  button{font-family:inherit;cursor:pointer}
+
+  /* ---------- scroll progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;background:linear-gradient(90deg,var(--wood),var(--fire),var(--earth),var(--metal),var(--water));transition:width .1s linear}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:80;background:rgba(250,247,242,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo img{height:40px;width:auto;animation:logoIn 1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes logoIn{from{opacity:0;letter-spacing:6px;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
+  nav.links{display:flex;align-items:center;gap:4px}
+  nav.links a.navlink{font-size:14px;font-weight:500;color:var(--muted);padding:9px 14px;border-radius:10px;transition:.25s;position:relative}
+  nav.links a.navlink::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.25s}
+  nav.links a.navlink:hover{color:var(--ink)}
+  nav.links a.navlink:hover::after{transform:scaleX(1)}
+  nav.links a.navlink.active{color:var(--ink);font-weight:700}
+  nav.links a.navlink.active::after{transform:scaleX(1)}
+  .nav-coaches{background:var(--ink);color:#fff !important;font-weight:700;padding:10px 18px !important;border-radius:12px !important;transition:.25s}
+  .nav-coaches:hover{background:var(--water);transform:translateY(-1px);box-shadow:0 8px 20px rgba(44,92,143,.25)}
+  .nav-coaches::after{display:none}
+  .nav-signin{border:1px solid var(--line);color:var(--ink) !important;font-weight:600;background:#fff}
+  .hamb{display:none;background:none;border:none;font-size:24px}
+  @media(max-width:900px){nav.links{position:fixed;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:14px 22px;gap:4px;transform:translateY(-160%);transition:.35s cubic-bezier(.2,.7,.2,1);box-shadow:0 24px 48px rgba(0,0,0,.08)}
+    nav.links.open{transform:none}
+    nav.links a.navlink{font-size:16px;padding:12px}
+    .hamb{display:block}}
+
+  /* ---------- VIEW transitions ---------- */
+  .view{display:none}
+  .view.active{display:block;animation:viewIn .55s cubic-bezier(.2,.7,.2,1)}
+  @keyframes viewIn{from{opacity:0;transform:translateY(18px) scale(.995)}to{opacity:1;transform:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:96px 0 72px;background:
+    radial-gradient(1200px 500px at 85% -10%,rgba(224,169,62,.10),transparent 60%),
+    radial-gradient(900px 420px at 8% 110%,rgba(44,92,143,.08),transparent 60%),var(--bg)}
+  .ribbon{position:absolute;inset:-30% -10% auto -10%;height:160%;z-index:0;filter:blur(70px);opacity:.42;background:linear-gradient(120deg,var(--wood),var(--fire),var(--earth),var(--metal),var(--water),var(--wood));background-size:300% 300%;animation:flow 18s ease infinite}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .orb{position:absolute;border-radius:50%;filter:blur(50px);opacity:.35;z-index:0;animation:drift 12s ease-in-out infinite alternate}
+  .orb.o1{width:220px;height:220px;background:var(--wood);top:8%;left:38%;animation-duration:14s}
+  .orb.o2{width:170px;height:170px;background:var(--fire);top:52%;left:6%;animation-duration:11s;animation-delay:1.2s}
+  .orb.o3{width:190px;height:190px;background:var(--water);top:24%;right:4%;animation-duration:16s;animation-delay:.6s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(34px,-26px) scale(1.12)}}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-ink);display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+  .hero h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,66px);line-height:1.06;margin:20px 0 20px;font-weight:600;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--water)}
+  .hero h1 .l{display:block;opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero h1 .l:nth-child(2){animation-delay:.14s}
+  .hero h1 .l:nth-child(3){animation-delay:.28s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero p.lead{font-size:18px;line-height:1.75;color:var(--muted);max-width:520px;animation:rise .8s .4s both}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;animation:rise .8s .52s both}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 26px;border-radius:14px;font-weight:700;font-size:15px;letter-spacing:.01em;transition:.25s cubic-bezier(.2,.7,.2,1);border:1px solid transparent;position:relative;overflow:hidden}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:var(--water);transform:translateY(-3px);box-shadow:0 16px 34px rgba(44,92,143,.28)}
+  .btn-ghost{background:rgba(255,255,255,.7);border-color:var(--line);color:var(--ink);backdrop-filter:blur(6px)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+  .btn .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+  .btn-ghost .ripple{background:rgba(185,151,91,.3)}
+  @keyframes rip{to{transform:scale(3.2);opacity:0}}
+  .hero-visual{border-radius:26px;overflow:hidden;box-shadow:0 40px 90px rgba(34,37,44,.16),0 4px 18px rgba(34,37,44,.06);border:1px solid rgba(255,255,255,.7);opacity:0;transform:scale(.96) translateY(10px);animation:pop .9s .35s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes pop{to{opacity:1;transform:none}}
+
+  /* ---------- generic section ---------- */
+  section.block{padding:88px 0;position:relative}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 52px}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:600;letter-spacing:-.01em;line-height:1.12;margin-top:16px}
+  .sec-head h2 em{font-style:italic;color:var(--water)}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:17px;line-height:1.75}
+  .secno{position:absolute;top:34px;right:4%;font-family:var(--serif);font-size:clamp(90px,12vw,150px);font-weight:400;color:rgba(185,151,91,.10);line-height:1;pointer-events:none;user-select:none;font-style:italic}
+
+  /* ---------- counters ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:30px 22px;text-align:center;transition:.3s}
+  .stat:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(185,151,91,.14);border-color:var(--gold-soft)}
+  .stat .n{font-family:var(--serif);font-size:46px;font-weight:600;color:var(--ink);line-height:1}
+  .stat .n::after{content:"";display:block;width:22px;height:2px;background:var(--gold);margin:12px auto 0}
+  .stat .t{color:var(--muted);font-size:14px;margin-top:10px}
+
+  /* ---------- value cards (tilt) ---------- */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:860px){.cards3{grid-template-columns:1fr}}
+  .vcard{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:var(--soft);transition:box-shadow .3s,border-color .3s;position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform}
+  .vcard:hover{border-color:var(--gold-soft);box-shadow:0 24px 50px rgba(34,37,44,.10)}
+  .vcard .shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 62%);transform:translateX(-120%);transition:none;pointer-events:none}
+  .vcard:hover .shine{animation:shine .9s ease}
+  @keyframes shine{to{transform:translateX(120%)}}
+  .vcard .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:16px}
+  .vcard h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:8px}
+  .vcard p{color:var(--muted);font-size:15px;line-height:1.7}
+
+  /* ---------- For Coaches band ---------- */
+  .coach-band{background:linear-gradient(120deg,#232a36,var(--water) 130%);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;margin-top:22px;position:relative;overflow:hidden}
+  .coach-band::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);background-size:220% 100%;animation:band 6s ease infinite}
+  @keyframes band{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  @media(max-width:760px){.coach-band{grid-template-columns:1fr}}
+  .coach-band h3{font-family:var(--serif);font-size:30px;font-weight:600;margin-bottom:8px}
+  .coach-band p{opacity:.85;max-width:560px}
+
+  /* ---------- TRIAD : three-part core system ---------- */
+  .triad{margin-top:54px;padding-top:46px;border-top:1px solid var(--line)}
+  .triad-head{text-align:center;max-width:780px;margin:0 auto 34px}
+  .triad-head h2{margin-top:10px}
+  .triad-head p{color:var(--muted);margin-top:14px}
+  .triad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.triad-grid{grid-template-columns:1fr}}
+  .triad-card{background:var(--soft);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:16px;padding:26px 24px;transition:.3s;position:relative;overflow:hidden}
+  .triad-card:hover{transform:translateY(-5px);box-shadow:0 20px 46px rgba(34,37,44,.10)}
+  .triad-card.hot{background:linear-gradient(150deg,#232a36,var(--water) 140%);color:#fff;border-color:transparent}
+  .triad-card.hot h3,.triad-card.hot p,.triad-card.hot a{color:#fff}
+  .triad-card.hot p{opacity:.88}
+  .triad-no{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--gold-ink);text-transform:uppercase}
+  .triad-card.hot .triad-no{color:var(--gold)}
+  .triad-card h3{font-family:var(--serif);font-size:21px;line-height:1.32;margin:12px 0 10px}
+  .triad-card p{font-size:14.5px;color:var(--muted);line-height:1.62}
+  .triad-card a{display:inline-block;margin-top:16px;font-weight:700;font-size:14px;color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:2px}
+  .triad-card.hot a{color:var(--gold)}
+  .triad-line{text-align:center;color:var(--muted);font-size:14px;margin-top:24px;font-style:italic}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1.in{transition-delay:.08s}.reveal.d2.in{transition-delay:.16s}.reveal.d3.in{transition-delay:.24s}
+
+  /* ---------- 5E METHOD ---------- */
+  .method-visual{border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(34,37,44,.12);border:1px solid var(--line);margin-bottom:46px}
+  .energy-flow{position:relative;height:300px;border-radius:26px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(120deg,#faf7f2,#f3eee5)}
+  .energy-flow::before{content:"";position:absolute;inset:-30%;background:linear-gradient(120deg,var(--wood),var(--fire),var(--earth),var(--metal),var(--water),var(--wood));background-size:300% 300%;animation:flow 18s ease infinite;filter:blur(62px);opacity:.42}
+  .energy-flow span{position:relative;z-index:1;font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--ink);letter-spacing:-.01em;text-align:center}
+  .energy-flow small{display:block;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .el-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  @media(max-width:940px){.el-grid{grid-template-columns:repeat(2,1fr)}}
+  .el-card{border-radius:var(--radius);padding:26px 22px;color:#fff;cursor:pointer;transition:.35s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden;box-shadow:0 10px 26px rgba(34,37,44,.12)}
+  .el-card::after{content:"";position:absolute;inset:0;background:radial-gradient(180px 120px at 80% 0%,rgba(255,255,255,.28),transparent 60%)}
+  .el-card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 28px 54px rgba(34,37,44,.22)}
+  .el-card .sym{font-family:var(--serif);font-style:italic;font-size:15px;opacity:.85}
+  .el-card .nm{font-family:var(--serif);font-weight:600;font-size:24px;margin-top:6px}
+  .el-card .ar{font-size:13px;opacity:.92;margin-top:2px;letter-spacing:.04em}
+  .el-card .gd{font-size:13px;margin-top:14px;opacity:.95;line-height:1.55}
+  .el-card .bs{font-size:12px;margin-top:6px;opacity:.78}
+  .el-card{opacity:0;transform:translateY(24px);animation:elIn .7s forwards}
+  .el-card:nth-child(1){animation-delay:.05s}.el-card:nth-child(2){animation-delay:.13s}.el-card:nth-child(3){animation-delay:.21s}.el-card:nth-child(4){animation-delay:.29s}.el-card:nth-child(5){animation-delay:.37s}
+  @keyframes elIn{to{opacity:1;transform:none}}
+  .el-card.selected{outline:3px solid var(--gold);outline-offset:3px}
+
+  /* ---------- energy finder ---------- */
+  .finder{background:var(--soft);border:1px solid var(--line);border-radius:26px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-top:40px;box-shadow:0 24px 60px rgba(34,37,44,.07)}
+  @media(max-width:800px){.finder{grid-template-columns:1fr}}
+  .finder h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:6px}
+  .finder label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 7px}
+  .finder input{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:13px;font-size:15px;background:#fff;transition:.2s}
+  .finder input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(185,151,91,.14)}
+  .finder .go{margin-top:24px;width:100%;justify-content:center}
+  .el-result{border-radius:24px;padding:36px;color:#fff;min-height:260px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:scale(.94) translateY(8px);transition:.5s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden;box-shadow:0 24px 50px rgba(34,37,44,.18)}
+  .el-result.show{opacity:1;transform:none}
+  .el-result .arch{font-size:13px;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+  .el-result .big{font-family:var(--serif);font-size:38px;font-weight:600;margin:6px 0 14px}
+  .el-result .row{font-size:14.5px;margin:6px 0;display:flex;gap:12px}
+  .el-result .row b{min-width:82px;font-weight:700;opacity:.8;letter-spacing:.04em;text-transform:uppercase;font-size:12px;padding-top:2px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+  .step{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--soft);transition:.3s;position:relative;overflow:hidden}
+  .step:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(185,151,91,.15);border-color:var(--gold-soft)}
+  .step .num{width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:600;margin-bottom:14px;transition:.3s}
+  .step:hover .num{background:var(--gold);transform:rotate(-8deg) scale(1.08)}
+  .step b{font-family:var(--serif);font-size:18px;font-weight:600}
+  .step span{color:var(--muted);font-size:14px}
+
+  /* ---------- BODY READ ---------- */
+  .body-visual{border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(34,37,44,.12);border:1px solid var(--line);margin-bottom:46px}
+  .form-card{max-width:580px;margin:0 auto;background:var(--soft);border:1px solid var(--line);border-radius:26px;padding:40px;box-shadow:0 24px 60px rgba(34,37,44,.08)}
+  .form-card .fld{margin:18px 0}
+  .form-card label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .form-card input,.form-card select{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:13px;font-size:15px;background:#fff;transition:.2s}
+  .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(185,151,91,.14)}
+  .result-wrap{margin-top:36px;display:none}
+  .result-wrap.show{display:block;animation:viewIn .55s}
+  .energy-card{border-radius:26px;padding:40px;color:#fff;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(34,37,44,.2)}
+  .energy-card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px 200px at 85% -10%,rgba(255,255,255,.25),transparent 60%)}
+  .energy-card .badge{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;opacity:.85}
+  .energy-card h3{font-family:var(--serif);font-size:32px;font-weight:600;margin:8px 0}
+  .energy-card .ess{font-family:var(--serif);font-style:italic;font-size:17px;opacity:.9}
+  /* Body Read shows a behavior-pattern card only; body-metric styles removed (P0-C-20261112). */
+
+  /* ---------- COACH WORKSPACE ---------- */
+  .coach-visual{border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(34,37,44,.12);margin-bottom:46px;border:1px solid var(--line)}
+  .coach-stage{display:grid;grid-template-columns:320px 1fr;gap:30px;align-items:stretch}
+  @media(max-width:860px){.coach-stage{grid-template-columns:1fr}}
+  .tabs{display:flex;flex-direction:column;gap:12px}
+  .tab{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--soft);transition:.25s;text-align:left;position:relative;overflow:hidden}
+  .tab::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:.25s}
+  .tab:hover{border-color:var(--gold-soft);transform:translateX(4px)}
+  .tab.active{border-color:var(--gold-soft);background:#fff;box-shadow:0 14px 32px rgba(185,151,91,.14)}
+  .tab.active::before{transform:scaleY(1)}
+  .tab .t-no{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.22em}
+  .tab .t-name{font-family:var(--serif);font-weight:600;font-size:18px;margin-top:3px}
+  .panel{background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:36px;position:relative;overflow:hidden;min-height:320px}
+  .panel .dot{position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(50px);opacity:.35;top:-40px;right:-30px;transition:background .4s}
+  .panel h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:10px}
+  .panel .tag{font-size:11px;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;display:inline-block;margin-bottom:16px;letter-spacing:.14em;text-transform:uppercase}
+  .panel p{color:var(--muted);line-height:1.75}
+  .panel ul{margin:18px 0 0 20px;color:var(--muted)}
+  .panel ul li{margin:8px 0}
+  .panel ul li::marker{color:var(--gold)}
+  .fade{animation:fade .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .clientlist{margin-top:8px}
+  .clientrow{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border:1px solid var(--line);border-radius:14px;margin:10px 0;background:#fff;transition:.25s;animation:fade .4s both}
+  .clientrow:nth-child(2){animation-delay:.08s}.clientrow:nth-child(3){animation-delay:.16s}.clientrow:nth-child(4){animation-delay:.24s}
+  .clientrow:hover{border-color:var(--gold-soft);transform:translateX(6px);box-shadow:0 12px 28px rgba(185,151,91,.12)}
+  .clientrow .el{font-size:11px;font-weight:700;color:#fff;padding:3px 10px;border-radius:999px;letter-spacing:.06em}
+
+  /* ---------- PRICING ---------- */
+  .toggle{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:40px;font-weight:600;font-size:15px}
+  .toggle .sw{position:relative;width:58px;height:32px;border-radius:999px;background:var(--line);border:none;transition:.3s}
+  .toggle .sw.on{background:var(--gold)}
+  .toggle .sw::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.3s cubic-bezier(.2,.7,.2,1);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .toggle .sw.on::after{left:29px}
+  /* 2026-10-19: 价目只有三档，原来写的是四列栅格 —— 三张卡只占 3/4 宽，右边空一列。*/
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.tiers{grid-template-columns:1fr}}
+  .tier{border:1px solid var(--line);border-radius:22px;padding:28px 24px;background:var(--soft);transition:box-shadow .3s,border-color .3s;cursor:pointer;transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .tier:hover{border-color:var(--gold-soft);box-shadow:0 24px 50px rgba(185,151,91,.16)}
+  .tier.hot::before{content:"Most popular";position:absolute;top:16px;right:-34px;background:var(--gold);color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 40px;transform:rotate(38deg)}
+  .tier h4{font-family:var(--serif);font-size:21px;font-weight:600}
+  .tier .seat{font-size:13px;color:var(--muted);margin:7px 0 16px;line-height:1.5}
+  .tier .price{font-family:var(--serif);font-size:34px;font-weight:600;letter-spacing:-.01em}
+  .tier .price small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:500}
+  .tier .alt{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.5}
+  .tier .price .flip{display:inline-block;animation:flipIn .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes flipIn{from{opacity:0;transform:translateY(12px) rotateX(60deg)}to{opacity:1;transform:none}}
+  .tier .more{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1),margin .4s;color:var(--muted);font-size:14px;line-height:1.65}
+  .tier.open .more{max-height:260px;margin-top:14px}
+  /* margin-top:auto：把 hint+按钮+担保压到卡片底部，三张卡按钮水平对齐 */
+  .tier .hint{font-size:11px;color:var(--gold);margin-top:auto;padding-top:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .feat{background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:34px;margin-top:32px;display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap}
+  .feat .f{flex:1;min-width:220px}
+  .feat .f b{display:block;font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:6px}
+  .feat .f p{color:var(--muted);font-size:14.5px}
+
+  /* ---------- MODAL ---------- */
+  .modal-mask{position:fixed;inset:0;background:rgba(28,30,36,.55);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-mask.show{display:flex}
+  .modal{background:#fff;border-radius:24px;padding:40px;width:100%;max-width:410px;box-shadow:0 40px 90px rgba(0,0,0,.35);animation:modalIn .4s cubic-bezier(.2,.7,.2,1)}
+  @keyframes modalIn{from{opacity:0;transform:translateY(26px) scale(.96)}to{opacity:1;transform:none}}
+  .modal h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:6px}
+  .modal p{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .modal input{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:13px;margin-bottom:12px;font-size:15px;transition:.2s}
+  .modal input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(185,151,91,.14)}
+  .modal .btn{width:100%;justify-content:center}
+  .modal .x{float:right;background:none;border:none;font-size:24px;color:var(--muted);cursor:pointer;line-height:1;transition:.2s}
+  .modal .x:hover{color:var(--ink);transform:rotate(90deg)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#1d222b;color:rgba(255,255,255,.65);padding:56px 0 40px;margin-top:40px}
+  footer .frow{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer img.flogo{height:34px;opacity:.95}
+  footer .fline{height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);margin:26px 0 20px}
+  footer .fnote{font-size:13px;text-align:center}
+  footer .flinks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:13px}
+  footer .flinks a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+  footer .flinks a:hover{color:var(--gold)}
+  .note{font-size:12px;color:var(--muted);text-align:center;margin-top:20px}
+  .sticky-coach{position:fixed;right:22px;bottom:22px;z-index:70;background:var(--ink);color:#fff;padding:13px 18px;border-radius:16px;box-shadow:0 16px 38px rgba(0,0,0,.3);display:flex;align-items:center;gap:12px;transform:translateY(150px) scale(.9);opacity:0;transition:.45s cubic-bezier(.2,.7,.2,1)}
+  .sticky-coach.show{transform:translateY(0) scale(1);opacity:1}
+  .sticky-coach b{font-size:14px;letter-spacing:.02em}
+  .sticky-coach .pulse{width:8px;height:8px;border-radius:50%;background:var(--gold);position:relative}
+  .sticky-coach .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--gold);animation:pulse 1.8s ease infinite}
+  @keyframes pulse{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+  @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+  /* ============================================================
+     KNOW+DO HERO (2026-11-21) — scoped to #view-home only.
+     Replaces the old light hero visually; all other views, the
+     pricing LINKS/TIERS objects and every payment link stay intact.
+     ============================================================ */
+  #view-home.hero{display:block;position:relative;min-height:720px;overflow:hidden;background:#1d2129;padding:0}
+  #view-home.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;z-index:3;background:linear-gradient(90deg,var(--wood),var(--fire),var(--earth),var(--metal),var(--water))}
+  #view-home .hero-media{position:absolute;inset:-6% 0;z-index:0}
+  #view-home .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.04);will-change:transform;animation:kd_heroBreath 24s ease-in-out infinite alternate}
+  @keyframes kd_heroBreath{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.085) translate3d(0,-10px,0)}}
+  #view-home .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(24,28,34,.80) 0%,rgba(24,28,34,.55) 42%,rgba(24,28,34,.06) 72%),linear-gradient(0deg,rgba(24,28,34,.35),transparent 40%)}
+  #view-home::after{content:"";position:absolute;z-index:1;pointer-events:none;left:-25%;top:-25%;width:75%;height:150%;background:radial-gradient(ellipse at 42% 50%,rgba(217,195,154,.11) 0%,rgba(217,195,154,.045) 38%,rgba(217,195,154,0) 68%);animation:kd_heroDrift 32s ease-in-out infinite alternate;will-change:transform,opacity}
+  @keyframes kd_heroDrift{0%{transform:translate3d(0,0,0) scale(1);opacity:.45}100%{transform:translate3d(52%,-5%,0) scale(1.12);opacity:.95}}
+  #view-home .wrap.hero-grid{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:90px 28px;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;min-height:720px}
+  #view-home .wrap.hero-grid>*{min-width:0}
+  #view-home .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:12px;animation:kd_softIn .8s cubic-bezier(.22,1,.36,1) .04s both}
+  #view-home .eyebrow:before{content:"";width:26px;height:1px;background:var(--gold-soft)}
+  #view-home h1.hero-title{font-family:var(--serif);font-weight:600;font-size:clamp(46px,5vw,68px);line-height:1.06;letter-spacing:-.025em;margin-bottom:26px;color:#fbf8f3}
+  #view-home h1.hero-title em{font-style:italic;font-weight:500;color:var(--gold-soft)}
+  #view-home .hero-title .line{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+  #view-home .hero-title .line>span{display:block;transform:translate3d(0,108%,0);animation:kd_lineRise 1s cubic-bezier(.19,1,.22,1) forwards}
+  #view-home .hero-title .line:nth-child(1)>span{animation-delay:.10s}
+  #view-home .hero-title .line:nth-child(2)>span{animation-delay:.20s}
+  #view-home .hero-title .line:nth-child(3)>span{animation-delay:.30s}
+  @keyframes kd_lineRise{to{transform:translate3d(0,0,0)}}
+  #view-home p.lede{font-size:clamp(16px,1.35vw,18.5px);line-height:1.75;color:#d9dad9;max-width:600px;margin-bottom:30px;animation:kd_softIn .9s cubic-bezier(.22,1,.36,1) .46s both}
+  #view-home p.lede b{color:#fff;font-weight:600}
+  #view-home .hero-cta{display:flex;gap:13px;flex-wrap:wrap;align-items:center;animation:kd_softIn .9s cubic-bezier(.22,1,.36,1) .60s both}
+  #view-home .hero-cta .btn{font-size:15px;font-weight:700;padding:15px 27px;border-radius:12px;transition:.22s;border:1px solid transparent;display:inline-flex;align-items:center;gap:8px}
+  #view-home .hero-cta .btn-primary{background:var(--gold);color:#1a1408}
+  #view-home .hero-cta .btn-primary:hover{background:var(--gold-soft);transform:translateY(-2px)}
+  #view-home .hero-cta .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.35);backdrop-filter:blur(6px)}
+  #view-home .hero-cta .btn-ghost:hover{border-color:var(--gold-soft);transform:translateY(-2px)}
+  #view-home .price-line{font-size:13px;color:#c9cbcb;margin-top:18px;animation:kd_softIn .9s cubic-bezier(.22,1,.36,1) .72s both}
+  #view-home .price-line b{color:var(--gold-soft);font-weight:700}
+  #view-home .equation{background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.6);border-radius:22px;padding:32px 28px 28px;box-shadow:0 30px 80px rgba(0,0,0,.30);animation:kd_softIn .9s cubic-bezier(.22,1,.36,1) .35s both}
+  #view-home .equation .cap{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:700}
+  #view-home .equation .row{display:flex;align-items:center;gap:9px;justify-content:center}
+  #view-home .equation .term{flex:1;min-width:0;text-align:center;padding:16px 5px;border-radius:14px}
+  #view-home .equation .term.know{background:rgba(63,163,122,.10);border:1px solid rgba(63,163,122,.38)}
+  #view-home .equation .term.do{background:rgba(224,97,62,.09);border:1px solid rgba(224,97,62,.38)}
+  #view-home .equation .term .t1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1;letter-spacing:.01em}
+  #view-home .equation .term.know .t1{color:#2f8a6d}#view-home .equation .term.do .t1{color:#b8532f}
+  #view-home .equation .term .t2{font-size:10.5px;color:var(--muted);margin-top:9px;line-height:1.5}
+  #view-home .equation .op{font-family:var(--serif);font-size:36px;line-height:1;font-weight:500;color:var(--gold)}
+  #view-home .equation .eq-line{height:1px;background:linear-gradient(90deg,transparent,rgba(185,151,91,.45),transparent);margin:22px 0 18px}
+  #view-home .equation .result{text-align:center}
+  #view-home .equation .result .big{font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:600;line-height:1.2}
+  #view-home .equation .result .sub{font-size:11.5px;color:var(--muted);margin-top:9px;line-height:1.6}
+  #view-home .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.7);font-size:10px;letter-spacing:.24em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:9px}
+  #view-home .scroll-hint:after{content:"";width:1px;height:34px;background:linear-gradient(rgba(255,255,255,.6),transparent)}
+  @keyframes kd_softIn{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
+  @media(max-width:900px){
+    #view-home.hero{overflow:hidden}
+    #view-home .wrap.hero-grid{grid-template-columns:1fr;gap:44px;padding:70px 22px;max-width:100%;width:100%}
+    #view-home h1.hero-title{font-size:clamp(30px,7.2vw,46px);overflow-wrap:normal;word-break:normal}
+    #view-home h1.hero-title .line{overflow:visible;height:auto}
+    #view-home h1.hero-title .line>span{display:inline;transform:none!important;animation:none!important;white-space:normal}
+    #view-home p.lede{font-size:15px;overflow-wrap:break-word}
+    #view-home .price-line{max-width:100%;overflow-wrap:break-word}
+    #view-home .equation{padding:24px 18px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #view-home .hero-media img,#view-home::after,#view-home .hero-title .line>span,#view-home .eyebrow,#view-home p.lede,#view-home .hero-cta,#view-home .price-line,#view-home .equation{animation:none!important;opacity:1!important;transform:none!important}
+  }
+
+</style>
+  <link rel="alternate" type="application/rss+xml" title="MOJOWAY Blog" href="https://mojowaylife.com/rss.xml">
+<meta name="description" content="Know yourself, then act on it. MOJOWAY turns your energy pattern into a clear next move — and gives coaches a session-ready read in ten minutes. Your first client is free, no card.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="MOJOWAY — Coaching tools &amp; self-growth">
+<meta property="og:description" content="Know yourself, then act on it. MOJOWAY turns your energy pattern into a clear next move — and gives coaches a session-ready read in ten minutes. Your first client is free, no card.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mojowaylife.com/">
+<meta property="og:site_name" content="MOJOWAY">
+<meta property="og:image" content="https://mojowaylife.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MOJOWAY — Coaching tools &amp; self-growth">
+<meta name="twitter:description" content="Know yourself, then act on it. MOJOWAY turns your energy pattern into a clear next move — and gives coaches a session-ready read in ten minutes. Your first client is free, no card.">
+<meta name="twitter:image" content="https://mojowaylife.com/og-image.png">
+<link rel="canonical" href="https://mojowaylife.com/">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mojoway Spectrum Limited",
+    "url": "https://mojowaylife.com",
+    "logo": "https://mojowaylife.com/assets/mojoway-logo.png"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MOJOWAY",
+    "url": "https://mojowaylife.com"
+  }
+]
+</script>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" data-view="home"><img src="assets/logo-black-red.png" alt="MOJOWAY" /></a>
+    <nav class="links" id="navlinks">
+      <a class="navlink active" data-view="home">Home</a>
+      <a class="navlink" data-view="method">Method</a>
+      <a class="navlink" data-view="body">Body Read</a>
+      <a class="navlink" data-view="coach">For Coaches</a>
+      <a class="navlink" data-view="pricing">Pricing</a>
+      <a class="nav-coaches" href="/coach.html">Coach Workspace</a>
+      <a class="nav-signin navlink" href="/login.html">Sign in</a>
+    </nav>
+    <button class="hamb" id="hamb">☰</button>
+  </div>
+</header>
+
+<main>
+<!-- ============ HOME ============ -->
+<section class="hero view active" id="view-home">
+  <div class="hero-media"><img src="assets/hero-mirror-reflection-v2.png" alt="A person and their reflection, knowing and doing as one" fetchpriority="high" decoding="async" /></div>
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">The idea behind MOJOWAY</div>
+      <h1 class="hero-title"><span class="line"><span>Knowing and doing</span></span><span class="line"><span>were never meant</span></span><span class="line"><span>to be <em>apart.</em></span></span></h1>
+      <p class="lede">You can know yourself deeply and still go nowhere. You can push hard and still not know why. <b>MOJOWAY puts knowing and doing in one system</b> — so every insight becomes a move, and every move makes you clearer.</p>
+      <div class="hero-cta">
+        <a href="/personal.html" class="btn btn-primary">Show me my pattern — $3.90</a>
+        <a href="/coach.html" class="btn btn-ghost">I'm a coach — open the workspace</a>
+      </div>
+      <div class="price-line">Self-growth card <b>$3.90</b> once · Coach workspace from <b>$59</b>/mo · annual = 2 months free</div>
+    </div>
+    <div class="equation">
+      <div class="cap">How the two become one</div>
+      <div class="row">
+        <div class="term know"><div class="t1">KNOW</div><div class="t2">Mirror · Energy Map<br>for self-growth</div></div>
+        <div class="op">+</div>
+        <div class="term do"><div class="t1">DO</div><div class="t2">Body Read · Coach<br>First Session</div></div>
+      </div>
+      <div class="eq-line"></div>
+      <div class="result">
+        <div class="big">= Change that holds</div>
+        <div class="sub">Knowing gives every move its direction.<br>Every move gives knowing its proof.</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<section class="view block" id="view-home-b">
+  <div class="secno">01</div>
+  <div class="wrap">
+    <div class="stats reveal" id="stats">
+      <div class="stat"><div class="n" style="font-size:30px">⚡</div><div class="t">Personality framework</div></div>
+      <div class="stat"><div class="n" data-to="10">10</div><div class="t">Opening questions</div></div>
+      <div class="stat"><div class="n" data-to="4">4</div><div class="t">Coach workbench modules</div></div>
+      <div class="stat"><div class="n" data-to="8">8</div><div class="t">8-page client report</div></div>
+    </div>
+    <div class="cards3" style="margin-top:30px">
+      <div class="vcard reveal d1"><div class="shine"></div><div class="ic" style="background:rgba(63,163,122,.14);color:var(--wood)">🌱</div><h3>For individuals</h3><p>Take the Mirror, get your Energy Map, and turn self-awareness into real growth — understand your drives, shadows and next steps in plain language.</p></div>
+      <div class="vcard reveal d2"><div class="shine"></div><div class="ic" style="background:rgba(224,97,62,.14);color:var(--fire)">🔥</div><h3>For coaches</h3><p>Walk into session one already knowing what you're dealing with, instead of spending three sessions finding out.</p></div>
+      <div class="vcard reveal d3"><div class="shine"></div><div class="ic" style="background:rgba(44,92,143,.14);color:var(--water)">💧</div><h3>For teams</h3><p>Per-seat plans so institutions can read every member, coach them well, and build stronger working relationships.</p></div>
+    </div>
+
+    <!-- ===== THE MOJOWAY SYSTEM : three-part core, mutually reinforcing ===== -->
+    <div class="triad reveal">
+      <div class="triad-head">
+        <div class="eyebrow">One system, three parts</div>
+        <h2>More than a test. <em>A growth engine.</em></h2>
+        <p>Most tools do one thing. MOJOWAY connects the three pieces that actually move a person forward — and each one makes the other two stronger.</p>
+      </div>
+      <div class="triad-grid">
+        <div class="triad-card" style="--c:var(--wood)">
+          <div class="triad-no">01 · Self-growth</div>
+          <h3>The Mirror</h3>
+          <p>A guided dialogue that turns your own words into an Energy Map — your drives, your shadows, your next move, in plain language. Self-awareness you can act on, not a label to wear.</p>
+          <a href="/mirror.html">See a live mirror read &rarr;</a>
+        </div>
+        <div class="triad-card" style="--c:var(--fire)">
+          <div class="triad-no">02 · Coach's toolkit</div>
+          <h3>The Assessment Box</h3>
+          <p>One 10-minute intake becomes a session-ready report: energy card, three real topics in the client's own words, and an optional body read. Walk into session one already knowing the person.</p>
+          <a href="/coach.html">Open the coach workbench &rarr;</a>
+        </div>
+        <div class="triad-card hot" style="--c:var(--water)">
+          <div class="triad-no">03 · The bridge</div>
+          <h3>You ↔ the right coach</h3>
+          <p>A bridge between people who want to grow and coaches who can take them there — a free 30-minute trial to find your fit. No commission on the match. The saving stays with you and your coach.</p>
+          <a href="/coaches">Book a free 30-minute trial &rarr;</a>
+        </div>
+      </div>
+      <div class="triad-line">The Mirror wakes up the client. The Box makes the coach fast. The Bridge turns both into a real relationship — and feeds every insight back into the next conversation.</div>
+    </div>
+
+    <div class="coach-band reveal">
+      <div><div class="eyebrow" style="color:var(--gold)">New · built for coaches</div><h3>The Coach Workspace is live</h3><p>Open the workbench, onboard a client in minutes, and walk into every session already knowing their map.</p></div>
+      <a class="btn btn-ghost" data-view="coach" style="background:#fff">Explore the Coach Workspace →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="view block" id="view-method">
+  <div class="secno">02</div>
+  <div class="wrap">
+    <div class="method-visual reveal"><div class="energy-flow"><span><small>Your Five Energies</small>One framework, many drives</span></div></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">The Method</div>
+      <h2>The Five Energies, <em>made practical</em></h2>
+      <p>Every person blends several of the Five Energies in a unique balance. We read the dominant energy from a short structured intake and observed behavior, then turn it into coaching-ready insight for the professional — and into a personal growth map for the individual.</p>
+    </div>
+    <div class="el-grid" id="elGrid"></div>
+
+    <div class="finder reveal">
+      <div>
+        <h3>Preview the framework</h3>
+        <p style="color:var(--muted);font-size:15px">Add your date of birth to preview a sample behavior pattern. Illustrative only — this preview uses your birth date alone: no account, no health data, nothing stored.</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px">Date of birth is one input among several — it does not by itself determine your profile.</p>
+        <label>Date of birth</label>
+        <input type="date" id="bdate" />
+        <button class="btn btn-primary go" id="findEl">Preview a sample profile</button>
+      </div>
+      <div class="el-result" id="elResult"></div>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step"><div class="num">1</div><b>Intake</b><br><span>Capture intake answers and observations.</span></div>
+      <div class="step"><div class="num">2</div><b>Map</b><br><span>Compute the energy balance.</span></div>
+      <div class="step"><div class="num">3</div><b>Read</b><br><span>Gift, shadow, and drivers.</span></div>
+      <div class="step"><div class="num">4</div><b>Apply</b><br><span>Coach with the map in hand.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BODY READ ============ -->
+<section class="view block" id="view-body">
+  <div class="secno">03</div>
+  <div class="wrap">
+    <div class="body-visual reveal"><picture><source srcset="assets/body-visual.webp" type="image/webp" /><img src="assets/body-visual.png" alt="Body read" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" /></picture></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">Free tool</div>
+      <h2>Body <em>Read</em></h2>
+      <p>A free, no-login read of how you tend to behave — a first step in seeing your own patterns, built on the same behavior map coaches use with their clients. No body measurements, no score, no diagnosis.</p>
+    </div>
+    <div class="form-card reveal">
+      <!-- P0-C-20261112 : behavior-pattern read only, no physical measurements -->
+      <div class="fld"><label>Date of birth</label><input type="date" id="bdate2" /></div>
+      <button class="btn btn-primary go" id="runBody" style="width:100%;justify-content:center">Show my pattern</button>
+      <div class="note" style="margin-top:14px">Free preview, no account. We use your birth date once to draw a behavior-pattern card; we don't collect body measurements, lab values or health data, and we give no score. For adults 18+ only. Not available to residents of the EU/EEA or UK.</div>
+    </div>
+    <div class="result-wrap" id="bodyResult"></div>
+  </div>
+</section>
+
+<!-- ============ COACH WORKSPACE ============ -->
+<section class="view block" id="view-coach">
+  <div class="secno">04</div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Built for coaches</div>
+      <h2>The Coach Workspace — your <em>client-reading</em> workbench</h2>
+      <p>One workspace to turn a client's own words into an Energy Map, three opening topics, and a deeper profile. Tap a module to preview.</p>
+    </div>
+    <div class="coach-visual reveal"><picture><source srcset="assets/coach-modules.webp" type="image/webp" /><img src="assets/coach-modules.png" alt="Coach Workspace four module cards" loading="lazy" decoding="async" /></picture></div>
+    <div class="coach-stage reveal" id="coachStage">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-i="0"><div class="t-no">MODULE 01</div><div class="t-name">Meeting Framework</div></button>
+        <button class="tab" data-i="1"><div class="t-no">MODULE 02</div><div class="t-name">Energy Snapshot</div></button>
+        <button class="tab" data-i="2"><div class="t-no">MODULE 03</div><div class="t-name">Session Notes</div></button>
+        <button class="tab" data-i="3"><div class="t-no">MODULE 04</div><div class="t-name">Full Profile</div></button>
+      </div>
+      <div class="panel" id="panel"><div class="dot" id="panelDot"></div><div id="panelBody"></div></div>
+    </div>
+    <div style="text-align:center;margin-top:36px" class="reveal">
+      <a class="btn btn-primary" href="/coach.html">Open the full workbench →</a>
+      <div style="margin-top:14px" class="reveal"><a href="/watch.html?utm_source=home&amp;utm_medium=internal&amp;utm_campaign=watch_link" style="font-weight:600;font-size:15px">Or watch the two-minute version →</a></div>
+      <div style="margin-top:10px" class="reveal"><a href="/coaches" style="font-weight:600;font-size:15px">Or book a free 30-minute trial with a coach →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="view block" id="view-pricing">
+  <div class="secno">05</div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Plans</div>
+      <h2>Three plans. <em>No sales calls.</em></h2>
+      <p>A personal card costs <b>$3.90</b>. Coach plans are priced by <b>how many clients you carry at once</b> &mdash; 15 slots for $59 a month, 30 for $99. Re-running a client inside their slot is always free, so weekly tracking never costs extra. Annual billing = pay for 10 months, get 12. Tap a card to expand.</p>
+    </div>
+    <div class="toggle reveal">
+      <span>Monthly</span>
+      <button class="sw on" id="billSw"></button>
+      <span>Annual <span style="color:var(--gold);font-weight:700">(2 months free)</span></span>
+    </div>
+    <div class="note" style="text-align:center;margin:10px 0 2px;color:var(--gold);font-weight:700">Coach plans: your first client is free, no card. After that $59/month for 15 client slots. Personal cards are live now at $3.90.</div>
+    <div class="tiers reveal" id="tiers"></div>
+    <div class="note" style="text-align:center;margin:12px auto 0;max-width:760px"><b>Prices are in US dollars (USD).</b> If you are paying from outside the US, Stripe may show the equivalent in your local currency &mdash; it is the same plan at the same USD price either way.</div>
+    <div class="note" style="text-align:center;margin-top:2px">Not ready to pay? See the exact report a coach gets back &mdash; live sample, no login: <a href="/mirror-demo.html" style="color:var(--gold);font-weight:700">open the sample &rarr;</a></div>
+    <div class="feat reveal">
+      <div class="f"><b>Not sure which tier?</b><p>Just you &rarr; Personal ($3.90 once). A coach with a caseload &rarr; Coach (15 clients). A full caseload &rarr; Coach Scale (30 clients).</p></div>
+      <div class="f"><b>Annual = 2 months free</b><p>Annual saves roughly two months on either coach plan &mdash; billed once a year.</p></div>
+      <div class="f"><b>Fully self-serve</b><p>Fixed prices, no custom quotes, no negotiation &mdash; checkout and onboarding are fully automated.</p></div>
+    </div>
+    <div class="note">All prices are fixed and billed in US dollars via Stripe &middot; monthly or annually &middot; cancel anytime &middot; <b>7-day money-back, no questions asked</b>.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <img class="flogo" src="assets/logo-white.png" alt="MOJOWAY" />
+      <div style="font-size:14px">Coaching tools &amp; self-growth · for coaches, teams &amp; individuals</div>
+    </div>
+    <div class="fline"></div>
+    <div class="fnote">MOJOWAY Spectrum Limited · Hong Kong</div>
+    <div class="flinks">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-service.html">Terms of Service</a>
+      <a href="/refund-policy.html">Refund Policy</a>
+    </div>
+    <div class="hsub" style="margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.16)">
+      <p style="margin:0 0 10px;font-size:15px;color:#fff"><strong>One short read a week.</strong> One pattern, one move you can use in a session. No roundups, no product pitches.</p>
+      <form action="/api/subscribe" method="POST" onsubmit="return mojoSub(event)" style="display:flex;gap:8px;flex-wrap:wrap;max-width:520px">
+        <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address"
+               style="flex:1 1 240px;min-width:0;padding:12px 14px;border:1px solid rgba(255,255,255,.28);border-radius:8px;font-size:15px;font-family:inherit;background:rgba(255,255,255,.06);color:#fff" />
+        <button type="submit" class="btn btn-primary" style="white-space:nowrap;cursor:pointer">Subscribe</button>
+      </form>
+      <small style="display:block;margin-top:8px;font-size:13px;opacity:.72">Unsubscribe any time. We never sell your address.</small>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-coach" id="stickyCoach"><span class="pulse"></span><b>For Coaches</b><a class="btn btn-primary" href="/coach.html" style="padding:9px 16px;font-size:13px">Open workspace</a></div>
+
+<!-- MODALS removed for production: sign-in and coach login now link directly to /coach.html -->
+
+<script>
+  /* ---------- scroll progress ---------- */
+  addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  },{passive:true});
+
+  /* ---------- VIEW switching ---------- */
+  function go(v){
+    document.querySelectorAll('.view').forEach(s=>s.classList.remove('active'));
+    if(v==='home'){document.getElementById('view-home').classList.add('active');document.getElementById('view-home-b').classList.add('active');}
+    else document.getElementById('view-'+v).classList.add('active');
+    document.querySelectorAll('nav.links a.navlink').forEach(a=>a.classList.toggle('active',a.dataset.view===v));
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.getElementById('navlinks').classList.remove('open');
+    observeReveals();
+    if(v==='home') runCounters();
+  }
+  document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.view);}));
+
+  /* ---------- deep links (#method / #pricing) ----------
+     2026-10-10 (round 112): the nav on ~50 blog pages links to /#method and
+     /#pricing, but this page had NO hash handling whatsoever (location.hash
+     appeared 0 times) and there is no element with id="method"/id="pricing" -
+     the views are id="view-method"/id="view-pricing" and only go() switches
+     them. So "Rates" and "Method" were dead links on every blog page: the
+     visitor landed on the homepage and nothing happened. Access-log evidence: a
+     real visitor spent nine minutes trying to reach pricing on 2026-09-03
+     (/pricing.html -> 301, /pricing -> 404 x5) and then clicked to buy.
+     Deep links are how people share and how search results land, so honour them. */
+  function goFromHash(){
+    var v=(location.hash||'').replace(/^#/,'');
+    // FIX 2026-11-18: every load picks exactly one view group. No hash -> home
+    // (which activates both view-home and view-home-b); a known hash -> that view.
+    // This prevents the double-view overlap on /#pricing etc. and makes the
+    // first content screen visible to visitors who never touch the nav.
+    var target=(['method','pricing','coach','body'].indexOf(v)>=0) ? v : 'home';
+    try{ go(target); }catch(e){}
+  }
+  window.addEventListener('hashchange',goFromHash);
+  goFromHash();
+  document.getElementById('hamb').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
+  document.querySelectorAll('[data-close]').forEach(x=>x.addEventListener('click',()=>x.closest('.modal-mask').classList.remove('show')));
+  document.querySelectorAll('.modal-mask').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+  // openSignin / signinMask removed for production — Sign in links to /coach.html
+
+  /* ---------- reveal + counters ---------- */
+  let io;
+  function observeReveals(){
+    if(io)io.disconnect();
+    io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');if(en.target.id==='stats')runCounters();}}),{threshold:.12});
+    document.querySelectorAll('.view.active .reveal').forEach(el=>io.observe(el));
+  }
+  function runCounters(){
+    document.querySelectorAll('#stats .n').forEach(n=>{
+      if(n.dataset.done)return;
+      if(n.dataset.to===undefined)return; // skip non-numeric cards (e.g. the ⚡ icon) — was rendering NaN
+      n.dataset.done=1;
+      const to=+n.dataset.to;let cur=0;const step=Math.max(1,Math.round(to/30));
+      const t=setInterval(()=>{cur+=step;if(cur>=to){cur=to;clearInterval(t);}n.textContent=cur;},28);
+    });
+  }
+
+  /* ---------- button ripple ---------- */
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('.btn');if(!b)return;
+    const r=document.createElement('span');r.className='ripple';
+    const rect=b.getBoundingClientRect(),d=Math.max(rect.width,rect.height);
+    r.style.width=r.style.height=d+'px';
+    r.style.left=(e.clientX-rect.left-d/2)+'px';r.style.top=(e.clientY-rect.top-d/2)+'px';
+    b.appendChild(r);setTimeout(()=>r.remove(),650);
+  });
+
+  /* ---------- 3D tilt on cards ---------- */
+  function addTilt(sel,max=7){
+    document.querySelectorAll(sel).forEach(c=>{
+      c.addEventListener('mousemove',e=>{
+        const r=c.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform=`perspective(700px) rotateY(${x*max}deg) rotateX(${-y*max}deg) translateY(-4px)`;
+      });
+      c.addEventListener('mouseleave',()=>{c.style.transform='';});
+    });
+  }
+
+  /* ---------- 5E data + finder ---------- */
+  const EL={
+    Wood:{arch:'The Pioneer',color:'#3FA37A',one:'Initiates and moves things forward',gift:'Vision & drive',blind:'Impatience'},
+    Fire:{arch:'The Connector',color:'#E0613E',one:'Warms and inspires the room',gift:'Warmth & spark',blind:'Scattered focus'},
+    Earth:{arch:'The Anchor',color:'#E0A93E',one:'Holds and nurtures the center',gift:'Stability & care',blind:'Over-accommodating'},
+    Metal:{arch:'The Refiner',color:'#9AA7B2',one:'Clarifies and sets the standard',gift:'Clarity & standards',blind:'Over-critical'},
+    Water:{arch:'The Philosopher',color:'#2C5C8F',one:'Goes deep and sees the whole',gift:'Depth & wisdom',blind:'Withdrawn'}
+  };
+  function elementFromDate(d){
+    const m=d.getMonth()+1,day=d.getDate();
+    const after=(mm,dd)=>(m>mm)||(m===mm&&day>=dd);
+    if(after(2,4)&&!after(5,5))return 'Wood';
+    if(after(5,5)&&!after(8,7))return 'Fire';
+    if(after(8,7)&&!after(11,7))return 'Earth';
+    if(after(11,7)&&!after(1,20))return 'Metal';
+    return 'Water';
+  }
+  /* energy keys map to colors + archetypes only — never labelled "five elements", never shown with CJK chars (overseas compliance) */
+  const eg=document.getElementById('elGrid');
+  Object.entries(EL).forEach(([k,v],i)=>{
+    const c=document.createElement('div');c.className='el-card';c.style.background=v.color;
+    c.innerHTML=`<div class="nm">${v.arch}</div><div class="ar">Energy archetype</div><div class="gd">${v.one}</div><div class="bs">Shadow: ${v.blind}</div>`;
+    c.addEventListener('click',()=>{document.querySelectorAll('.el-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');showEl(k);});
+    eg.appendChild(c);
+  });
+  function showEl(k){
+    const v=EL[k];const r=document.getElementById('elResult');
+    r.style.background=v.color;r.classList.remove('show');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      r.classList.add('show');
+      r.innerHTML=`<div class="arch">Energy profile</div><div class="big">${v.arch}</div>
+        <div class="row"><b>Essence</b><span>${v.one}</span></div>
+        <div class="row"><b>Gift</b><span>${v.gift}</span></div>
+        <div class="row"><b>Shadow</b><span>${v.blind}</span></div>`;
+    }));
+  }
+  document.getElementById('findEl').addEventListener('click',()=>{
+    const v=document.getElementById('bdate').value;
+    if(!v){alert('Pick a birth date first');return;}
+    showEl(elementFromDate(new Date(v)));
+  });
+
+  /* ---------- Body Read -> Behaviour Pattern Read (P0-C-20261112) ---------- */
+  document.getElementById('runBody').addEventListener('click',()=>{
+    const bd=document.getElementById('bdate2').value;
+    if(!bd){alert('Pick a birth date first');return;}
+    const el=elementFromDate(new Date(bd));const v=EL[el];
+    const wrap=document.getElementById('bodyResult');
+    wrap.classList.add('show');
+    wrap.innerHTML=`<div class="energy-card" style="background:${v.color}">
+      <div class="badge">Your behavior pattern</div><h3>${v.arch}</h3>
+      <div class="ess">${v.one}.</div>
+      <p style="margin-top:16px;position:relative">This describes a pattern in how you tend to act, not a score, a diagnosis or a reading of your health or wellbeing. Your gift tends to be ${v.gift.toLowerCase()}; watch the ${v.blind.toLowerCase()} tendency.</p>
+    </div>`;
+    setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'center'}),80);
+  });
+
+  /* ---------- Coach modules ---------- */
+  const MODS=[
+    {tag:'First session',desc:'A ready-to-run opening structure for the first coaching session, built from the client\'s Energy Map.',ul:['10 opening questions tuned to their energy','Agenda that fits how they decide','Talking-points to build quick trust']},
+    {tag:'Relationship ref',desc:'A one-glance card of how to relate to this person — gift, blind spot, and what drains or fuels them.',ul:['Archetype + one-line essence','Do / don\'t cues for the coach','Conflict and motivation triggers']},
+    {tag:'Session notes',desc:'A coach-side toolkit that turns the words a client uses into plain-language opening points for a first session.',ul:['Three topics worth opening','Two angles for each','No diagnostic or medical claims']},
+    {tag:'Full Profile',desc:'The complete energy deep read — the long-form map you return to across the engagement.',ul:['Full energy profile (all archetypes)','Strengths, shadows, growth edge','8-page PDF + trend comparison']}
+  ];
+  const COLORS=['#3FA37A','#E0613E','#E0A93E','#2C5C8F'];
+  const pb=document.getElementById('panelBody'),pd=document.getElementById('panelDot');
+  function render(i){const m=MODS[i];pd.style.background=COLORS[i];pb.className='fade';
+    pb.innerHTML=`<div class="tag" style="background:${COLORS[i]}">${m.tag}</div><h3>${['Meeting Framework','Energy Snapshot','Session Notes','Full Profile'][i]}</h3><p>${m.desc}</p><ul>${m.ul.map(x=>`<li>${x}</li>`).join('')}</ul>`;}
+  render(0);
+  document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');render(+b.dataset.i);});
+
+  /* ---------- Coach login unlock ---------- */
+  // openCoachLogin / coachUnlock / coachMask removed for production — Coach Workspace CTA links to /coach.html
+
+  /* ---------- Pricing ---------- */
+  const LINKS={
+    perOnce:'/personal.html', perMo:'https://buy.stripe.com/fZudRbcyAdDJ5Zk3jD4Ni0u',
+    soloM:'https://buy.stripe.com/9B6dRbgOQarxevQ6vP4Ni0l', soloY:'https://buy.stripe.com/9B66oJ4248jp3Rc7zT4Ni0m',
+    scaleM:'https://buy.stripe.com/6oU3cxeGIbvB3Rc1bv4Ni0v', scaleY:'https://buy.stripe.com/cNi14p2Y08jpgDYdYh4Ni0w'
+  };
+  const TIERS=[
+    {n:'Personal',seat:'One person · your own card',m:'$3.90',per:'once',noToggle:1,alt:'or <a href="https://buy.stripe.com/fZudRbcyAdDJ5Zk3jD4Ni0u" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline">$9.90/mo</a> to keep tracking it',more:'Your complete card — where your energy pattern meets your body signals. A one-off $3.90, yours to keep.',lk:['perOnce','perMo']},
+    {n:'Coach',seat:'15 client slots · 1 coach',m:'$59',y:'$590',more:'15 clients open at once, and re-runs inside each slot are free — that is $3.93 per client. Your first client is free, no card.',hot:1,lk:['soloM','soloY']},
+    {n:'Coach Scale',seat:'30 client slots · 1 coach',m:'$99',y:'$999',more:'For a full caseload — $3.30 per client. Cheaper per client than Coach, because you carry more of them.',lk:['scaleM','scaleY']}
+  ];
+  let annual=false;
+  const tg=document.getElementById('tiers');
+  function drawTiers(){
+    tg.innerHTML=TIERS.map((t,i)=>{
+      // Personal 是一次性价 + 可选月费，语义和教练档的「月付/年付」不同，所以它不参与年度开关。
+      const showY = annual && !t.noToggle;
+      const per = showY ? ' /yr' : (t.per === 'once' ? ' once' : ' /mo');
+      const price = `<span class="flip">${showY ? t.y : t.m}</span><small>${per}</small>`
+        + (t.alt ? `<div class="alt">${t.alt}</div>` : '');
+      return `<div class="tier ${t.hot?'hot':''}" data-i="${i}"><h4>${t.n}</h4><div class="seat">${t.seat}</div>
+      <div class="price">${price}</div>
+      <div class="more">${t.more}</div><div class="hint">Tap to expand ▾</div>
+      <a class="btn btn-primary buy" href="${(annual && !t.noToggle) ? LINKS[t.lk[1]] : LINKS[t.lk[0]]}"${String((annual && !t.noToggle) ? LINKS[t.lk[1]] : LINKS[t.lk[0]]).charAt(0)==='/' ? '' : ' target="_blank" rel="noopener"'} style="margin-top:14px;width:100%;justify-content:center">Get started →</a>
+      <div class="guar" style="margin-top:9px;font-size:12px;color:var(--muted);cursor:default">7-day money-back · no questions asked</div></div>`;}).join('');
+    tg.querySelectorAll('.tier').forEach(c=>c.addEventListener('click',()=>{const o=c.classList.toggle('open');c.querySelector('.hint').textContent=o?'Tap to collapse ▴':'Tap to expand ▾';}));
+    tg.querySelectorAll('.tier .buy').forEach(b=>b.addEventListener('click',e=>e.stopPropagation()));
+    addTilt('.tier',6);
+  }
+  drawTiers();
+  document.getElementById('billSw').addEventListener('click',function(){annual=!annual;this.classList.toggle('on',annual);drawTiers();});
+
+  /* ---------- sticky For Coaches ---------- */
+  const sc=document.getElementById('stickyCoach');
+  new IntersectionObserver(es=>es.forEach(en=>{if(en.boundingClientRect.top<0)sc.classList.add('show');else sc.classList.remove('show');}),{threshold:0}).observe(document.getElementById('view-home'));
+
+  /* init */
+  observeReveals();
+  addTilt('.vcard',5);
+</script>
+<script>
+/* Landing view (2026-09-20). The raw request count cannot tell a real reader
+   from a gateway prefetch or a repeat request inside the same session -- on
+   09-20 all 12 hits on one campaign came from a single Safari UA whose referer
+   was our own page. This fires once per campaign per session and carries the
+   referer, so the daily check can separate people from machines. */
+(function () {
+  try {
+    var m = (location.search || '').match(/utm_campaign=([A-Za-z0-9_]+)/);
+    if (!m) return;
+    var k = 'lv_' + m[1];
+    try {
+      if (sessionStorage.getItem(k)) return;
+      sessionStorage.setItem(k, '1');
+    } catch (e) {}
+    var ref = document.referrer || '';
+    var blob = new Blob([JSON.stringify({
+      event: 'landing_view',
+      meta: {
+        campaign: m[1],
+        ref: ref || '(direct)',
+        external: !ref || ref.indexOf('mojowaylife.com') < 0
+      }
+    })], { type: 'application/json' });
+    navigator.sendBeacon('/api/mirror/track', blob);
+  } catch (e) {}
+})();
+</script>
+
+<script>
+/* 首页订阅（2026-10-10 DSH）：首页此前没有任何留资入口。这里复用已验证可用的
+   /api/subscribe（写入 email_queue）。fetch 失败退回普通表单提交，保证不静默丢线索。 */
+function mojoSub(e){
+  e.preventDefault();
+  var f = e.target;
+  var i = f.querySelector('input[type=email]');
+  var v = (i && i.value || '').trim();
+  if (!v || v.indexOf('@') < 1) return false;
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email: v})
+  }).then(function(r){ return r.json(); }).then(function(d){
+    if (d && d.ok) {
+      f.innerHTML = '<p style="color:#fff;margin:0">Thank you. The next read lands in your inbox.</p>';
+    } else {
+      f.submit();
+    }
+  }).catch(function(){ f.submit(); });
+  return false;
+}
+</script>
+
+</body>
+</html>

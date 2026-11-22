@@ -1,0 +1,41 @@
+# Secrets & credentials — never commit
+.env
+*.env
+.htpasswd*
+config/company_info.json
+*secret*
+*credential*
+*.pem
+*.key
+
+# Private operational data
+ops/
+duns-apply/
+交付物/
+文档/
+logs/
+deploy_logs/
+backend/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+dist/
+build/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Node
+node_modules/
+
+# Backups & IDE & OS
+*.bak*
+/backups/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

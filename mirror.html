@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <title>The Mirror — MOJOWAY</title>
+    <meta name="description" content="Ask the Mirror a question. It will search for an echo from 2,500 years of wisdom.">
+
+    <meta property="og:title" content="The Mirror — MOJOWAY">
+    <meta property="og:description" content="Ask the Mirror a question. It will search for an echo from 2,500 years of wisdom.">
+    <meta property="og:image" content="https://mojowaylife.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Mirror — MOJOWAY">
+    <meta name="twitter:description" content="Ask the Mirror a question. It will search for an echo from 2,500 years of wisdom.">
+    <meta name="twitter:image" content="https://mojowaylife.com/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mojowaylife.com/mirror.html">
+    <meta property="og:site_name" content="MOJOWAY">
+
+    <meta name="theme-color" content="#F6F2EA">
+    <link rel="canonical" href="https://mojowaylife.com/mirror.html">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* v3.0 palette — matches the home page so Mirror no longer looks
+               like a different website. Was a dark purple/gold theme. */
+            --color-deep-gray: #1a1f36;
+            --color-warm-brown: #B23526;
+            --color-cream: #ffffff;
+            --color-light-gray: #5b6478;
+            --color-white: #ffffff;
+            --color-mist: #e6e8ec;
+            --font-serif: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            background: var(--color-cream);
+            color: var(--color-deep-gray);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        /* Accessibility: follow the system reduced-motion setting */
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; animation: none !important; }
+        }
+
+        /* ─── Nav ─── */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--color-cream);
+            border-bottom: 1px solid var(--color-mist);
+        }
+        .nav-brand {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--color-deep-gray);
+            text-decoration: none;
+        }
+        .nav-brand span { color: var(--color-warm-brown); }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--color-light-gray);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--color-warm-brown); }
+
+        /* ─── Hero ─── */
+        .hero {
+            text-align: center;
+            padding: 80px 24px 40px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .hero-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-warm-brown);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--color-deep-gray);
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-warm-brown);
+        }
+        .hero-sub {
+            font-size: 17px;
+            color: var(--color-light-gray);
+            line-height: 1.6;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* ─── Divider ornament ─── */
+        .ornament {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--color-warm-brown);
+            font-size: 16px;
+            opacity: 0.6;
+            letter-spacing: 8px;
+        }
+
+        /* ─── Input section ─── */
+        .input-section {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+        .input-label {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--color-light-gray);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .input-wrap {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--color-mist);
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--color-white);
+            box-shadow: 0 0 30px rgba(211,75,58,0.08), 0 2px 16px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .input-wrap:focus-within {
+            border-color: rgba(211,75,58,0.7);
+            box-shadow: 0 0 40px rgba(211,75,58,0.18), 0 2px 16px rgba(0, 0, 0, 0.4);
+        }
+        .input-wrap input {
+            flex: 1;
+            padding: 18px 22px;
+            border: none;
+            font-family: var(--font-serif);
+            font-size: 16px;
+            color: var(--color-deep-gray);
+            background: transparent;
+            outline: none;
+        }
+        .input-wrap input::placeholder {
+            color: #6A6390;
+            font-style: italic;
+        }
+        .input-wrap button {
+            padding: 18px 32px;
+            border: none;
+            background: rgba(211,75,58,0.12);
+            color: var(--color-warm-brown);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+            border-left: 1px solid rgba(211,75,58,0.25);
+        }
+        .input-wrap button:hover {
+            background: rgba(211,75,58,0.25);
+        }
+        .input-wrap button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ─── Result section ─── */
+        .result-section {
+            display: none;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .result-section.visible {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result-header {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-warm-brown);
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+        .result-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-mist);
+            border-radius: 4px;
+            padding: 40px 36px;
+        }
+        .result-response {
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--color-deep-gray);
+            margin-bottom: 28px;
+        }
+        .result-divider {
+            text-align: center;
+            color: var(--color-warm-brown);
+            margin: 24px 0;
+            font-size: 14px;
+            letter-spacing: 6px;
+            opacity: 0.5;
+        }
+        .result-story {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-light-gray);
+            margin-bottom: 24px;
+        }
+        .result-sage {
+            text-align: right;
+            font-size: 15px;
+            color: var(--color-warm-brown);
+            font-style: italic;
+        }
+        .result-sage::before {
+            content: "— ";
+        }
+
+        /* ─── Loading ─── */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: var(--color-light-gray);
+            font-style: italic;
+        }
+        .loading.visible { display: block; }
+        .loading-dots::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        /* ─── Hook section ─── */
+        .hook {
+            background: var(--color-cream);
+            color: var(--color-deep-gray);
+            padding: 60px 24px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid rgba(211,75,58,0.15);
+        }
+        .hook-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hook p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #6E675C;
+            margin-bottom: 28px;
+        }
+        .hook p em {
+            color: var(--color-warm-brown);
+            font-style: italic;
+        }
+
+        /* a11y: #revealBtn rendered as an unstyled UA default */
+        #revealBtn {
+            padding: 16px 30px;
+            border: none;
+            border-radius: 8px;
+            background: #B23526;
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: .4px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        #revealBtn:hover { background: #8F2A1E; }
+        .hook-cta {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--color-warm-brown);
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .hook-cta:hover {
+            background: #B23526;
+            transform: translateY(-1px);
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            background: var(--color-cream);
+            padding: 24px 40px;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--color-light-gray);
+            border-top: 1px solid var(--color-mist);
+        }
+        .footer a {
+            color: var(--color-light-gray);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer a:hover { color: var(--color-warm-brown); }
+
+        /* ─── Birth gate + Energy badge ─── */
+        .birth-gate {
+            text-align: center;
+            padding: 28px 20px 22px;
+            background: var(--color-white);
+            border: 1px solid var(--color-mist);
+            border-radius: 14px;
+            backdrop-filter: blur(8px);
+            margin-bottom: 8px;
+        }
+        /* 2026-09-11: the title was #E8E6F0 on a #FCFAF5 card —
+           1.18:1 contrast, i.e. effectively invisible. Darkened to the
+           site ink colour so the headline can actually be read. */
+        .free-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #B93E2E;
+            background: rgba(211,75,58,0.10);
+            border: 1px solid rgba(211,75,58,0.28);
+            border-radius: 100px;
+            padding: 5px 12px;
+            margin-bottom: 12px;
+        }
+        .birth-gate-title {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--color-deep-gray);
+            letter-spacing: 0.2px;
+            margin: 0 0 8px;
+        }
+        .birth-gate-sub {
+            font-size: 13px;
+            color: var(--color-light-gray);
+            line-height: 1.6;
+            max-width: 440px;
+            margin: 0 auto 18px;
+            font-style: italic;
+        }
+        .term-note {
+            font-size: 12px;
+            color: var(--color-light-gray);
+            line-height: 1.65;
+            max-width: 430px;
+            margin: 0 auto 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+        }
+        .birth-gate-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .birth-gate-row input[type="date"] {
+            background: var(--color-white);
+            border: 1px solid var(--color-mist);
+            color: var(--color-deep-gray);
+            border-radius: 8px;
+            color: var(--color-deep-gray);
+            padding: 11px 14px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            outline: none;
+            color-scheme: dark;
+        }
+        .birth-gate-row input[type="date"]:focus {
+            border-color: rgba(211,75,58,0.8);
+            box-shadow: 0 0 20px rgba(211,75,58,0.15);
+        }
+        .birth-gate-row button {
+            padding: 11px 26px;
+            background: linear-gradient(135deg, #B23526 0%, #B93E2E 100%);
+            color: #FCFAF5;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(211,75,58,0.25);
+        }
+        .birth-gate-row button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(211,75,58,0.4);
+        }
+        .gate-skip {
+            display: inline-block;
+            margin-top: 16px;
+            background: none;
+            border: none;
+            padding: 8px 6px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--color-light-gray);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            opacity: 0.9;
+            transition: color 0.25s ease, opacity 0.25s ease;
+        }
+        .gate-skip:hover { color: #B23526; opacity: 1; }
+        .gate-hint {
+            opacity: 0;
+            margin: 14px 0 0;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--color-warm-brown);
+            letter-spacing: 0.5px;
+            transition: opacity 0.6s ease;
+        }
+        .gate-hint.show { opacity: 1; }
+        @keyframes gateShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+        .birth-gate-row input.shake {
+            animation: gateShake 0.5s ease;
+            border-color: rgba(211,75,58,0.95) !important;
+            box-shadow: 0 0 24px rgba(211,75,58,0.35);
+        }
+        .energy-badge {
+            display: none;
+            text-align: center;
+            margin-bottom: 18px;
+            padding: 16px 20px;
+            background: rgba(211,75,58,0.08);
+            border: 1px solid rgba(211,75,58,0.3);
+            border-radius: 12px;
+        }
+        .energy-badge.visible { display: block; animation: fadeIn 0.6s ease; }
+        .energy-badge .eb-title {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            color: var(--color-warm-brown);
+            letter-spacing: 1px;
+        }
+        .energy-badge .eb-one {
+            font-size: 12px;
+            color: var(--color-light-gray);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .energy-badge .eb-cta {
+            display: inline-block;
+            margin-top: 8px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: #6E675C;
+            text-decoration: underline;
+        }
+
+        /* ─── Arrived from a coach's link ─── */
+        .ref-bar {
+            display: none;
+            max-width: 620px; margin: 0 auto 6px; padding: 13px 18px;
+            background: rgba(211,75,58,0.07);
+            border: 1px solid rgba(211,75,58,0.25);
+            border-radius: 11px; text-align: center;
+            font-size: 14px; line-height: 1.6; color: #5A5248;
+        }
+        .ref-bar.visible { display: block; animation: fadeIn 0.5s ease; }
+
+        /* ─── core energy card ─── */
+        .ecard {
+            display: none;
+            max-width: 520px;
+            margin: 0 auto 18px;
+            background: var(--color-white);
+            border: 1px solid var(--color-mist);
+            border-radius: 16px;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 4px 24px rgba(33,29,24,0.07);
+        }
+        .ecard.visible { display: block; animation: fadeIn 0.6s ease; }
+        .ecard-top { padding: 26px 26px 22px; text-align: center; position: relative; }
+        .ecard-top::after {
+            content: ""; position: absolute; left: 26px; right: 26px; bottom: 0;
+            height: 1px; background: var(--color-mist);
+        }
+        .ecard-icon { font-size: 40px; line-height: 1; margin-bottom: 10px; }
+        .ecard-el {
+            font-family: var(--font-sans); font-size: 11px; letter-spacing: .2em;
+            text-transform: uppercase; font-weight: 700; margin-bottom: 8px;
+        }
+        .ecard-name {
+            font-family: var(--font-serif); font-size: 26px; line-height: 1.25;
+            color: var(--color-deep-gray); margin-bottom: 12px;
+        }
+        .ecard-line {
+            font-size: 16px; font-style: italic; line-height: 1.6;
+            color: var(--color-light-gray); max-width: 400px; margin: 0 auto;
+        }
+        .ecard-body { padding: 20px 26px 22px; }
+        .ecard-lbl {
+            font-family: var(--font-sans); font-size: 10px; letter-spacing: .18em;
+            text-transform: uppercase; color: var(--color-light-gray); margin-bottom: 7px;
+        }
+        .ecard-blk + .ecard-blk { margin-top: 18px; padding-top: 18px; border-top: 1px dashed #E3DDD1; }
+        .ecard-blk p { font-size: 15px; line-height: 1.72; color: #3A342C; }
+        .ecard-blk p b { font-weight: 600; }
+        .ecard-term { margin-top: 16px; font-size: 12.5px; color: var(--color-light-gray); font-style: italic; }
+        .ecard-actions { display: flex; gap: 10px; padding: 0 26px 4px; flex-wrap: wrap; }
+        .ecard-btn {
+            flex: 1 1 130px; padding: 12px 14px; border-radius: 999px;
+            border: 1px solid var(--color-mist); background: #fff;
+            font-family: var(--font-sans); font-size: 13px; color: #3A342C;
+            cursor: pointer; transition: all 0.2s; min-height: 44px;
+        }
+        .ecard-btn:hover { border-color: var(--color-warm-brown); color: var(--color-warm-brown); }
+        .ecard-btn-primary {
+            background: var(--color-deep-gray); border-color: var(--color-deep-gray);
+            color: #FCFAF5; font-weight: 600;
+        }
+        .ecard-btn-primary:hover { background: var(--color-warm-brown); color: #fff; }
+        .ecard-msg {
+            padding: 10px 26px 0; font-size: 12.5px; line-height: 1.5;
+            color: #4A9E42; min-height: 0;
+        }
+        .ecard-note {
+            padding: 14px 26px 0; font-size: 12.5px; line-height: 1.6;
+            color: var(--color-light-gray);
+        }
+        .ecard-note a { color: #B23526; text-decoration: underline; }
+        @media (max-width: 640px) {
+            .ecard-name { font-size: 22px; }
+            .ecard-line { font-size: 15px; }
+            .ecard-btn { flex: 1 1 100%; }
+        }
+
+        /* ─── Signed-in (magic-link) indicator ─── */
+        .signed-in {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 500;
+            color: #1f6b34;
+            background: #eef7ef;
+            border: 1px solid #cfe9d4;
+            border-radius: 999px;
+            padding: 7px 14px;
+            width: fit-content;
+        }
+        .signed-in .si-dot { color: #2e9e4f; }
+        .signed-in .si-link {
+            margin-left: 10px; padding: 4px 0 4px 10px;
+            border-left: 1px solid #cfe9d4;
+            color: #1f6b34; font-weight: 500; text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .signed-in .si-link:hover { color: #2e9e4f; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 640px) {
+            .nav { padding: 16px 20px; }
+            .nav-links { gap: 16px; }
+            .nav-links a:not(.nav-cta) { display: none; }
+            .hero { padding: 50px 20px 30px; }
+            .hero h1 { font-size: 24px; }
+            .hero-sub { font-size: 15px; }
+            .input-wrap { flex-direction: column; }
+            .input-wrap button { padding: 16px; }
+            .result-card { padding: 28px 20px; }
+            .result-response { font-size: 17px; }
+            .hook { padding: 40px 20px; }
+            .hook p { font-size: 15px; }
+        }
+    @media(max-width:640px){.footer-links a,.footer a{display:inline-block;padding:13px 2px;min-height:40px;line-height:1.3}.topnav-links a{padding:9px 0}}
+
+    /* MOJOWAY tap-target a11y (mobile) */
+    @media (max-width: 640px) {
+        .birth-gate-row button { padding: 14px 26px; }
+        .gate-skip { padding: 13px 8px; margin-top: 11px; }
+        .footer a { display: inline-block; padding: 13px 0; }
+        .nav-brand { position: relative; }
+        .nav-brand::after {
+            content: ""; position: absolute; left: -10px; right: -10px;
+            top: 50%; height: 48px; transform: translateY(-50%);
+        }
+    }
+@media(max-width:640px){footer a{display:inline-block;padding:13px 2px;min-height:40px;line-height:1.3}}
+</style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What is the MOJOWAY Mirror?","acceptedAnswer":{"@type":"Answer","text":"The Mirror is an AI self-discovery companion. It reads your five core energies from your birth date and reflects your behavioral patterns back to you in conversation, drawing on 2,500 years of Eastern wisdom."}},
+        {"@type":"Question","name":"How do the five core energies work?","acceptedAnswer":{"@type":"Answer","text":"The five core energies are five behavioral archetypes — Pioneer (Wood), Connector (Fire), Anchor (Earth), Refiner (Metal), Philosopher (Water) — derived from your birth date. Your dominant energy shapes how you move, connect, and grow."}},
+        {"@type":"Question","name":"Is this a forecast?","acceptedAnswer":{"@type":"Answer","text":"No. The five core energies is a behavioral tendency framework rooted in Eastern energy patterns. It is recognition, not prediction — a mirror for self-awareness, not a forecast."}},
+        {"@type":"Question","name":"Is the Mirror free?","acceptedAnswer":{"@type":"Answer","text":"Yes — your core energy card is free, no account or card required. For coaches, the paid tool is the Coach Workspace ($59/month for 15 client slots): it turns a 10-minute client conversation into three topics and two angles for session one."}},
+        {"@type":"Question","name":"What is included in my subscription?","acceptedAnswer":{"@type":"Answer","text":"Unlimited conversations, and a memory that carries across sessions. A free visitor begins each conversation from nothing; a subscriber is met by what they said before. That is the whole difference, and we would rather under-promise it than pad the list."}}
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="/" class="nav-brand"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" style="height:20px;width:auto;display:block;" loading="eager" fetchpriority="high"></a>
+        <div class="nav-links">
+            <a href="/#method">Method</a>
+            <a href="/#pricing">Rates</a>
+            <a href="/coach.html">For Coaches</a>
+            <a href="/login.html">Sign in</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-eyebrow">The Mirror</div>
+        <h1>What you see in the mirror isn't <em>the whole picture.</em></h1>
+        <p class="hero-sub">Get your core energy card &mdash; one birth date, free, no signup.</p>
+    </section>
+
+    <div class="ornament">&#x2741; &#x2741; &#x2741;</div>
+
+    <!-- Set only when the visitor arrived through a coach's link (?ref=...).
+         Says who sent them, so nobody has to guess who is asking. -->
+    <div class="ref-bar" id="refBar"></div>
+
+    <!-- Input -->
+    <section class="input-section">
+        <!-- Step 1: Birth gate. The birth date builds the energy map that shapes
+             every later answer, and it is REQUIRED (2026-09-11): 92% of guest
+             sessions had no birth date, so the card below never fired at all. -->
+        <div class="birth-gate" id="birthGate">
+            <span class="free-badge" data-birthgate="v2">Free &middot; 10 seconds</span>
+            <p class="birth-gate-title">Get your core energy card</p>
+            <p class="birth-gate-sub">Your birth date is all it takes. The Mirror maps your
+                five core energies and hands you a card that names your dominant energy &mdash; free, before
+                you pay anything. From then on it shapes every answer you get.</p>
+            <p class="term-note">A &ldquo;core energy&rdquo; here means a recurring pattern of
+                behaviour &mdash; how you tend to decide, react and spend effort. It is a way of
+                describing temperament, not a measure of vitality, and not a health or medical
+                assessment of any kind.</p>
+            <div class="birth-gate-row">
+                <input type="date" id="birthDateInput" required />
+                <button id="revealBtn" onclick="revealEnergy()">Get My Card</button>
+            </div>
+            <p class="gate-hint" id="gateHint">Your birth date is required &mdash; it is the
+                one thing that can build your card.</p>
+        </div>
+        <!-- Transparency note when reusing a stored birth date: in silence it
+             looks like the Mirror somehow already knew. -->
+        <p id="birthRecall" style="display:none;max-width:660px;margin:0 auto 14px;
+            font-size:13px;line-height:1.6;color:#8A8175;text-align:center;"></p>
+
+        <!-- Shown when a visitor skips the birth date: no 5E map, stated plainly. -->
+        <p id="skipNote" style="display:none;max-width:660px;margin:0 auto 14px;
+            font-size:13px;line-height:1.6;color:#8A8175;text-align:center;"></p>
+
+        <!-- core energy card — the moment a person feels understood.
+             Filled by renderCardHtml() from data the server derives from the
+             birth date, so this and the paywall below can never disagree. -->
+        <div class="ecard" id="energyCard"></div>
+        <!-- Step 2: conversation input (revealed once the gate is resolved) -->
+        <div class="input-label" id="inputLabel" style="display:none;">What question is weighing on your mind right now?</div>
+        <div class="signed-in" id="signedIn"><span class="si-dot">✓</span><span id="signedInText">Signed in</span><a class="si-link" href="/send.html">Coach? Send a link to a client →</a></div>
+        <div class="input-wrap" id="inputWrap" style="display:none;">
+            <input type="text" id="questionInput" placeholder="Type your question here..." autocomplete="off" />
+            <button id="submitBtn" onclick="askMirror()">Submit</button>
+        </div>
+    </section>
+
+    <!-- Loading -->
+    <div class="loading" id="loadingDiv">
+        The Mirror is listening<span class="loading-dots"></span>
+    </div>
+
+    <!-- Result -->
+    <section class="result-section" id="resultSection">
+        <div class="result-header">The Mirror heard you.</div>
+        <div class="result-card">
+            <div class="result-response" id="wisdomResponse"></div>
+            <div class="result-divider">&#x2741; &#x2741; &#x2741;</div>
+            <div class="result-story" id="wisdomStory"></div>
+        </div>
+    </section>
+
+    <!-- Hook -->
+    <section class="hook">
+        <div class="hook-inner">
+            <p>Your core energy card is <strong>free</strong> &mdash; no account, no card. Every answer shaped by your five core energies, the first pattern most people never notice about themselves.</p>
+            <a href="/coach.html" class="hook-cta" id="hookCta">For coaches: turn this into client intake →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+        <footer class="footer">
+            <a href="/">MOJOWAY</a> &middot;
+            <a href="/blog.html">Insights</a> &middot;
+            <a href="/privacy-policy.html">Privacy</a> &middot;
+            <a href="/refund-policy.html">Refund</a> &middot;
+            <a href="/terms-of-service.html">Terms</a> &middot;
+            <a href="/login.html">Sign in</a>
+            <br>&copy; 2026 Mojoway Spectrum Limited
+        </footer>
+
+    <script>
+        // ── Safe storage (sessionStorage/localStorage can throw in private mode) ──
+        function safeSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} try { sessionStorage.setItem(k, v); } catch(e) {} }
+        function safeGet(k) { try { return localStorage.getItem(k) || sessionStorage.getItem(k); } catch(e) { return null; } }
+        // ── Load user profile for 5E personalization ──
+        const STORED_USER_ID = safeGet('mojoway_user_id');
+        const STORED_EMAIL = safeGet('mojoway_email');
+        // Per-browser session ID — without it all anonymous visitors share one count
+        let SESSION_ID = safeGet('mirror_session_id');
+        if (!SESSION_ID) {
+            SESSION_ID = 's_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+            safeSet('mirror_session_id', SESSION_ID);
+        }
+
+        const input = document.getElementById('questionInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingDiv = document.getElementById('loadingDiv');
+        const resultSection = document.getElementById('resultSection');
+        const birthInput = document.getElementById('birthDateInput');
+
+        // ── Arrived from a coach's link (?ref=...) ──
+        // A coach sent this link. Nothing extra is demanded of the client —
+        // they talk to the Mirror the same way anyone else does, and whatever
+        // they say is attached to the link so the coach can read it back.
+        var REF_TOKEN = (new URLSearchParams(location.search).get('ref') || '').trim();
+
+        function bindRef() {
+            if (!REF_TOKEN || !GUEST_TOKEN) return;
+            var bdEl = document.getElementById('birthDateInput');
+            fetch('/api/intake/' + encodeURIComponent(REF_TOKEN) + '/bind', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    guest_token: GUEST_TOKEN,
+                    birthdate: bdEl ? (bdEl.value || '') : ''
+                })
+            }).catch(function () {});
+        }
+
+        (function loadRef() {
+            if (!REF_TOKEN) return;
+            fetch('/api/intake/' + encodeURIComponent(REF_TOKEN))
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    if (!d || !d.ok) return;
+                    var bar = document.getElementById('refBar');
+                    if (!bar) return;
+                    if (d.expired) {
+                        bar.textContent = 'This link has expired \u2014 ask '
+                            + _esc(d.coach_name) + ' to send you a new one.';
+                        bar.classList.add('visible');
+                        return;
+                    }
+                    bar.textContent = _esc(d.coach_name)
+                        + ' would like to understand you a little before you meet. '
+                        + 'Say as much or as little as you like \u2014 there are no right answers here.';
+                    bar.classList.add('visible');
+                    var sub = document.querySelector('.hero-sub');
+                    if (sub) sub.textContent = 'Take your time. Nothing you write is a test.';
+                }).catch(function () {});
+        })();
+
+        // ── The core energy card ──
+        // [FIX 2026-09-04] The element used to be recomputed here, in the
+        // browser, from year stem / month branch / day stem / hour branch.
+        // Measured against the server's solar-term rule over three years of
+        // dates, the two agreed on only 35% of days — and in 2024 the browser
+        // version called 312 of 366 days "Wood". One person could be told
+        // The Pioneer here and The Anchor in the paywall below.
+        //
+        // So the browser asks and the server answers. One source, one truth.
+        let CARD_DATA = null;
+
+        function _esc(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function cardHtml(c) {
+            var h = '';
+            h += '<div class="ecard-top">';
+            h += '<div class="ecard-icon">' + c.icon + '</div>';
+            h += '<div class="ecard-el" style="color:' + c.accent + ';">' + _esc(c.element) + '</div>';
+            h += '<div class="ecard-name">' + _esc(c.archetype) + '</div>';
+            h += '<div class="ecard-line">' + _esc(c.one_line) + '</div>';
+            h += '</div>';
+            h += '<div class="ecard-body">';
+            h += '<div class="ecard-blk">';
+            h += '<div class="ecard-lbl">What you don\u2019t see about yourself</div>';
+            h += '<p>' + _esc(c.blind_spot) + '</p>';
+            h += '</div>';
+            h += '<div class="ecard-blk">';
+            h += '<div class="ecard-lbl">Who completes you</div>';
+            h += '<p><b>' + _esc(c.shadow_element) + ' \u00b7 ' + _esc(c.shadow_archetype) + '</b> \u2014 '
+               + _esc(c.shadow_gift) + ' ' + _esc(c.shadow_why) + '</p>';
+            h += '</div>';
+            if (c.solar_term) {
+                h += '<div class="ecard-term">Read from the solar term <b>' + _esc(c.solar_term) + '</b>.</div>';
+            }
+            h += '</div>';
+            h += '<div class="ecard-actions">';
+            h += '<button type="button" class="ecard-btn ecard-btn-primary" onclick="saveCardImage()">Save as image</button>';
+            h += '<button type="button" class="ecard-btn" onclick="shareCard()">Copy my link</button>';
+            h += '</div>';
+            h += '<div class="ecard-msg" id="cardMsg"></div>';
+            if (c.shared) {
+                h += '<div class="ecard-note">This is someone else\u2019s card, shared with you. '
+                   + '<a href="/mirror.html">Read your own</a>.</div>';
+            }
+            return h;
+        }
+
+        function renderCardHtml(c) {
+            var box = document.getElementById('energyCard');
+            if (!box) return;
+            if (!c) { box.classList.remove('visible'); box.innerHTML = ''; return; }
+            CARD_DATA = c;
+            box.innerHTML = cardHtml(c);
+            box.classList.add('visible');
+        }
+
+        // No quota gate here. The paywall section stays gated because it gives
+        // away the whole blind spot; this appears the moment the energy is
+        // revealed, because being understood once is what makes the rest
+        // worth paying for.
+        async function fetchCard(bd) {
+            if (!bd) { renderCardHtml(null); return; }
+            try {
+                const token = await ensureGuestSession();
+                const resp = await fetch('/api/mirror/guest-card', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ guest_token: token, birthdate: bd })
+                });
+                const d = await resp.json().catch(function () { return {}; });
+                if (d && d.ok && d.card) {
+                    renderCardHtml(d.card);
+                    track('card_shown', { element: d.card.element });
+                } else {
+                    renderCardHtml(null);
+                }
+            } catch (e) {
+                renderCardHtml(null);
+            }
+        }
+
+        // The name the four call sites already use. Renders what we have, or
+        // asks again if the card has not been fetched for this birth date.
+        function renderCard() {
+            if (CARD_DATA) { renderCardHtml(CARD_DATA); return; }
+            const bd = birthInput ? birthInput.value : '';
+            if (bd) fetchCard(bd);
+        }
+
+        // ── Save the card as an image ──
+        // Drawn on a canvas rather than captured: no library to load, and it
+        // has to work on a phone where there is nothing to right-click.
+        function _wrapText(g, text, cx, y, maxW, lh, maxLines) {
+            var words = String(text).split(/\s+/);
+            var line = '', lines = [], i;
+            for (i = 0; i < words.length; i++) {
+                var test = line ? line + ' ' + words[i] : words[i];
+                if (g.measureText(test).width > maxW && line) {
+                    lines.push(line);
+                    line = words[i];
+                } else {
+                    line = test;
+                }
+            }
+            if (line) lines.push(line);
+            if (maxLines && lines.length > maxLines) {
+                lines = lines.slice(0, maxLines);
+                lines[maxLines - 1] = lines[maxLines - 1].replace(/[\s,;.]+$/, '') + '\u2026';
+            }
+            for (i = 0; i < lines.length; i++) {
+                g.fillText(lines[i], cx, y + i * lh);
+            }
+            return y + lines.length * lh;
+        }
+
+        function saveCardImage() {
+            var c = CARD_DATA;
+            if (!c) return;
+            var W = 1080, H = 1350, M = 92;
+            var cv = document.createElement('canvas');
+            cv.width = W; cv.height = H;
+            var g = cv.getContext('2d');
+            var SANS = 'Inter, Helvetica, Arial, sans-serif';
+
+            g.fillStyle = '#F6F2EA';
+            g.fillRect(0, 0, W, H);
+            g.fillStyle = c.accent;
+            g.fillRect(0, 0, W, 10);
+
+            g.textAlign = 'center';
+            g.fillStyle = '#8A8175';
+            g.font = '600 24px ' + SANS;
+            g.fillText('M O J O W A Y', W / 2, 98);
+
+            g.font = '110px serif';
+            g.fillStyle = '#211D18';
+            g.fillText(c.icon, W / 2, 286);
+
+            g.fillStyle = c.accent;
+            g.font = '700 28px ' + SANS;
+            g.fillText(String(c.element).toUpperCase(), W / 2, 356);
+
+            g.fillStyle = '#211D18';
+            g.font = '400 62px ' + SANS;
+            g.fillText(c.archetype, W / 2, 446);
+
+            g.fillStyle = '#6E675C';
+            g.font = 'italic 36px ' + SANS;
+            var y = _wrapText(g, c.one_line, W / 2, 536, W - M * 2, 50, 3);
+
+            g.strokeStyle = '#D8CFBF';
+            g.lineWidth = 2;
+            g.beginPath();
+            g.moveTo(M, y + 44);
+            g.lineTo(W - M, y + 44);
+            g.stroke();
+
+            g.fillStyle = '#8A8175';
+            g.font = '600 22px ' + SANS;
+            y = y + 106;
+            g.fillText('WHAT YOU DON\u2019T SEE', W / 2, y);
+
+            g.fillStyle = '#3A342C';
+            g.font = '400 34px ' + SANS;
+            y = _wrapText(g, c.blind_spot, W / 2, y + 58, W - M * 2, 50, 6);
+
+            g.fillStyle = '#8A8175';
+            g.font = '600 22px ' + SANS;
+            y = y + 84;
+            g.fillText('WHO COMPLETES YOU', W / 2, y);
+
+            g.fillStyle = '#3A342C';
+            g.font = '400 34px ' + SANS;
+            _wrapText(g, c.shadow_why, W / 2, y + 58, W - M * 2, 50, 4);
+
+            g.fillStyle = '#8A8175';
+            g.font = '500 24px ' + SANS;
+            g.fillText('mojowaylife.com', W / 2, H - 68);
+
+            var msg = document.getElementById('cardMsg');
+            try {
+                var a = document.createElement('a');
+                a.href = cv.toDataURL('image/png');
+                a.download = 'mojoway-' + String(c.element).toLowerCase() + '.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                track('card_saved', { element: c.element });
+                if (msg) {
+                    msg.textContent = 'Saved to your device.';
+                    setTimeout(function () { msg.textContent = ''; }, 2600);
+                }
+            } catch (e) {
+                if (msg) msg.textContent = 'Press and hold the image to save it.';
+            }
+        }
+
+        // The link names the element only. The birth date that produced the
+        // card stays here — whoever receives the link never handed theirs
+        // over, and the date is the one thing on this page that identifies
+        // somebody.
+        function shareCard() {
+            var c = CARD_DATA;
+            if (!c) return;
+            var url = location.origin + '/mirror.html?energy='
+                    + encodeURIComponent(String(c.element).toLowerCase());
+            var msg = document.getElementById('cardMsg');
+            var say = function (text, ms) {
+                if (msg) {
+                    msg.textContent = text;
+                    setTimeout(function () { msg.textContent = ''; }, ms || 3200);
+                }
+            };
+            if (navigator.share) {
+                navigator.share({
+                    title: 'I am ' + c.archetype + ' — MOJOWAY',
+                    text: c.one_line,
+                    url: url
+                }).catch(function () {});
+                track('card_shared', { element: c.element, via: 'native' });
+                return;
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function () {
+                    say('Link copied — your birth date is not in it.');
+                }).catch(function () { say(url, 6000); });
+            } else {
+                say(url, 6000);
+            }
+            track('card_shared', { element: c.element, via: 'copy' });
+        }
+        // [FIX 2026-09-02] The birth date used to be saved in this browser
+        // only. The server never heard about it, so the guest had no energy
+        // map on record and the free section had nothing to read. Send it up
+        // whenever we already have a session to attach it to.
+        function saveBirthdate(bd) {
+            if (!bd || !GUEST_TOKEN) return;
+            try {
+                fetch('/api/mirror/guest-birthdate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ guest_token: GUEST_TOKEN, birthdate: bd }),
+                    keepalive: true
+                }).catch(function () {});
+            } catch (e) {}
+        }
+
+        // Gate resolution: birth date → energy badge → conversation input
+        async function revealEnergy() {
+            if (!birthInput.value) {
+                // The Mirror waits: a soft shake and a nudge in voice — never a red error
+                birthInput.classList.add('shake');
+                setTimeout(function() { birthInput.classList.remove('shake'); }, 600);
+                const hint = document.getElementById('gateHint');
+                hint.textContent = 'Your birth date is required \u2014 it is the one thing that can build your card.';
+                hint.classList.add('show');
+                const rbtn = document.getElementById('revealBtn');
+                const origText = rbtn.textContent;
+                rbtn.textContent = 'The Mirror is waiting…';
+                setTimeout(function() { rbtn.textContent = origText; }, 1500);
+                birthInput.focus();
+                return;
+            }
+            // Date validity: format plus range (1900-01-01 through today)
+            const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(birthInput.value);
+            let valid = false;
+            if (m) {
+                const y = +m[1], mo = +m[2], dd = +m[3];
+                const dt = new Date(y, mo - 1, dd);
+                const today = new Date();
+                valid = y >= 1900 && dt.getFullYear() === y && dt.getMonth() === mo - 1 && dt.getDate() === dd && dt <= today;
+            }
+            if (!valid) {
+                birthInput.classList.add('shake');
+                setTimeout(function() { birthInput.classList.remove('shake'); }, 600);
+                const hint2 = document.getElementById('gateHint');
+                hint2.textContent = 'The date doesn\u2019t open the veil \u2014 try again.';
+                hint2.classList.add('show');
+                birthInput.focus();
+                return;
+            }
+            safeSet('mirror_birth_date', birthInput.value);
+            saveBirthdate(birthInput.value);
+            document.getElementById('birthGate').style.display = 'none';
+            await fetchCard(birthInput.value);
+            bindRef();
+            document.getElementById('inputLabel').style.display = 'block';
+            document.getElementById('inputWrap').style.display = 'flex';
+            input.focus();
+            var _card = document.getElementById('energyCard');
+            if (_card) _card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        // The birth date shapes the energy map and is required (2026-09-11).
+        // Birth date REQUIRED as of 2026-09-11. skipGate() survives only as a
+        // dead guard, in case a cached page still carries the old button; its
+        // DOM node no longer exists.
+        let GATE_SKIPPED = false;
+        function skipGate() {
+            if (!document.getElementById('skipGateBtn')) return;
+            GATE_SKIPPED = true;
+            document.getElementById('birthGate').style.display = 'none';
+            document.getElementById('inputLabel').style.display = 'block';
+            document.getElementById('inputWrap').style.display = 'flex';
+            const note = document.getElementById('skipNote');
+            if (note) {
+                note.innerHTML = 'No birth date, no energy map &mdash; the Mirror is '
+                    + 'reading your words alone. <a href="#" id="birthAddLink" '
+                    + 'style="color:#B23526;text-decoration:underline;">Add it later</a>';
+                note.style.display = 'block';
+                const addLink = document.getElementById('birthAddLink');
+                if (addLink) {
+                    addLink.onclick = function (ev) {
+                        ev.preventDefault();
+                        GATE_SKIPPED = false;
+                        note.style.display = 'none';
+                        document.getElementById('birthGate').style.display = 'block';
+                        document.getElementById('inputLabel').style.display = 'none';
+                        document.getElementById('inputWrap').style.display = 'none';
+                        birthInput.focus();
+                    };
+                }
+            }
+            const qi = document.getElementById('questionInput');
+            if (qi) qi.focus();
+        }
+
+        // On load: a stored birth date goes straight to the conversation state
+        (function restoreGate() {
+            const saved = safeGet('mirror_birth_date');
+            if (saved) {
+                birthInput.value = saved;
+                document.getElementById('birthGate').style.display = 'none';
+                fetchCard(saved);
+                document.getElementById('inputLabel').style.display = 'block';
+                document.getElementById('inputWrap').style.display = 'flex';
+
+                // Say it out loud. Reusing a stored date in silence makes people
+                // think the system simply knew — and they never get to correct it.
+                var recall = document.getElementById('birthRecall');
+                if (recall) {
+                    recall.innerHTML = 'Using the birth date you gave before, <b>' + saved
+                        + '</b> &middot; <a href="#" id="birthChangeLink" style="'
+                        + 'color:#B23526;text-decoration:underline;">change it</a>';
+                    recall.style.display = 'block';
+                    var changeLink = document.getElementById('birthChangeLink');
+                    if (changeLink) {
+                        changeLink.onclick = function (ev) {
+                            ev.preventDefault();
+                            document.getElementById('birthGate').style.display = 'block';
+                            document.getElementById('inputLabel').style.display = 'none';
+                            document.getElementById('inputWrap').style.display = 'none';
+                            recall.style.display = 'none';
+                            birthInput.focus();
+                        };
+                    }
+                }
+            }
+        })();
+
+        // A shared link (?energy=wood) opens that card on its own — no
+        // session, no birth date, because the link only names the element.
+        (function openSharedCard() {
+            var m = /[?&]energy=([a-z]+)/i.exec(location.search);
+            if (!m) return;
+            var key = m[1].toLowerCase();
+            fetch('/api/mirror/shared-card?element=' + encodeURIComponent(key))
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    if (!d || !d.ok || !d.card) return;
+                    d.card.shared = true;
+                    renderCardHtml(d.card);
+                    document.getElementById('birthGate').style.display = 'none';
+                    document.getElementById('inputLabel').style.display = 'block';
+                    document.getElementById('inputWrap').style.display = 'flex';
+                    var ec = document.getElementById('energyCard');
+                    if (ec) ec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    track('card_shared_open', { element: d.card.element });
+                }).catch(function () {});
+        })();
+
+        // Enter key submits
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                askMirror();
+            }
+        });
+
+        // ── Guest session (no login required, 5 free messages) ──
+        // Was /api/mirror, which requires auth and returns 401 for visitors.
+        // That meant a first-time visitor could open this page but never get a
+        // reply — the Mirror looked broken. Now we use the guest endpoints.
+        let GUEST_TOKEN = safeGet('mirror_guest_token');
+        let MSG_COUNT = 0;
+        let MSG_MAX = 9999;
+
+        // [FIX 2026-09-02] Returning visitor: the browser remembers the birth
+        // date, but visitors who gave it before today never reached the
+        // server. Now that a token exists, send it up. Harmless to repeat —
+        // storing the same date twice changes nothing.
+        if (GUEST_TOKEN) {
+            var storedBd = safeGet('mirror_birth_date');
+            if (storedBd) saveBirthdate(storedBd);
+        }
+
+        // Magic-link sign-in token (from ?token= or localStorage). Restores the
+        // user's account session so a returning paid user gets unlimited access.
+        let MIRROR_AUTH_TOKEN = (function() {
+            var t = safeGet('mojoway_token') || (new URLSearchParams(location.search).get('token') || '');
+            if (t) {
+                try { localStorage.setItem('mojoway_token', t); } catch (e) {}
+                try { sessionStorage.setItem('mojoway_token', t); } catch (e) {}
+            }
+            return t;
+        })();
+        function showSignedIn() {
+            var el = document.getElementById('signedIn');
+            if (el) el.style.display = 'flex';
+        }
+        function hideSignedIn() {
+            var el = document.getElementById('signedIn');
+            if (el) el.style.display = 'none';
+        }
+        if (MIRROR_AUTH_TOKEN) showSignedIn();
+
+        function updateRemaining(n) {
+            const el = document.getElementById('remainingCount');
+            if (el) el.textContent = n;
+            const cta = document.getElementById('hookCta');
+            if (cta && n <= 0) cta.textContent = 'You have used your free questions — leave your email to keep talking, or open the Coach Workspace ($59/mo)';
+        }
+        function updateRemainingUnlimited() {
+            const el = document.getElementById('remainingCount');
+            if (el) el.textContent = '∞';
+            const cta = document.getElementById('hookCta');
+            if (cta) cta.textContent = 'You have full Mirror access';
+        }
+
+        async function ensureGuestSession() {
+            if (GUEST_TOKEN) return GUEST_TOKEN;
+            const resp = await fetch('/api/mirror/guest-start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    birthdate: birthInput.value || null,
+                    name: 'Guest'
+                })
+            });
+            if (!resp.ok) throw new Error('guest-start failed: ' + resp.status);
+            const d = await resp.json();
+            GUEST_TOKEN = d.guest_token;
+            safeSet('mirror_guest_token', GUEST_TOKEN);
+            if (d.max_messages) MSG_MAX = d.max_messages;
+            track('guest_start', { max: MSG_MAX });
+            return GUEST_TOKEN;
+        }
+
+        function track(evt, meta) {
+            try {
+                fetch('/api/mirror/track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ event: evt, meta: meta || {} }),
+                    keepalive: true
+                }).catch(function () {});
+            } catch (e) {}
+        }
+
+        function renderPaywall() {
+            var soft = 'color:#5A5248;';
+            var row = 'display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed #D8CFBF;';
+            var h = '';
+            h += '<div style="text-align:left;background:#F6E3D8;border:1px solid #D8CFBF;border-radius:14px;padding:22px 22px 16px;margin-top:6px;">';
+            h += '<p style="margin:0 0 6px;font-style:italic;">Your core energy card \u2014 free, and yours to keep.</p>';
+            h += '<p style="margin:0 0 16px;' + soft + 'font-size:.95em;">This is the one pattern that shapes how you move, connect, and hold things together. No login, no card \u2014 read it now and come back any time.</p>';
+            h += '<div style="font-size:.72em;letter-spacing:.16em;text-transform:uppercase;' + soft + 'margin-bottom:4px;">What you have</div>';
+            h += '<div style="' + row + '"><strong style="font-size:.9em;">01 \u00b7 Blind Spots</strong><span style="font-size:.84em;color:#4A9E42;font-weight:700;">free \u2014 below</span></div>';
+            h += '<div id="freeSectionBox"></div>';
+            h += '<div style="' + row + 'border-bottom:none;"><strong style="font-size:.9em;">02 \u00b7 Your energy, read</strong><span style="font-size:.84em;color:#4A9E42;font-weight:700;">free, always</span></div>';
+
+            // [ADD 2026-09-02] Not everyone is ready to pay after five messages,
+            // but everyone who got this far is worth keeping in touch with. Trade
+            // an email for five more questions instead of losing them forever.
+            h += '<div id="leadCapture" style="margin-top:16px;padding:15px 16px;background:#FFFDF8;border:1px solid #E4DACB;border-radius:12px;text-align:center;">';
+            h += '<div style="font-size:.92em;line-height:1.55;' + soft + 'margin-bottom:11px;">Not ready to subscribe? Leave your email and I will give you <strong style="color:#2E2A25;">5 more questions</strong> \u2014 and keep this conversation safe for you.</div>';
+            h += '<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:stretch;">';
+            h += '<input type="email" id="leadEmailInput" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key===\'Enter\'){event.preventDefault();submitLeadEmail();}" style="flex:1 1 180px;min-width:0;padding:10px 14px;border:1px solid #D8CFBF;border-radius:999px;font-size:.9em;font-family:inherit;background:#fff;color:#2E2A25;outline:none;" />';
+            h += '<button type="button" id="leadEmailBtn" onclick="submitLeadEmail()" style="padding:10px 20px;background:#2E2A25;color:#fff;border:none;border-radius:999px;font-weight:600;font-size:.9em;cursor:pointer;font-family:inherit;white-space:nowrap;">Give me 5 more</button>';
+            h += '</div>';
+            h += '<div id="leadEmailMsg" style="margin-top:9px;font-size:.85em;min-height:17px;line-height:1.45;' + soft + '"></div>';
+            h += '<div style="margin-top:5px;font-size:.74em;' + soft + '">No spam, and you can unsubscribe any time.</div>';
+            h += '</div>';
+
+            h += '<div style="margin-top:18px;padding:16px 16px;background:#F2F7F0;border:1px solid #D8E2D2;border-radius:12px;text-align:left;">';
+            h += '<div style="font-size:.72em;letter-spacing:.16em;text-transform:uppercase;' + soft + 'margin-bottom:8px;">Your energy wants to move</div>';
+            h += '<p style="margin:0 0 10px;font-size:.92em;line-height:1.6;' + soft + '">This card is free to keep. When you are ready to act on it, pick one energy to tend this week:</p>';
+            h += '<div style="display:flex;flex-wrap:wrap;gap:6px;font-size:.82em;line-height:1.5;">';
+            h += '<span style="padding:5px 11px;background:#fff;border:1px solid #D8CFBF;border-radius:999px;">Wood \u00b7 move your body</span>';
+            h += '<span style="padding:5px 11px;background:#fff;border:1px solid #D8CFBF;border-radius:999px;">Fire \u00b7 finish one thing</span>';
+            h += '<span style="padding:5px 11px;background:#fff;border:1px solid #D8CFBF;border-radius:999px;">Earth \u00b7 steady your routine</span>';
+            h += '<span style="padding:5px 11px;background:#fff;border:1px solid #D8CFBF;border-radius:999px;">Metal \u00b7 clear the noise</span>';
+            h += '<span style="padding:5px 11px;background:#fff;border:1px solid #D8CFBF;border-radius:999px;">Water \u00b7 rest on purpose</span>';
+            h += '</div>';
+            h += '<p style="margin:10px 0 0;font-size:.84em;' + soft + '">Coaches: turn this same read into a client intake in the <a href="/coach.html" style="color:#B23526;text-decoration:none;font-weight:600;">Coach Workspace</a> ($59/mo).</p>';
+            h += '</div>';
+            h += '</div>';
+            return h;
+        }
+
+        // [ADD 2026-09-02] Section 01 is shown in full, before any payment.
+        // The card is deterministic — the same birth date always yields the
+        // same element and the same blind spot, in this product and the app.
+        function renderFreeCard(c) {
+            var h = '';
+            h += '<div style="background:#FFFDF8;border:1px solid ' + c.light + ';border-left:4px solid ' + c.accent + ';border-radius:12px;padding:16px 18px;text-align:left;margin:12px 0 2px;">';
+            h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">';
+            h += '<span style="font-size:1.15em;">' + c.icon + '</span>';
+            h += '<span style="font-size:.7em;letter-spacing:.14em;text-transform:uppercase;color:' + c.accent + ';font-weight:700;">' + c.element + ' \u00b7 ' + c.archetype + '</span>';
+            h += '</div>';
+            h += '<p style="margin:0 0 12px;font-size:.95em;line-height:1.68;color:#2E2A25;">' + c.blind_spot + '</p>';
+            h += '<div style="border-top:1px dashed #D8CFBF;padding-top:11px;font-size:.86em;line-height:1.62;color:#5A5248;">';
+            h += 'Your blind spot lives in <strong style="color:#2E2A25;">' + c.shadow_element + '</strong> \u2014 ' + c.shadow_archetype + '. ' + c.shadow_gift + ' ' + c.shadow_why;
+            h += '</div></div>';
+            return h;
+        }
+
+        async function loadFreeSection() {
+            var box = document.getElementById('freeSectionBox');
+            if (!box || !GUEST_TOKEN) return;
+            var bdEl = document.getElementById('birthDateInput');
+            var bd = bdEl ? bdEl.value : '';
+            if (!bd) { box.innerHTML = ''; return; }
+            box.innerHTML = '<div style="font-size:.86em;color:#5A5248;padding:4px 2px 8px;">Reading your blind spot\u2026</div>';
+            try {
+                const resp = await fetch('/api/mirror/guest-free-section', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ guest_token: GUEST_TOKEN, birthdate: bd })
+                });
+                const d = await resp.json();
+                if (d && d.ok && d.section) {
+                    box.innerHTML = renderFreeCard(d.section);
+                    track('free_section_shown', { element: d.section.element });
+                } else {
+                    box.innerHTML = '';
+                }
+            } catch (e) {
+                box.innerHTML = '';
+            }
+        }
+
+
+        // [ADD 2026-09-02] Visitor trades an email for five more free messages.
+        // The Mirror keeps its voice; nothing here should feel like a form.
+        async function submitLeadEmail() {
+            const inp = document.getElementById('leadEmailInput');
+            const btn = document.getElementById('leadEmailBtn');
+            const msg = document.getElementById('leadEmailMsg');
+            if (!inp || !btn || !msg) return;
+
+            const email = (inp.value || '').trim();
+            if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+                msg.style.color = '#B4462F';
+                msg.textContent = 'Please enter a valid email address.';
+                inp.focus();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'One moment\u2026';
+            msg.style.color = '#5A5248';
+            msg.textContent = '';
+
+            try {
+                const token = await ensureGuestSession();
+                const resp = await fetch('/api/mirror/keep-talking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ guest_token: token, email: email })
+                });
+                const data = await resp.json().catch(function () { return {}; });
+
+                if (!resp.ok || data.error) {
+                    msg.style.color = '#B4462F';
+                    msg.textContent = data.error || 'Something went wrong. Please try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Give me 5 more';
+                    return;
+                }
+
+                if (data.max_messages) MSG_MAX = data.max_messages;
+                updateRemainingUnlimited();
+
+                const box = document.getElementById('leadCapture');
+                if (box) {
+                    box.innerHTML = '<div style="font-size:.95em;line-height:1.55;color:#2E2A25;">'
+                        + 'Thank you \u2014 <strong>5 more questions are yours.</strong><br>'
+                        + '<span style="font-size:.87em;color:#5A5248;">Ask whatever is still sitting with you.</span></div>';
+                }
+                input.disabled = false;
+                submitBtn.disabled = false;
+                input.focus();
+            } catch (e) {
+                msg.style.color = '#B4462F';
+                msg.textContent = 'The Mirror is momentarily still. Please try again.';
+                btn.disabled = false;
+                btn.textContent = 'Give me 5 more';
+                console.error('lead capture error:', e);
+            }
+        }
+
+        async function askMirror() {
+            // A birth date is optional. Without one there is no 5E map, but the
+            // conversation still works — skipping must never re-trap the visitor.
+            if (!birthInput.value && !GATE_SKIPPED) {
+                document.getElementById('birthGate').style.display = 'block';
+                document.getElementById('inputLabel').style.display = 'none';
+                document.getElementById('inputWrap').style.display = 'none';
+                const hint3 = document.getElementById('gateHint');
+                hint3.textContent = 'The Mirror needs your moment first.';
+                hint3.classList.add('show');
+                birthInput.focus();
+                return;
+            }
+            const question = input.value.trim();
+            if (!question) {
+                input.focus();
+                return;
+            }
+            // Signed-in (magic-link) users take the authenticated path; everyone
+            // else uses the anonymous guest path. Both share the same UI flow.
+            if (MIRROR_AUTH_TOKEN) {
+                await askMirrorAuthed(question);
+            } else {
+                await askMirrorGuest(question);
+            }
+        }
+
+        async function askMirrorGuest(question) {
+            // UI state: loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+            loadingDiv.classList.add('visible');
+            resultSection.classList.remove('visible');
+
+            try {
+                const token = await ensureGuestSession();
+
+                const response = await fetch('/api/mirror/guest-chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        guest_token: token,
+                        message: question
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || data.error) {
+                if (data && (data.error === 'quota_exceeded' || data.code === 'quota_exceeded')) {
+                    MSG_COUNT = MSG_MAX;
+                    updateRemaining(0);
+                    track('paywall_view', { used: MSG_MAX });
+                    document.getElementById('wisdomStory').textContent = '';
+                    document.getElementById('wisdomResponse').innerHTML = renderPaywall();
+                    loadFreeSection();
+                    loadingDiv.classList.remove('visible');
+                    resultSection.classList.add('visible');
+                    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    input.value = '';
+                    return;
+                }
+                    throw new Error(data.error || ('HTTP ' + response.status));
+                }
+
+                // Small delay for dramatic effect
+                await new Promise(r => setTimeout(r, 400));
+
+                // Populate result — guest-chat returns { reply, message_count, max_messages }
+                document.getElementById('wisdomResponse').textContent = data.reply || '';
+                document.getElementById('wisdomStory').textContent = '';
+
+                // Track remaining free messages
+                if (typeof data.message_count === 'number') MSG_COUNT = data.message_count;
+                if (data.max_messages) MSG_MAX = data.max_messages;
+                updateRemainingUnlimited();
+
+                // Attach this answer to the coach's link, so their list shows
+                // progress while the client is still talking.
+                bindRef();
+
+                // Show result
+                loadingDiv.classList.remove('visible');
+                renderCard();
+                resultSection.classList.add('visible');
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (err) {
+                loadingDiv.classList.remove('visible');
+                // 401/expired token → clear and let next try start fresh
+                const msg = String(err.message || '');
+                if (msg.indexOf('401') >= 0 || msg.toLowerCase().indexOf('token') >= 0) {
+                    GUEST_TOKEN = null;
+                    try { localStorage.removeItem('mirror_guest_token'); } catch(e) {}
+                    try { sessionStorage.removeItem('mirror_guest_token'); } catch(e) {}
+                }
+                document.getElementById('wisdomResponse').textContent =
+                    'The Mirror is momentarily still. Please try again.';
+                resultSection.classList.add('visible');
+                console.error('Mirror API error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            }
+        }
+
+        async function askMirrorAuthed(question) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+            loadingDiv.classList.add('visible');
+            resultSection.classList.remove('visible');
+
+            try {
+                const guestToken = await ensureGuestSession();
+
+                // Start an authenticated session (links the guest conversation to the account)
+                const startResp = await fetch('/api/mirror/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ auth_token: MIRROR_AUTH_TOKEN, guest_token: guestToken })
+                });
+                const startData = await startResp.json().catch(function() { return {}; });
+
+                if (!startResp.ok) {
+                    // Invalid/expired token or no assessment yet → drop token, fall back to guest
+                    if (startData.code === 'no_profile' || startResp.status === 401) {
+                        MIRROR_AUTH_TOKEN = null;
+                        try { localStorage.removeItem('mojoway_token'); } catch (e) {}
+                        try { sessionStorage.removeItem('mojoway_token'); } catch (e) {}
+                        hideSignedIn();
+                        await askMirrorGuest(question);
+                        return;
+                    }
+                    throw new Error(startData.error || ('HTTP ' + startResp.status));
+                }
+
+                const convId = startData.conversation_id;
+
+                const chatResp = await fetch('/api/mirror/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ auth_token: MIRROR_AUTH_TOKEN, conversation_id: convId, message: question })
+                });
+                const chatData = await chatResp.json().catch(function() { return {}; });
+
+                if (!chatResp.ok || chatData.error) {
+                    throw new Error(chatData.error || ('HTTP ' + chatResp.status));
+                }
+
+                await new Promise(r => setTimeout(r, 400));
+
+                document.getElementById('wisdomResponse').textContent = chatData.reply || '';
+                document.getElementById('wisdomStory').textContent = '';
+
+                // Paid subscribers get unlimited access
+                if (startData.unlimited === true || chatData.messages_remaining === -1) {
+                    updateRemainingUnlimited();
+                } else if (typeof chatData.messages_remaining === 'number') {
+                    updateRemaining(Math.max(0, chatData.messages_remaining));
+                }
+
+                loadingDiv.classList.remove('visible');
+                renderCard();
+                resultSection.classList.add('visible');
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (err) {
+                loadingDiv.classList.remove('visible');
+                document.getElementById('wisdomResponse').textContent =
+                    'The Mirror is momentarily still. Please try again.';
+                resultSection.classList.add('visible');
+                console.error('Mirror auth API error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            }
+        }
+    </script>
+</body>
+</html>

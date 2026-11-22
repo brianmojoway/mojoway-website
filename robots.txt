@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Private / non-content paths
+Disallow: /api/
+Disallow: /webhook/
+Disallow: /login.html
+
+# Internal assets — never meant to be indexed
+Disallow: /backend/
+Disallow: /mailer/
+Disallow: /tools/
+Disallow: /skills/
+Disallow: /b2b-email-sender/
+Disallow: /test/
+
+Sitemap: https://mojowaylife.com/sitemap.xml
+Sitemap: https://mojowaylife.com/sitemap-pages.xml
+Sitemap: https://mojowaylife.com/sitemap-blog.xml

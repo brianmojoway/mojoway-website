@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="description" content="Book a free 30-minute trial session with a coach on MOJOWAY. No commission, no lead fees, no ranking.">
+<title>Find a coach – MOJOWAY</title>
+<link rel="canonical" href="https://mojowaylife.com/coaches">
+<style>
+  :root {
+    --bg: #F6F2EA;
+    --card: #FCFAF5;
+    --line: #D8CFBF;
+    --ink: #1A1A1A;
+    --muted: #6E675C;
+    --accent: #B23526;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+    background: var(--bg); color: var(--ink); margin: 0; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px 80px; }
+  .brand { margin-bottom: 36px; }
+  .brand a { display: inline-block; line-height: 0; }
+  .brand img { height: 26px; width: auto; display: block; }
+  h1 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); font-weight: 600; letter-spacing: -.025em; margin: 0 0 14px; }
+  .lede { font-size: 16px; color: #4a4a4a; margin: 0 0 12px; max-width: 640px; }
+  .fine { font-size: 13px; color: var(--muted); margin: 0 0 36px; max-width: 640px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 24px; margin-bottom: 14px;
+  }
+  .card h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 4px; }
+  .headline { color: #4a4a4a; font-size: 14px; margin: 0 0 12px; }
+  .meta { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+  .meta strong { color: var(--ink); font-weight: 600; }
+  .slots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .slot {
+    font: inherit; font-size: 13px; padding: 8px 14px; border-radius: 9px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer;
+  }
+  .slot:hover { border-color: var(--accent); color: var(--accent); }
+  .slot:disabled { opacity: .45; cursor: default; }
+  .empty {
+    background: var(--card); border: 1px dashed var(--line); border-radius: 16px;
+    padding: 40px 24px; text-align: center; color: var(--muted); font-size: 15px;
+  }
+  .notice {
+    margin-top: 28px; padding: 16px 18px; border-radius: 12px;
+    background: #F1EDE4; font-size: 13px; color: #4a4a4a;
+  }
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px);
+    background: var(--ink); color: #fff; font-size: 14px; padding: 12px 20px;
+    border-radius: 10px; opacity: 0; pointer-events: none; transition: all .22s ease;
+    max-width: 90vw; text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast.bad { background: var(--accent); }
+  @media (max-width: 560px) { .wrap { padding-top: 36px; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a free trial session cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thirty minutes with a coach, at no cost. If it is not a fit, you owe nothing and nobody calls you about it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does MOJOWAY charge coaches a commission or a lead fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coaches here set their own slots. We take no commission and charge them no lead fee, so nothing on this page is for sale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are coaches ordered on MOJOWAY?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coaches are listed by their next open slot, soonest first. That is the only thing that decides the order — there is no score, no rating, and no paid placement, because we have no way to verify which coach is \"better\" and will not pretend otherwise."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><a href="/" aria-label="MOJOWAY"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" loading="eager" decoding="sync"></a></div>
+
+  <h1>Book a free trial session</h1>
+  <p class="lede">Thirty minutes with a coach, at no cost. If it is not a
+     fit, you owe nothing and nobody calls you about it.</p>
+  <p class="fine">Coaches here set their own slots. We take no commission and charge
+     them no lead fee, so nothing on this page is for sale. Registration is free but
+     includes no trial sessions and no subscription — how many you can book depends
+     only on the slots coaches publish, and you arrange the details with the coach
+     directly.</p>
+  <p class="fine" id="tzline"></p>
+
+  <div id="list"><div class="empty">Loading…</div></div>
+
+<!-- 2026-11-08 answer-first FAQ: every answer is verbatim from this page -->
+<section class="faq-block" aria-labelledby="faq-h" style="max-width:760px;margin:30px auto;padding:0 20px">
+  <h2 id="faq-h" style="font-size:19px;font-weight:600;margin:0 0 4px">Questions, answered</h2>
+  <dl style="margin:0">
+    <dt style="font-weight:600;margin:18px 0 4px">What does a free trial session cost?</dt>
+    <dd style="margin:0;line-height:1.7">Thirty minutes with a coach, at no cost. If it is not a fit, you owe nothing and nobody calls you about it.</dd>
+    <dt style="font-weight:600;margin:18px 0 4px">Does MOJOWAY charge coaches a commission or a lead fee?</dt>
+    <dd style="margin:0;line-height:1.7">Coaches here set their own slots. We take no commission and charge them no lead fee, so nothing on this page is for sale.</dd>
+    <dt style="font-weight:600;margin:18px 0 4px">How are coaches ordered on MOJOWAY?</dt>
+    <dd style="margin:0;line-height:1.7">Coaches are listed by their next open slot, soonest first. That is the only thing that decides the order — there is no score, no rating, and no paid placement, because we have no way to verify which coach is "better" and will not pretend otherwise.</dd>
+  </dl>
+</section>
+
+  <div class="notice">
+    <strong>About the order.</strong> Coaches are listed by their next open slot,
+    soonest first. That is the only thing that decides the order — there is no score,
+    no rating, and no paid placement, because we have no way to verify which coach is
+    "better" and will not pretend otherwise.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var TOKEN = (function () {
+    try {
+      var t = localStorage.getItem('mojoway_token') ||
+              (new URLSearchParams(location.search).get('token') || '');
+      if (t) { localStorage.setItem('mojoway_token', t); }
+      return t;
+    } catch (e) { return ''; }
+  })();
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  // 时区是这一页最容易出错的地方：slot 按访问者本地时间显示，教练的时区写在卡片上。
+  // 两者不一致时，如果不是先说清楚，一个人会以为自己约的是 19:00，实际是对方的 11:00。
+  // 先把话说在前面，比在每个按钮上再贴一遍时区便宜。
+  (function () {
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { tz = ''; }
+    var el = $('tzline');
+    if (el && tz) {
+      el.textContent = 'All times below are shown in your local timezone (' + tz +
+        '). Each coach card also shows the timezone they work in.';
+    }
+  })();
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function local(iso) {
+    if (!iso) { return ''; }
+    var d = new Date(iso.indexOf('Z') > -1 ? iso : iso + 'Z');
+    if (isNaN(d.getTime())) { return iso; }
+    return d.toLocaleString(undefined, {
+      weekday: 'short', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+
+  var toastTimer = null;
+  function toast(msg, bad) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.toggle('bad', !!bad);
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, 4200);
+  }
+
+  function render(coaches) {
+    var box = $('list');
+    if (!coaches.length) {
+      box.innerHTML = '<div class="empty">No coach has open slots right now.<br>'
+        + 'Check back in a day or two — slots are published by the coaches themselves.</div>';
+      return;
+    }
+    box.innerHTML = coaches.map(function (c) {
+      return '<div class="card" data-coach="' + c.id + '">'
+        + '<h2>' + esc(c.first_name || 'Coach') + '</h2>'
+        + (c.headline ? '<p class="headline">' + esc(c.headline) + '</p>' : '')
+        + '<p class="meta">Next open slot: <strong>' + esc(local(c.next_slot_at)) + '</strong>'
+        + (c.languages ? ' · Speaks ' + esc(c.languages) : '')
+        + (c.timezone ? ' · ' + esc(c.timezone) : '') + '</p>'
+        + '<div class="slots" id="slots-' + c.id + '"><span class="meta">Loading slots…</span></div>'
+        + '</div>';
+    }).join('');
+
+    coaches.forEach(function (c) { loadSlots(c.id); });
+  }
+
+  function loadSlots(coachId) {
+    fetch('/api/bridge/coaches/' + coachId, { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        var box = $('slots-' + coachId);
+        if (!box) { return; }
+        if (!d || !d.slots || !d.slots.length) {
+          box.innerHTML = '<span class="meta">No open slots.</span>';
+          return;
+        }
+        box.innerHTML = d.slots.map(function (s) {
+          return '<button class="slot" data-slot="' + s.id + '" data-coach="' + coachId + '">'
+            + esc(local(s.start_at)) + '</button>';
+        }).join('');
+        Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (b) {
+          b.addEventListener('click', function () { book(b.dataset.slot, b); });
+        });
+      })
+      .catch(function () {
+        var box = $('slots-' + coachId);
+        if (box) { box.innerHTML = '<span class="meta">Could not load slots.</span>'; }
+      });
+  }
+
+  function book(slotId, btn) {
+    if (!TOKEN) {
+      location.href = '/login.html?next=coaches';
+      return;
+    }
+    btn.disabled = true;
+    fetch('/api/bridge/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+      body: JSON.stringify({ slot_id: Number(slotId) })
+    }).then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+      .then(function (res) {
+        if (!res.ok) {
+          btn.disabled = false;
+          if (res.body && res.body.code === 'no_token') {
+            location.href = '/login.html?next=coaches';
+            return;
+          }
+          toast(res.body.error || 'That slot is not available.', true);
+          loadSlots(btn.dataset.coach);
+          return;
+        }
+        toast('Booked for ' + local(res.body.scheduled_start_at) +
+              '. A confirmation email is on its way.');
+        btn.textContent = 'Booked';
+        btn.disabled = true;
+      })
+      .catch(function () {
+        btn.disabled = false;
+        toast('Could not book. Please try again.', true);
+      });
+  }
+
+  fetch('/api/bridge/coaches?limit=30', { headers: { 'Accept': 'application/json' } })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { render(d.coaches || []); })
+    .catch(function () {
+      $('list').innerHTML = '<div class="empty">Could not load the list. Please refresh.</div>';
+    });
+})();
+</script>
+</body>
+</html>

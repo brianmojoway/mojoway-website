@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--
+  MOJOWAY overseas long-form article / On starting
+  VERSION      : FINAL v1.0 (definitive, publish-ready)
+  ARCHIVED     : 2026-11-11 16:58 +0800
+  SOURCE       : MOJOWAY_海外版_不抽佣教练匹配_英文文章.html
+  SOURCE SHA256: 1c1d0047d8c49ebf80d9375ce726feda75621b364430fd5ecb909078d26949ee
+  BUILD        : build_final.py (all visible text lifted verbatim from SOURCE)
+
+  Editorial constraints (unchanged from source, 2026-11-11 COO brief):
+  - Overseas only. No mention of the domestic mini-program, its pricing, or its backend.
+  - CTA points to the free Body Read only. Do NOT link to /coaches while zero coaches have open slots.
+  - No diagnosis, no scoring, no health-data claims, no fortune-telling, no under-18 audience.
+  - "Uncommon" is an observation, not a claim of being the only product of its kind.
+
+  This revision is TYPOGRAPHY / LAYOUT only. No word of the article was added,
+  removed, reordered or paraphrased. Section rules, stat rows and card styling
+  are CSS/decorative; no new visible copy was introduced.
+-->
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>84% of coaching clients are happy. Only 35% ever hire a coach.</title>
+<meta name="description" content="The gap between considering coaching and starting it isn't about information or quality. It's about the moment before you begin, and about who profits when you do.">
+<link rel="canonical" href="https://mojowaylife.com/blog-on-starting.html">
+<meta name="theme-color" content="#faf9f7">
+<!-- Open Graph / X card: the article is the destination of the social post -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MOJOWAY">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="84% of coaching clients are happy. Only 35% ever hire a coach.">
+<meta property="og:description" content="The gap isn't information, and it isn't quality. It's the moment before you begin, and who earns money when you do.">
+<meta property="og:url" content="https://mojowaylife.com/blog-on-starting.html">
+<meta property="og:image" content="https://mojowaylife.com/assets/og-on-starting.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="84% of coaching clients are happy. Only 35% ever hire a coach.">
+<meta name="twitter:description" content="The gap isn't information, and it isn't quality. It's the moment before you begin, and who earns money when you do.">
+<meta name="twitter:image" content="https://mojowaylife.com/assets/og-on-starting.png">
+<style>
+:root{
+  --ink:#20262e; --sub:#5c6672; --faint:#8b929b;
+  --line:#e4e7ea; --rule:#d9d5d0; --hair:#f0eeeb;
+  --accent:#8b2f2f; --accent-soft:#f7efed; --accent-line:#e9d9d5;
+  --bg:#faf9f7; --card:#fff; --tint:#f5f3ef;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--serif);
+  font-size:clamp(17px,0.55vw + 15px,19px);
+  line-height:1.82;letter-spacing:.002em;
+  text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;
+}
+::selection{background:#ecdedb;color:var(--ink)}
+.wrap{max-width:720px;margin:0 auto;padding:clamp(46px,7vw,88px) clamp(20px,4vw,32px) 96px}
+
+/* ---- 头部：栏目 / 主标题 / 副题 / 署名，四级递减 ---- */
+.masthead{margin-bottom:42px}
+.eyebrow{
+  font:700 11.5px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 22px;
+}
+h1{
+  font-size:clamp(31px,4.6vw,43px);line-height:1.22;font-weight:600;
+  margin:0 0 20px;letter-spacing:-.018em;text-wrap:balance;
+}
+.dek{
+  font-size:clamp(18px,1.4vw,21px);line-height:1.62;color:var(--sub);
+  font-style:italic;margin:0 0 22px;max-width:34em;
+}
+.byline{
+  font:400 12.5px/1.6 var(--sans);color:var(--faint);letter-spacing:.02em;
+  margin:0;padding:0 0 26px;border-bottom:1px solid var(--line);
+}
+
+/* ---- 正文节奏：不加新文字，靠留白与行距拆开长段 ---- */
+p{margin:0 0 1.52em;overflow-wrap:break-word;text-wrap:pretty}
+p.lead{font-size:1.045em;line-height:1.8}
+h2{
+  position:relative;font-size:clamp(22px,2.2vw,26px);font-weight:600;
+  line-height:1.34;letter-spacing:-.01em;margin:3.45em 0 1.15em;
+  padding-top:1.32em;border-top:1px solid var(--line);
+}
+h2::before{content:"";position:absolute;top:-1px;left:0;width:44px;height:2px;background:var(--accent)}
+.num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent)}
+
+/* ---- 关键数据：把首段四组数字从密集段落里立起来 ---- */
+.datacard{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  padding:24px 28px 20px;margin:0 0 2.15em;
+  box-shadow:0 1px 2px rgba(32,38,46,.03);
+}
+.datacard .dc-lead{
+  display:block;font:400 13px/1.6 var(--sans);color:var(--faint);
+  letter-spacing:.015em;margin-bottom:14px;
+}
+.datacard .dc-row{
+  display:block;font-size:15.5px;line-height:1.56;
+  padding:10px 0;border-top:1px solid var(--hair);
+  font-variant-numeric:tabular-nums;
+}
+.datacard .dc-lead + .dc-row{border-top:0}
+.datacard .num{
+  font:600 25px/1 var(--serif);letter-spacing:-.02em;
+  color:var(--accent);margin-right:.12em;
+}
+
+/* ---- 价格对比：三行等宽，末行是结论，视觉上收口 ---- */
+figure{
+  margin:2.4em 0;padding:0;background:var(--card);
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;
+}
+figure p{margin:0;font-size:15.5px;line-height:1.64}
+.cmp-row{
+  display:block;padding:13px 26px;border-bottom:1px solid var(--hair);
+  font:400 15px/1.64 var(--sans);font-variant-numeric:tabular-nums;
+  color:var(--sub);
+}
+.cmp-row:last-child{border-bottom:0;background:var(--tint);color:var(--ink);font-weight:600}
+
+/* ---- 论点句 ---- */
+.pull{
+  font-size:clamp(20px,2.2vw,24px);line-height:1.5;color:#333a42;
+  margin:2.65em 0;padding:4px 0 4px 24px;
+  border-left:3px solid var(--accent);max-width:30em;
+}
+
+/* ---- 辅助信息：小字号、无衬线、降饱和，与正文明显分层 ---- */
+.note{
+  font:400 14px/1.72 var(--sans);color:var(--sub);
+  background:var(--card);border:1px solid var(--line);
+  border-left:3px solid var(--rule);border-radius:5px;
+  padding:18px 22px;margin:2.4em 0;
+}
+
+/* ---- CTA：全篇唯一暖色块，做视觉终点 ---- */
+.cta{
+  font:400 15.5px/1.8 var(--sans);color:var(--ink);
+  background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:6px;padding:24px 26px;margin:2.9em 0 0;
+}
+.cta a{
+  color:var(--accent);font-weight:600;text-decoration:none;
+  border-bottom:1px solid currentColor;padding-bottom:1px;
+}
+.cta a:hover{border-bottom-width:2px}
+.cta a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+footer{
+  margin-top:4.6em;padding-top:20px;border-top:1px solid var(--line);
+  font:400 12px/1.72 var(--sans);color:var(--faint);letter-spacing:.01em;
+}
+
+/* ---- 海外社媒主要来自手机：窄屏重排行距与内边距 ---- */
+@media (max-width:600px){
+  .wrap{padding:38px 20px 68px}
+  body{line-height:1.76}
+  .masthead{margin-bottom:34px}
+  h2{margin-top:2.9em;padding-top:1.15em}
+  .datacard{padding:20px 18px 16px}
+  .datacard .dc-row{font-size:15px;padding:9px 0}
+  .datacard .num{font-size:22px}
+  .cmp-row{padding:12px 18px}
+  .pull{padding-left:18px}
+  .note,.cta{padding:18px 20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{
+  body{background:#fff;font-size:12pt;line-height:1.6}
+  .wrap{max-width:none;padding:0}
+  .datacard,figure,.note,.cta{box-shadow:none;break-inside:avoid}
+  h2{margin-top:2em}
+}
+</style></head><body><div class="wrap">
+
+
+<header class="masthead">
+
+<div class="eyebrow">MOJOWAY / On starting</div>
+
+<h1>84% of coaching clients are happy. Only 35% ever hire a coach.</h1>
+
+<p class="dek">The gap isn't information, and it isn't quality. It's the moment before you begin, and who earns money when you do.</p>
+
+<p class="byline">A note on why we built the matching side the way we did</p>
+
+</header>
+
+<p class="datacard">
+<span class="dc-lead">The International Coaching Federation published four numbers in 2026. </span>
+<span class="dc-row"><span class="num">74%</span> of people know what coaching is. </span>
+<span class="dc-row"><span class="num">56%</span> have considered hiring a coach. </span>
+<span class="dc-row"><span class="num">35%</span> have actually done it. </span>
+<span class="dc-row">And of the people who did, <span class="num">84%</span> said they were satisfied.</span>
+</p>
+
+<p class="lead">I keep coming back to the distance between 56 and 35. Twenty-one points of people who thought about it and stopped. Since satisfaction sits at 84, whatever stopped them was not a bad experience. Most never got far enough to have one.</p>
+
+<p>There's a caveat worth stating, because it makes the number more interesting rather than less. The 84% is drawn from people who already crossed the line. They arrived with a question clear enough to bring into a room. People who are determined enough to start tend to do well once they do. So the high satisfaction figure tells us the service works for those who get there. It says nothing about the twenty-one points who didn't.</p>
+
+<h2>A directory can't fix this</h2>
+
+<p>When someone can't name what they want help with, the usual answer is to give them more options. Coach directories list thousands of profiles. One of the larger ones has more than 15,000. You can filter by specialty, credential, language, price.</p>
+
+<p>That solves a problem for the person who already knows they want a career coach and wants to compare five. It doesn't solve anything for the person who is still turning over a vague sense that something keeps repeating. Handing them 15,000 names adds a second decision on top of the first. Now they have to choose a person before they've chosen a question.</p>
+
+<p>I've watched this happen outside coaching too. Give someone a menu when they're hungry and it's useful. Give them a menu when they can't yet say what they're hungry for and they close it.</p>
+
+<h2>The commission problem</h2>
+
+<p>Most coach marketplaces charge the coach in two ways: a subscription, and a cut of each engagement. The larger directory's Pro plan is $447 a year plus 30% of what is billed through it; the Elite plan is $1,164 a year plus 15%.</p>
+
+<p>Run three clients at $1,500 each through the Pro plan and the coach pays roughly $1,797 for that year. On a flat subscription with no commission, the same year costs about $708. The difference is $1,089.</p>
+
+<figure class="compare"><p>
+<span class="cmp-row">Pro plan: $447/year + 30% of billings.</span>
+<span class="cmp-row">Flat workspace subscription: $59/month or $590/year, no cut of the booking.</span>
+<span class="cmp-row cmp-hi">Three $1,500 engagements: about $1,797 versus about $708.</span>
+</p></figure>
+
+<p>I want to be careful here. Charging a commission is not dishonest. It's an ordinary way to run a marketplace, and plenty of good platforms use it. What I'm interested in is what that fee does to the product over time.</p>
+
+<p>A platform that earns only when a transaction closes will build tools for closing transactions. Ranking, nudges, "coaches you might also like", the reminder that your shortlist is waiting. Every one of them points toward yes. There is no revenue in "maybe you're not ready yet", so there is no feature for it either. Nobody decides to make the product worse. The incentive just quietly chooses which parts get built.</p>
+
+<p class="pull">The fee isn't the problem. The shape of the product the fee produces is.</p>
+
+<h2>What we did differently, and what we didn't</h2>
+
+<p>We don't take a cut of the booking. A coach pays for the workspace, and what they earn from a client stays with them. That sounds like a pricing detail. It changes the ranking.</p>
+
+<p>With no commission, there's no reason to put one coach above another. The list is ordered by when each coach next has an open slot, and that's it. No ratings, no "top rated" badge, no paid placement, no count of how many clients someone has closed. We show three people, and each one comes with a single sentence that refers back to your own read, so you can see why that person rather than another. If there aren't five prior sessions to justify a statistical sentence, we say what we can actually verify about the fit instead of inventing a number.</p>
+
+<p>The first session is free and short. That promise needs a footnote: a coach with an empty week gives up almost nothing by offering thirty minutes, while a coach who is fully booked gives up real income. So free slots vary with how busy someone is. It's a small operational detail, and it's exactly the kind of detail that decides whether the idea survives contact with real calendars.</p>
+
+<p>I haven't found many products that put these pieces together in this order: read yourself first, then get connected, with no commission on the connection. Plenty of tools do assessments and stop there. Plenty of directories do matching and start there. Joining the two ends without earning from the transaction is less common. That's an observation from the products I've looked at, not a claim that we're the only ones doing it.</p>
+
+<h2>Why the order matters</h2>
+
+<p>If you match first, you choose by credentials, by a headshot, by who sounds most authoritative. If you read first, you choose by something closer to "this is the thing I keep circling". Those produce different conversations in the first ten minutes.</p>
+
+<p>Our read is deliberately narrow. It describes patterns in how you behave. It doesn't diagnose, doesn't give you a score, doesn't use health data, doesn't tell you what will happen next. What we call core energy is a behaviour pattern, not a reading of vitality or wellbeing. It isn't open to anyone under 18. And what you write in a conversation stays yours by default: a coach sees only the parts you choose to share.</p>
+
+<p>Those constraints read like legal boilerplate. They aren't. They're the reason someone can be honest in the first place. A tool that scores you gets a performance. A tool that grades your health gets a guarded answer. A tool that hands your words to a stranger before you've agreed gets nothing much at all.</p>
+
+<p>This is also where the three parts stop being three separate features. A person who has seen their own pattern has something to bring. A coach who has three concrete places to open from can meet them there. A connection that isn't paid per sale has no reason to rush either of them. Take the commission out and the whole thing can stay slow enough to be useful.</p>
+
+<h2>Where we actually are</h2>
+
+<p>I should be straight about this, because you can go and check. The booking and confirmation plumbing is live. We ran 29 end-to-end checks on putting a slot up, booking it, confirming it happened, and recording it. They passed.</p>
+
+<p>No coach has put a slot up yet. No session has taken place. If you open the coaches page today it says, truthfully, that nobody has open slots right now. An empty page is a bad destination for a piece of writing, so this article is not going to send you there. I'd rather say that plainly than write around it.</p>
+
+<div class="note">We are building the connection side in public, and the supply side comes first. The first coach who hangs a real slot on the page matters more to this idea than any amount of traffic.</div>
+
+<h2>A smaller first step</h2>
+
+<p>There is a free read you can do without an account, and it stores nothing. See whether it names something you've been circling but haven't quite said out loud. If it does, you already have a first question to bring to a coach, whenever you decide to bring one. That's a better starting point than picking a person from a list.</p>
+
+<p>And if it doesn't, that's useful too. You've learned something about what you're not looking for, and you haven't spent anything to find out.</p>
+
+<div class="cta">
+Start with the free read: <a href="/body-read.html">see a sample of your behaviour pattern</a>. No account, nothing stored, no score.
+</div>
+
+<footer>MOJOWAY overseas edition. This page describes a product in progress; the matching list currently has no open slots. We do not offer services to residents of the EU/EEA or UK.</footer>
+
+</div></body></html>

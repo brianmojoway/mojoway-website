@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOJOWAY — Know the pacing and the key points before you meet</title>
+<meta name="description" content="Your client completes a short assessment first. You walk in with their situation, opening questions written for them, and the one point worth opening with. First client free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff; --ink:#1a1f36; --ink-soft:#5b6478;
+    --coral:#B23526; --coral-deep:#9c2c1f; --rule:#e6e8ec;
+    --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+    --grad:linear-gradient(92deg,#B23526 0%,#e0762f 55%,#d6a51a 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:
+    radial-gradient(58vw 42vh at 82% -4%, rgba(178,143,255,.30), transparent 68%),
+    radial-gradient(52vw 38vh at 100% 16%, rgba(143,208,255,.24), transparent 70%),
+    radial-gradient(50vw 36vh at 60% 2%, rgba(255,143,163,.26), transparent 70%),
+    radial-gradient(44vw 34vh at 8% 22%, rgba(255,215,168,.20), transparent 72%),
+    var(--paper);
+    color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+
+  /* top nav */
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .brand-img{height:34px;width:auto;display:block}
+  .nav a.signin{font-size:13px;font-weight:600;color:var(--coral);text-transform:uppercase;letter-spacing:.12em}
+
+  /* hero */
+  /* Round 210: top padding 88->64px and bottom 56->28px, to pull everything up
+     so a primary action clears a 768px fold. Reclaimed ~70px of dead space that
+     measured data showed nobody was scrolling past anyway. */
+  .hero{position:relative;padding:clamp(32px,6vw,64px) 0 clamp(14px,2.5vw,28px);text-align:center}
+  .hero>*{position:relative;z-index:1}
+  .hero-cta{margin:28px auto 0}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);
+    background:rgba(178,53,38,.06);padding:7px 16px;border-radius:100px;margin-bottom:22px}
+  .hero h1{font-size:clamp(30px,5vw,56px);line-height:1.08;font-weight:800;letter-spacing:-.03em;max-width:760px;margin:0 auto;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:clamp(15px,2vw,19px);color:var(--ink-soft);max-width:560px;margin:20px auto 0}
+
+  /* input card */
+  .card-input{background:#fff;border:1px solid var(--rule);border-radius:24px;padding:clamp(24px,4vw,40px);
+    max-width:520px;margin:38px auto 0;box-shadow:0 18px 50px -28px rgba(26,31,54,.35);position:relative;z-index:1}
+  .card-input label{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:10px;text-transform:uppercase}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row input{flex:1 1 200px;min-width:0;font-family:var(--sans);font-size:17px;padding:15px 18px;border:1.5px solid var(--rule);
+    border-radius:999px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s}
+  .row input:focus{border-color:var(--coral)}
+  .btn-go{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;
+    font-family:var(--sans);font-size:16px;font-weight:700;letter-spacing:.02em;padding:16px 28px;border:none;border-radius:999px;
+    background:var(--coral);color:#fff;cursor:pointer;transition:transform .18s,background .2s,box-shadow .18s}
+  .btn-go:hover{background:var(--coral-deep);transform:translateY(-1px);box-shadow:0 14px 30px -14px rgba(178,53,38,.6)}
+  .hint{font-size:13px;color:var(--ink-soft);margin-top:12px;text-align:center}
+  .err{color:var(--coral-deep);font-size:14px;font-weight:600;margin-top:10px;min-height:20px;text-align:center}
+
+  /* result */
+  #result{display:none;margin-top:clamp(36px,5vw,56px)}
+  .reveal-head{text-align:center;margin-bottom:10px}
+  .reveal-head .tag{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .reveal-head h2{font-size:clamp(22px,3.4vw,34px);font-weight:800;letter-spacing:-.02em;margin-top:6px}
+
+  /* core energy card */
+  .el-card{display:flex;align-items:center;gap:22px;max-width:620px;margin:26px auto 8px;background:#fff;
+    border:1px solid var(--rule);border-left:8px solid var(--coral);border-radius:20px;padding:26px 30px;
+    box-shadow:0 16px 44px -30px rgba(26,31,54,.4)}
+  .el-icon{font-size:46px;line-height:1;flex-shrink:0}
+  .el-card .meta .arch{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral)}
+  .el-card .meta h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:2px 0 4px}
+  .el-card .meta .one{font-size:15px;color:var(--ink-soft)}
+
+  /* accordion */
+  .acc-title{text-align:center;margin:clamp(40px,6vw,64px) 0 6px;font-size:13px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .acc-sub{text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto}
+  .acc{display:flex;gap:10px;height:340px;max-width:980px;margin:0 auto}
+  .panel{flex:1 1 0;min-width:0;border-radius:16px;cursor:pointer;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;
+    transition:flex-grow .5s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-shadow:0 10px 30px -20px rgba(0,0,0,.5)}
+  .panel:hover{box-shadow:0 16px 36px -18px rgba(0,0,0,.55)}
+  .panel.active{flex-grow:4.4;cursor:default}
+  .panel .p-icon{font-size:30px;line-height:1;margin-bottom:auto}
+  .panel .p-name{font-size:15px;font-weight:700;letter-spacing:.02em;white-space:nowrap;overflow:hidden;
+    text-overflow:ellipsis;transition:font-size .4s}
+  .panel.active .p-name{font-size:22px;white-space:normal}
+  .panel .p-arch{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.85;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .panel .p-body{opacity:0;transform:translateY(8px);max-height:0;overflow:hidden;
+    transition:opacity .45s ease,transform .45s ease;font-size:14.5px;line-height:1.55;margin-top:10px}
+  .panel.active .p-body{opacity:1;transform:translateY(0);max-height:240px;transition:opacity .45s ease .25s,transform .45s ease .25s}
+  .panel .p-body strong{font-weight:700}
+
+  /* coach CTA */
+  .cta{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(32px,5vw,52px);text-align:center;margin:clamp(44px,6vw,68px) 0 0}
+  .cta h2{font-size:clamp(22px,3.4vw,32px);font-weight:800;letter-spacing:-.02em}
+  .cta p{color:#C9C4BC;max-width:520px;margin:12px auto 22px;font-size:15.5px}
+  .cta .btn{position:relative;display:inline-block;background:var(--coral);color:#fff;font-weight:700;font-size:15px;
+    padding:15px 30px;border-radius:999px;overflow:hidden;
+    transition:transform .25s cubic-bezier(.2,.8,.3,1.2),box-shadow .25s ease,background .25s ease}
+  .cta .btn::after{content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);transition:left .55s ease}
+  .cta .btn:hover{background:var(--coral-deep);transform:translateY(-3px) scale(1.03);box-shadow:0 14px 32px -12px rgba(0,0,0,.5)}
+  .cta .btn:hover::after{left:135%}
+  .cta .btn:active{transform:translateY(-1px) scale(1.01)}
+  .cta .fine{display:block;margin-top:14px;font-size:13px;color:#8E8A82}
+
+  footer{padding:40px 0 56px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);margin-top:60px}
+  footer a{color:var(--ink-soft);border-bottom:1px solid var(--coral)}
+
+  @media(max-width:720px){
+    .acc{flex-direction:column;height:auto}
+    .panel{flex:none;height:64px}
+    .panel.active{height:300px;flex-grow:0}
+    .panel .p-icon{margin-bottom:0}
+  }
+</style>
+<meta property="og:title" content="Know the pacing and the key points before you meet — MOJOWAY">
+<meta property="og:description" content="Every stage assessment becomes a client report with your practice's name on it — so your clients see the change, and the credit lands with you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mojowaylife.com/mirror-demo.html">
+<meta property="og:site_name" content="MOJOWAY">
+<meta property="og:image" content="https://mojowaylife.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Know the pacing and the key points before you meet — MOJOWAY">
+<meta name="twitter:description" content="Every stage assessment becomes a client report with your practice's name on it — so your clients see the change, and the credit lands with you.">
+<meta name="twitter:image" content="https://mojowaylife.com/og-image.png">
+<link rel="canonical" href="https://mojowaylife.com/mirror-demo.html">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mojoway Spectrum Limited",
+    "url": "https://mojowaylife.com",
+    "logo": "https://mojowaylife.com/assets/mojoway-logo.png"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MOJOWAY",
+    "url": "https://mojowaylife.com"
+  }
+]
+</script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a href="/index.html"><img src="/assets/mojoway-logo.png" alt="MOJOWAY" class="brand-img"></a>
+    <a href="/coach.html">For Coaches</a>
+    <a class="signin" href="/login.html">Sign in</a>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">The Coach Workspace &middot; free preview</span>
+    <h1>Know the pacing and the key points before you meet.</h1>
+    <p class="sub">Your client completes a short assessment first &mdash; you walk in with their situation, opening questions written for them, and the one point worth opening with.</p>
+    <!-- Round 210: CTA moved ABOVE the fold.
+         Measured, not guessed: at 1366x768 (the most common laptop) the page's
+         only primary button sat at y=879 and was entirely below the fold, and at
+         1440x900 it was cut in half. So the first screen offered a visitor
+         nothing to click except "Sign in" -- and every outbound click, cold
+         email and partner email alike, lands on this page. Behaviour data agrees:
+         median dwell ~3.5-4.5s, median scroll 0%, zero leads ever.
+         The button now sits directly under the sub-headline, visible at 768px. -->
+    <p class="hero-cta"><a id="heroCta" class="btn" href="/coach.html">Open the Coach Workspace &rarr;</a></p>
+    <p class="hint" style="margin-top:18px">First client free &middot; then $59/month for up to 15 clients &middot; 7-day money-back guarantee.<br>
+      <a href="#sample" style="color:inherit;text-decoration:underline">Or see how it reads a person &darr;</a></p>
+  </section>
+
+  <section class="cta" style="margin-top:clamp(10px,1.6vw,18px)">
+    <h2>Let your clients see the change &mdash; with your name on the report.</h2>
+    <p>Every stage assessment becomes a client report: the numbers side by side, so the effort they have put in is visible. The report carries your practice&rsquo;s own name, so the credit lands with you.</p>
+    <p style="margin-top:24px"><a id="midCta" class="btn" href="/coach.html">Open the Coach Workspace &rarr;</a></p>
+    <span class="fine">Your first client is free, and no card is needed to set it up.</span>
+
+    <div style="margin:30px auto 0;max-width:470px;text-align:left;border-top:1px solid rgba(255,255,255,.14);padding-top:22px">
+      <p style="margin:0 0 10px;font-size:15px;color:#C9C4BC">Not ready to start yet? Leave a work email and I&rsquo;ll send you the walkthrough &mdash; what your client fills in, and what you get back.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input id="c2Email" type="email" placeholder="you@yourpractice.com" aria-label="Work email"
+               style="flex:1 1 210px;min-width:0;padding:13px 15px;border:1px solid #3a4155;border-radius:999px;background:#fff;color:#1a1f36;font-size:15px;font-family:inherit" />
+        <button id="c2Btn" class="btn" type="button" style="white-space:nowrap;cursor:pointer">Send me the walkthrough</button>
+      </div>
+      <div id="c2Msg" style="margin-top:8px;font-size:14px;color:#C9C4BC"></div>
+    </div>
+  </section>
+
+  <section id="sample" style="margin-top:clamp(44px,6vw,68px)">
+    <div class="reveal-head">
+      <div class="tag">Live sample</div>
+      <h2>See how it reads a person</h2>
+      <p class="acc-sub">This is the kind of read your client gets. Pick any date &mdash; theirs, or your own.</p>
+    </div>
+
+    <div class="card-input">
+      <label for="bdate">Birth date</label>
+      <div class="row">
+        <input id="bdate" type="date" min="1920-01-01" max="2015-12-31" value="1990-05-14" aria-label="Birth date">
+      </div>
+      <button class="btn-go" id="goBtn" type="button">Generate my sample report &rarr;</button>
+      <div class="hint">Try your own, or a client's. No login, nothing is saved &mdash; this is a live sample you can refresh and rerun any time. The math is the same every time.</div>
+      <div class="err" id="err"></div>
+    </div>
+  </section>
+
+  <section id="result">
+    <div class="reveal-head">
+      <div class="tag">Your energy pattern</div>
+      <h2 id="resHead">A sample energy read</h2>
+    </div>
+    <div class="el-card" id="elCard">
+      <div class="el-icon" id="elIcon">🔥</div>
+      <div class="meta">
+        <div class="arch" id="elArch">Energy archetype</div>
+        <h3 id="elName">The Connector</h3>
+        <div class="one" id="elOne">The room changes temperature when you walk in.</div>
+      </div>
+    </div>
+
+    <div class="acc-title">What a coach gets back, per client</div>
+    <div class="acc-sub">One angle for each of the five core energies. Click a panel to open it — the others step back so you can read.</div>
+    <div class="acc" id="acc"></div>
+
+    <div class="cta">
+      <h2>Hand this to every new client before session one.</h2>
+      <p>The Coach Workspace turns a 10-minute conversation into three topics, two angles, and the one blind spot worth opening with. <strong>Your first client is free</strong>, and no card is needed to set it up.</p>
+      <a id="bottomCta" class="btn" href="/coach.html">Open the Coach Workspace →</a>
+      <span class="fine">First client free. Then $59/month for up to 15 clients · 7-day money-back guarantee, no questions asked.</span>
+      <p class="fine" style="margin-top:10px">Next step: enter your work email and we send a one-click sign-in link, then the workspace opens with your free client ready. Nothing stored until you add them.</p>
+
+      <div id="capWrap" style="display:none;margin:26px 0 0;padding-top:20px;border-top:1px solid #e8e5e0;text-align:left">
+        <p style="margin:0 0 10px;font-size:15px"><strong>Like this?</strong> I write one short read like this most weeks — one pattern, one practical move. Leave an email and I&rsquo;ll send you the next one. No account needed, unsubscribe any time.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <input id="capEmail" type="email" placeholder="you@example.com" aria-label="Email address"
+                 style="flex:1 1 240px;min-width:0;padding:12px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px;font-family:inherit" />
+          <button id="capBtn" class="btn" type="button" style="white-space:nowrap;cursor:pointer">Send me the next one</button>
+        </div>
+        <div id="capMsg" style="margin-top:8px;font-size:14px"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Mojoway Spectrum Limited · Hong Kong SAR</div>
+    <div><a href="/refund-policy.html">Refund Policy</a> · <a href="/privacy-policy.html">Privacy</a> · <a href="/index.html">Home</a></div>
+  </footer>
+</div>
+
+<script>
+/* ---- core energy engine (ported 1:1 from backend/five_elements.py) ---- */
+var SOLAR_TERMS=[
+ ["Start of Spring",2,4,"spring"],[ "Rain Water",2,19,"spring"],["Awakening of Insects",3,6,"spring"],["Spring Equinox",3,21,"spring"],
+ ["Pure Brightness",4,5,"spring"],["Grain Rain",4,20,"spring"],["Start of Summer",5,6,"summer"],["Grain Full",5,21,"summer"],
+ ["Grain in Ear",6,6,"summer"],["Summer Solstice",6,21,"summer"],["Minor Heat",7,7,"summer"],["Major Heat",7,23,"summer"],
+ ["Start of Autumn",8,7,"autumn"],["End of Heat",8,23,"autumn"],["White Dew",9,8,"autumn"],["Autumn Equinox",9,23,"autumn"],
+ ["Cold Dew",10,8,"autumn"],["Frost Descent",10,23,"autumn"],["Start of Winter",11,7,"winter"],["Minor Snow",11,22,"winter"],
+ ["Major Snow",12,7,"winter"],["Winter Solstice",12,22,"winter"],["Minor Cold",1,6,"winter"],["Major Cold",1,21,"winter"]];
+var SEASON_ELEMENT={spring:"Wood",summer:"Fire",autumn:"Metal",winter:"Water"};
+var EARTH_WINDOWS=[[4,18,5,5],[7,20,8,6],[10,20,11,6],[1,17,2,3]];
+var SHADOW_MAP={Wood:"Metal",Metal:"Fire",Fire:"Water",Water:"Earth",Earth:"Wood"};
+var ARCHETYPE={Wood:"The Pioneer",Fire:"The Connector",Earth:"The Anchor",Metal:"The Refiner",Water:"The Philosopher"};
+var PALETTE={Wood:{accent:"#4A9E42",icon:"🌱"},Fire:{accent:"#C03A20",icon:"🔥"},Earth:{accent:"#A8822E",icon:"⛰️"},
+ Metal:{accent:"#8E8E98",icon:"⚔️"},Water:{accent:"#3A6FD8",icon:"🌊"}};
+var ONE_LINE={Wood:"You were moving before you had a reason to.",Fire:"The room changes temperature when you walk in.",
+ Earth:"Everyone else is running. You are where they run back to.",Metal:"You notice the one thing that doesn't belong.",
+ Water:"You are quiet because you are somewhere else."};
+var GIFT={Wood:"Your instinct doesn't come from logic. It comes from your body.",
+ Fire:"You can read the temperature of a room in a fraction of a second.",
+ Earth:"Everyone else is running. You are standing still.",
+ Metal:"You can pull the one clean thread out of a pile of chaos.",
+ Water:"When you are not speaking, you are thinking."};
+var BLIND_SPOT={
+ Wood:"You often move before others are ready — worth noticing whether that leaves you feeling alone, and choosing who you want beside you. Moving fast is a strength; it just helps to know what you are moving toward.",
+ Fire:"Your energy can fill a room — and it is worth noticing when those closest to you need a quieter version of it. You do not have to stay lit every moment; rest is allowed.",
+ Earth:"Everyone pours their weight onto you — not because they don't care whether you are tired, but because they trust you. You need to know this: you are allowed to say no.",
+ Metal:"Your sharpness cuts you as often as it cuts anything else. You can see straight to the bone of a thing, but you forget that some things need time to ripen.",
+ Water:"When you dive too deep, you forget there is light above the surface. Surface sometimes. Not for anyone else. For you."};
+var SHADOW_WHY={Wood:"Only Metal can prune Wood into bearing fruit.",Metal:"Only Fire can soften what Metal has cut too clean.",
+ Fire:"Only Water can keep Fire from burning itself down to nothing.",Water:"Only Earth can give Water a bank — a shape to flow inside.",
+ Earth:"Only Wood can break open ground that Earth has packed too hard."};
+
+var DIM=[31,29,31,30,31,30,31,31,30,31,30,31];
+function isLeap(y){return y%4===0&&(y%100!==0||y%400===0);}
+function parseMD(s){if(!s)return null;var p=String(s).trim().split("-");if(p.length<3)return null;
+ var y=+p[0],m=+p[1],d=+p[2];if(isNaN(y)||isNaN(m)||isNaN(d))return null;if(y<1||m<1||m>12)return null;
+ var n=DIM[m-1];if(m===2&&!isLeap(y))n=28;if(d<1||d>n)return null;return[m,d];}
+function termIndex(m,d){var c=m*100+d;if(c<106)return 21;if(c<121)return 22;if(c<204)return 23;var mt=0;
+ for(var i=0;i<SOLAR_TERMS.length-2;i++){var t=SOLAR_TERMS[i];if(c>=t[1]*100+t[2])mt=i;else break;}return mt;}
+function isLongSummer(m,d){var c=m*100+d;for(var i=0;i<EARTH_WINDOWS.length;i++){var w=EARTH_WINDOWS[i];
+ if(w[0]*100+w[1]<=c&&c<=w[2]*100+w[3])return true;}return false;}
+/* Mirrors backend/five_elements.py element_from_birthdate() exactly:
+   Earth checked first (long-summer seam), then SOLAR_TERMS[termIndex] -> season. */
+function elementFrom(bd){var md=parseMD(bd);if(!md)return null;var m=md[0],d=md[1];
+ if(isLongSummer(m,d))return"Earth";
+ var t=SOLAR_TERMS[termIndex(m,d)];
+ return SEASON_ELEMENT[t[3]]||"Earth";}
+
+/* ---- Accordion content: a coaching angle per energy ---- */
+var ANGLE={
+ Wood:{h:"Open with momentum",b:"They move before they have a reason. Don't open with analysis — open with a challenge they can act on today. The Pioneer trusts motion more than talk."},
+ Fire:{h:"Hand them the room map",b:"They read a room in a fraction of a second. Name the relationship dynamics first; they've already felt them. Give the connection a shape and they'll lean in."},
+ Earth:{h:"Ask what THEY need",b:"Everyone leans on them. Your first question should be about their own weight, not other people's. The Anchor stays only if someone holds them once in a while."},
+ Metal:{h:"Give structure, not options",b:"They see the one clean thread. Hand them a framework, not more choices. The Refiner closes the loop when the path is sharp and finite."},
+ Water:{h:"Let silence count",b:"They go quiet to think. Don't fill the pause. The Philosopher surfaces the real answer on their own timeline — your job is to leave room for it."}
+};
+
+var accEl=document.getElementById('acc');
+['Wood','Fire','Earth','Metal','Water'].forEach(function(el){
+ var p=PALETTE[el];
+ var d=document.createElement('div');d.className='panel';d.style.background=p.accent;d.setAttribute('role','button');
+ d.setAttribute('tabindex','0');d.setAttribute('aria-label',ARCHETYPE[el]+' — energy pattern');
+ d.innerHTML='<div class="p-icon">'+p.icon+'</div>'+
+   '<div class="p-arch">'+ARCHETYPE[el]+'</div>'+
+   '<div class="p-name">Energy pattern</div>'+
+   '<div class="p-body"><strong>'+ANGLE[el].h+'.</strong> '+ANGLE[el].b+'</div>';
+ d.addEventListener('click',function(){activate(d);});
+ d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(d);}});
+ accEl.appendChild(d);
+});
+function activate(panel){var all=accEl.querySelectorAll('.panel');
+ all.forEach(function(p){if(p!==panel)p.classList.remove('active');});
+ panel.classList.toggle('active');
+}
+
+/* ---- Generate ---- */
+var btn=document.getElementById('goBtn'),errEl=document.getElementById('err'),res=document.getElementById('result');
+btn.addEventListener('click',function(){
+ var v=document.getElementById('bdate').value;errEl.textContent='';
+ if(!v){errEl.textContent='Please enter a birth date.';return;}
+ var md=parseMD(v);if(!md){errEl.textContent='That date does not exist — check the day/month.';return;}
+ var el=elementFrom(v);
+ if(!el){errEl.textContent='Could not read a core energy from that date.';return;}
+ var pal=PALETTE[el];
+ document.getElementById('elIcon').textContent=pal.icon;
+ document.getElementById('elIcon').style.color=pal.accent;
+ document.getElementById('elArch').textContent='Energy archetype';
+ document.getElementById('elName').textContent=ARCHETYPE[el];
+ document.getElementById('elOne').textContent=ONE_LINE[el];
+ var card=document.getElementById('elCard');card.style.borderLeftColor=pal.accent;
+ document.getElementById('resHead').textContent='An archetype reads like this';
+ res.style.display='block';
+ // open the matching panel by default
+ var panels=accEl.querySelectorAll('.panel');
+ panels.forEach(function(p,i){p.classList.remove('active');});
+ var idx=['Wood','Fire','Earth','Metal','Water'].indexOf(el);
+ if(idx>=0)panels[idx].classList.add('active');
+ res.scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+<script>
+/* Session id (2026-10-16 round 224). Landing_view used to fire WITHOUT an
+   sid, so a visitor's "landed -> tried the report -> left an email" could not be
+   stitched together: page_view/page_exit carried sid, landing_view did not.
+   Defined here (before landing_view) and reused by the v2 block below, so both
+   write the SAME value into funnel_events.sid. */
+(function () {
+  try {
+    window.__mojoSid = function () {
+      try {
+        var K = 'mjsid';
+        var v = sessionStorage.getItem(K);
+        if (!v) {
+          v = 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+          sessionStorage.setItem(K, v);
+        }
+        return v;
+      } catch (e) { return 'nosid'; }
+    };
+  } catch (e) { window.__mojoSid = function () { return 'nosid'; }; }
+})();
+
+/* Landing view (2026-09-25). The cold-email CTA points here (MIRROR_URL /
+   FT_MIRROR_URL / BIZ_MIRROR_URL in cold_email_reactivation.py). Without this
+   snippet every cold-email landing was invisible in funnel_events: index.html
+   was the only tracked landing, and it stopped being the destination on
+   2026-09-25. Same payload shape as index.html, plus page for attribution. */
+(function () {
+  try {
+    var m = (location.search || '').match(/utm_campaign=([A-Za-z0-9_]+)/);
+    if (!m) return;
+    var k = 'lv_' + m[1];
+    try {
+      if (sessionStorage.getItem(k)) return;
+      sessionStorage.setItem(k, '1');
+    } catch (e) {}
+    var ref = document.referrer || '';
+    var blob = new Blob([JSON.stringify({
+      event: 'landing_view',
+      meta: {
+        campaign: m[1],
+        content: ((location.search || '').match(/utm_content=([A-Za-z0-9_]+)/) || ['', ''])[1],
+        ref: ref || '(direct)',
+        external: !ref || ref.indexOf('mojowaylife.com') < 0,
+        page: 'mirror-demo',
+        sid: (window.__mojoSid ? window.__mojoSid() : 'nosid'),
+        uid: (function () {
+          try {
+            var m = (location.search || '').match(/[?&]u=([A-Za-z0-9_]+)/);
+            if (m) { try { sessionStorage.setItem('mju', m[1]); } catch (e) {} ; return m[1]; }
+            try { return sessionStorage.getItem('mju') || ''; } catch (e) { return ''; }
+          } catch (e) { return ''; }
+        })(),
+        vw: (window.innerWidth || 0)
+      }
+    })], { type: 'application/json' });
+    navigator.sendBeacon('/api/mirror/track', blob);
+  } catch (e) {}
+})();
+
+
+/* ---- Email capture (2026-10-10 DSH) ----
+   这个落地页此前完全没有留资：访客输入生日 -> 拿到样本报告 -> 走人，
+   我们连一个邮箱都留不下。后端 /api/lead-capture 早已存在（写入 contacts，
+   插入时 persona 留空，所以不会被冷邮件序列误伤），但全站没有任何页面调用它。
+   这里在不阻挡报告展示的前提下接上；任何失败都静默，绝不打断主流程。 */
+(function(){
+  var res = document.getElementById('result');
+  var wrap = document.getElementById('capWrap');
+  if (!res || !wrap) return;
+  var btn = document.getElementById('capBtn');
+  var email = document.getElementById('capEmail');
+  var msg = document.getElementById('capMsg');
+  var shown = false;
+  function reveal(){
+    if (shown) return;
+    shown = true;
+    wrap.style.display = 'block';
+  }
+  /* 报告一显示就露出留资块 */
+  try {
+    new MutationObserver(function(){
+      if (res.style.display === 'block') reveal();
+    }).observe(res, { attributes: true, attributeFilter: ['style'] });
+  } catch (e) {}
+  var go = document.getElementById('goBtn');
+  if (go) go.addEventListener('click', function(){ setTimeout(reveal, 1200); });
+
+  function send(){
+    var v = (email && email.value || '').trim();
+    if (!v || v.indexOf('@') < 1) {
+      msg.style.color = '#b23526';
+      msg.textContent = 'Please check that email address.';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    msg.textContent = '';
+    fetch('/api/lead-capture', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: v, source: 'mirror_demo'})
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if (d && d.ok) {
+        btn.textContent = 'Added';
+        msg.style.color = '#1f6b34';
+        msg.textContent = 'You are on the list. The next read lands in your inbox.';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send me the next one';
+        msg.style.color = '#b23526';
+        msg.textContent = 'Could not save that just now. Please try again later.';
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send me the next one';
+      msg.style.color = '#b23526';
+      msg.textContent = 'Something went wrong. Please try again.';
+    });
+  }
+  if (btn) btn.addEventListener('click', send);
+  if (email) email.addEventListener('keydown', function(e){
+    if (e.key === 'Enter') { e.preventDefault(); send(); }
+  });
+})();
+
+</script>
+<script>
+/* ── Funnel instrumentation v2 (2026-10-13) ────────────────────────────────
+   4 个事件。用途是**抓机械故障**，不是算转化率：真人大约 5 次/14 天，
+   任何"率"在这个量级下都不可证伪；但一条 err_no_energy 或 lead_capture_fail
+   就是决定性的 bug 报告。
+   全段 + 每个观察器各自 try/catch：埋点坏掉绝不能影响页面主流程，
+   也绝不能"页面正常所以以为埋点正常"。 */
+(function () {
+  try {
+    /* round 224: 复用 landing_view 那段建好的同一个 sid（同一个 key），
+       两边写进 funnel_events.sid 的值必须一致，否则又串不起来。 */
+    var S = (window.__mojoSid ? window.__mojoSid() : 'nosid');
+    var Q = location.search || '';
+    function pick(k) { var m = Q.match(new RegExp('[?&]' + k + '=([A-Za-z0-9_]+)')); return m ? m[1] : ''; }
+    var ISTEST = pick('e2e') === '1';
+
+    /* round 226: 收件人假名标签 u=。冷邮件链接带 u=<8 hex>，
+       这里取出来（并留进 sessionStorage，供 /coach.html 继承认领），
+       所以每一次 page_view / cta_click / page_exit 都能对到某个收件人，
+       而 meta 里始终没有邮箱原文。 */
+    function UID() {
+      try {
+        var m = Q.match(/[?&]u=([A-Za-z0-9_]+)/);
+        if (m) { try { sessionStorage.setItem('mju', m[1]); } catch (e) {} ; return m[1]; }
+        try { return sessionStorage.getItem('mju') || ''; } catch (e) { return ''; }
+      } catch (e) { return ''; }
+    }
+    var U = UID();
+
+    function send(ev, extra) {
+      try {
+        var meta = { sid: S, page: 'mirror-demo', uid: U, campaign: pick('utm_campaign'),
+                     content: pick('utm_content'), vw: window.innerWidth, sh: screen.height };
+        if (ISTEST) meta.test = true;
+        if (extra) { for (var k in extra) { if (extra.hasOwnProperty(k)) meta[k] = extra[k]; } }
+        var body = JSON.stringify({ event: ev, meta: meta });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/mirror/track', new Blob([body], { type: 'application/json' }));
+        } else {
+          fetch('/api/mirror/track', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                       body: body, keepalive: true }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    window.__mojoTrack = send;
+
+    /* E1 page_view —— 无条件分母。不用 IntersectionObserver：
+       首屏是加载即可见的，IO 只会多一个失败模式。 */
+    send('page_view');
+
+    /* E2 profile_result{status} —— 复用页面自己的三种错误态文案。
+       注意：err_no_energy（'Could not read a core energy from that date.'）
+       是页面**自身**的映射 bug，不是用户错误；在报表里它会伪装成流失。 */
+    try {
+      var errEl = document.getElementById('err'), res = document.getElementById('result');
+      if (errEl) {
+        var last = '';
+        new MutationObserver(function () {
+          try {
+            var t = (errEl.textContent || '').trim();
+            if (!t || t === last) return;
+            last = t;
+            var st = 'err_other';
+            if (t.indexOf('Please enter a birth date') === 0) st = 'err_empty';
+            else if (t.indexOf('does not exist') >= 0) st = 'err_format';
+            else if (t.indexOf('Could not read a core energy') >= 0) st = 'err_no_energy';
+            send('profile_result', { status: st });
+          } catch (e) {}
+        }).observe(errEl, { childList: true, subtree: true, characterData: true });
+      }
+      if (res) {
+        new MutationObserver(function () {
+          try { if (res.style.display === 'block') send('profile_result', { status: 'ok' }); } catch (e) {}
+        }).observe(res, { attributes: true, attributeFilter: ['style'] });
+      }
+    } catch (e) {}
+
+    /* E3 cta_click —— 只上报原始描述符，分类留给 SQL。
+       捕获相：本页 keydown 处理里有 preventDefault，冒泡相可能漏。
+       不 preventDefault / 不 stopPropagation。 */
+    var clicks = 0;
+    try {
+      document.addEventListener('click', function (ev) {
+        try {
+          var el = ev.target && ev.target.closest
+            ? ev.target.closest('a[href],button,input[type=submit],[role=button]') : null;
+          if (!el) return;
+          clicks++;
+          var box = el.closest('section,div[id]');
+          send('cta_click', {
+            tag: el.tagName.toLowerCase(), eid: el.id || '',
+            href: el.getAttribute('href') || '',
+            textlen: (el.textContent || '').trim().length,
+            seq: clicks, box: (box && box.id) || ''
+          });
+        } catch (e) {}
+      }, true);
+    } catch (e) {}
+
+    /* E4 page_exit —— dwell + 最大滚动深度。这是"承诺不符"最诚实的行为指纹：
+       长停留 + 滚到底 + 零交互 = 用户在整个页面里找那件被承诺的事。
+       用 visibilitychange + pagehide（**不用 unload**：移动端不可靠且破坏 bfcache）。 */
+    var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
+    var maxScroll = 0, sent = false;
+    try {
+      window.addEventListener('scroll', function () {
+        try {
+          var h = document.documentElement;
+          var pct = h.scrollHeight > h.clientHeight
+            ? (h.scrollTop + window.innerHeight) / h.scrollHeight * 100 : 100;
+          if (pct > maxScroll) maxScroll = pct;
+        } catch (e) {}
+      }, { passive: true });
+    } catch (e) {}
+    function bye() {
+      try {
+        if (sent) return; sent = true;
+        var t = (window.performance && performance.now) ? performance.now() : Date.now();
+        var r = document.getElementById('result');
+        send('page_exit', { dwell_ms: Math.round(t - t0), max_scroll_pct: Math.round(maxScroll),
+                            clicks: clicks, had_profile: !!(r && r.style.display === 'block') });
+      } catch (e) {}
+    }
+    try { document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') bye(); }); } catch (e) {}
+    try { window.addEventListener('pagehide', bye); } catch (e) {}
+  } catch (e) {}
+})();
+
+/* ── 第二屏留资（Brian 选 (a)：放在 /coach.html 按钮旁边）─────────────────
+   为什么要有它：原来唯一的留资面板 #capWrap 藏在 #result 里，而 #result 是
+   display:none —— 从冷邮件进来的教练不先输入生日，就看不到任何留邮箱的地方。 */
+(function () {
+  try {
+    var em = document.getElementById('c2Email'), btn = document.getElementById('c2Btn'),
+        msg = document.getElementById('c2Msg');
+    if (!em || !btn) return;
+    function send2() {
+      try {
+        var v = (em.value || '').trim();
+        if (!v || v.indexOf('@') < 1) {
+          msg.style.color = '#ffb3a3';
+          msg.textContent = 'Please check that email address.';
+          return;
+        }
+        btn.disabled = true; btn.textContent = 'Sending...'; msg.textContent = '';
+        fetch('/api/lead-capture', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: v, source: 'coach_walkthrough',
+                                 campaign: (location.search.match(/utm_campaign=([A-Za-z0-9_]+)/) || ['', ''])[1] })
+        }).then(function (r) { return r.json(); }).then(function (d) {
+          if (d && d.ok) {
+            btn.textContent = 'Sent';
+            msg.style.color = '#9fd8a8';
+            msg.textContent = 'Got it — the walkthrough is on its way.';
+          } else {
+            btn.disabled = false; btn.textContent = 'Send me the walkthrough';
+            msg.style.color = '#ffb3a3';
+            msg.textContent = (d && d.msg) ? String(d.msg).slice(0, 90) : 'Could not save that. Please try again.';
+          }
+        }).catch(function () {
+          btn.disabled = false; btn.textContent = 'Send me the walkthrough';
+          msg.style.color = '#ffb3a3';
+          msg.textContent = 'Something went wrong. Please try again.';
+        });
+      } catch (e) {}
+    }
+    btn.addEventListener('click', send2);
+    em.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); send2(); } });
+  } catch (e) {}
+})();
+</script>
+
+<!-- Coach door + funnel instrumentation (round 209).
+     Why this page, and why now: nginx shows mirror-demo.html receives almost
+     every outbound click we get -- 397 from the cold-email list plus all 11 the
+     partner emails earned in their first hours. It was the ONLY high-traffic
+     page never carrying this asset (grep found 0 references), so the one form
+     it did have, #c2Email, sits below the fold and its other panel #capWrap is
+     display:none until a visitor enters a birth date.
+     Default variant on purpose: this page IS the client's side of the product,
+     so "Here as a coach, not as the client?" is the honest question to ask a
+     visitor who has just been looking at a client demo.
+     It also carries the free question-library link, and it reports
+     coach_door_view -- so we will finally learn whether anyone scrolls this far. -->
+<script src="/assets/mojo_capture.js?v=2" data-page="mirror-demo" data-funnel="off" defer></script>
+
+</body>
+</html>
